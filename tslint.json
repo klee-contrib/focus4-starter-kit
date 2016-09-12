@@ -39,10 +39,6 @@
         "no-trailing-whitespace": true,
         "no-unreachable": true,
         "no-unused-expression": true,
-        "no-unused-variable": [
-            "check-parameters",
-            "react"
-        ],
         "no-use-before-declare": true,
         "no-var-keyword": true,
         "no-var-requires": true,

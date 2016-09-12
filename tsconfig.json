@@ -13,8 +13,7 @@
         "noImplicitThis": true,
         "strictNullChecks": true,
         "experimentalDecorators": true,
-        "noFallthroughCasesInSwitch": true,
-        "inlineSourceMap": true
+        "noFallthroughCasesInSwitch": true
     },
     "exclude": [
         "dist",
