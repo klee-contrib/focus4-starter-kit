@@ -7,8 +7,9 @@
     "start": "node dev-server.js"
   },
   "dependencies": {
-    "autofocus": "1.0.0-alpha5",
-    "focus-components": "0.17.0-beta5"
+    "autofocus": "1.0.0-alpha7",
+    "focus-components": "0.17.0-beta5",
+    "material-design-icons-iconfont": "3.0.0"
   },
   "devDependencies": {
     "awesome-typescript-loader": "2.2.4",

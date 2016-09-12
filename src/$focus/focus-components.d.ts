@@ -12,9 +12,8 @@ declare module 'focus-components/common/field' {
     export class component extends React.Component<any, {}> {}
 }
 
-declare module 'focus-components/components' {
-
-    export class Button extends React.Component<{
+declare module 'focus-components/components/button' {
+    export = class Button extends React.Component<{
         color?: 'primary' | 'accent',
         className?: string,
         icon?: string,
@@ -26,12 +25,18 @@ declare module 'focus-components/components' {
         disabled?: boolean,
         iconLibrary?: 'material' | 'font-awesome' | 'font-custom'
     }, {}> {}
+}
 
-    export class ButtonBack extends React.Component<{}, {}> {}
+declare module 'focus-components/components/button-back' {
+    export = class ButtonBack extends React.Component<{}, {}> {}
+}
 
-    export class ButtonBackToTop extends React.Component<{}, {}> {}
+declare module 'focus-components/components/button-back-to-top' {
+    export = class ButtonBackToTop extends React.Component<{}, {}> {}
+}
 
-    export class DraggableIframe extends React.Component<{
+declare module 'focus-components/components/draggable-iframe' {
+    export = class DraggableIframe extends React.Component<{
         iframeUrl: string;
         width: number;
         height: number;
@@ -50,20 +55,22 @@ declare module 'focus-components/components' {
         destroy: (e: MouseEvent) => void;
         helpFrame: HTMLIFrameElement;
     }
+}
+declare module 'focus-components/components/dropdown' {
 
-    export class Icon extends React.Component<{
+    export = class Dropdown extends React.Component<{}, {}> {}
+}
+declare module 'focus-components/components/icon' {
+    export = class Icon extends React.Component<{
         name: string,
         style?: React.CSSProperties,
         onClick?: (e: React.MouseEvent<any>) => void,
         library?: 'material' | 'font-awesome' | 'font-custom'
     }, {}> {}
+}
 
-    export class Layout extends React.Component<{
-        MenuLeft?: React.ComponentClass<any>,
-        LoadingBar?: React.ComponentClass<any>
-    }, {}> {}
-
-    export interface MenuItem {
+declare module 'focus-components/components/menu-left' {
+    interface MenuItem {
         icon: string;
         iconLibrary?: 'font-custom';
         route: string;
@@ -71,7 +78,7 @@ declare module 'focus-components/components' {
         name?: string;
     }
 
-    export class MenuLeft extends React.Component<{
+    export = class MenuLeft extends React.Component<{
         items: MenuItem[];
         handleBrandClick?: () => void;
         navigate?: Function;
@@ -80,46 +87,60 @@ declare module 'focus-components/components' {
         _renderMenuItems: () => JSX.Element[];
         _handleBrandClick(): void;
     }
+}
 
-    export class Panel extends React.Component<{
+declare module 'focus-components/components/panel' {
+    export = class Panel extends React.Component<{
         title?: string,
         showHelp?: boolean,
         blockName?: string,
         actions?: () => React.ReactElement<{}>,
         className?: string
     }, {}> {}
+}
 
-    export class ScrollspyContainer extends React.Component<{
+declare module 'focus-components/components/scrollspy-container' {
+    export = class ScrollspyContainer extends React.Component<{
         gridMenuSize?: number,
         gridContentSize?: number
     }, {}> {}
+}
 
-    export class Role extends React.Component<{
+declare module 'focus-components/components/role' {
+    export = class Role extends React.Component<{
         hasOne?: string[],
         hasAll?: string[],
         emptyBlock: React.ReactElement<{}>
     }, {}> {}
+}
 
-    export function TopicDisplayer(props: {
+declare module 'focus-components/components/topic-displayer' {
+    function TopicDisplayer(props: {
         topicClickAction: () => void,
         topicList: {}
     }): JSX.Element
+
+    export = TopicDisplayer;
 }
 
-declare module 'focus-components/components/input' {
-    export class Checkbox extends React.Component<{
+declare module 'focus-components/components/input/checkbox' {
+    export = class Checkbox extends React.Component<{
         name?: string,
         onChange: () => void,
         value: boolean
     }, {}> {}
+}
 
-    export class Date extends React.Component<{
+declare module 'focus-components/components/input/date' {
+    export = class Date extends React.Component<{
         locale: string
     }, {}> {
         getValue(): string
     }
+}
 
-    export class Radio extends React.Component<{
+declare module 'focus-components/components/input/radio' {
+    export = class Radio extends React.Component<{
         label: string;
         name?: string;
         value?: boolean;
@@ -127,22 +148,36 @@ declare module 'focus-components/components/input' {
     }, {}> {
         getValue(): any;
     }
+}
 
-    export class Select extends React.Component<{
+declare module 'focus-components/components/input/select' {
+    export = class Select extends React.Component<{
         value: string | number,
         values: {}[],
         labelKey?: string,
         onChange?: (...args: any[]) => void
     }, {}> {}
+}
 
-    export class SelectRadio extends React.Component<{
+declare module 'focus-components/components/input/select-radio' {
+    export = class SelectRadio extends React.Component<{
         value?: string | number,
         values?: {}[],
         labelKey?: string,
         onChange?: (...args: any[]) => void
     }, {}> {}
+}
 
-    export class Textarea extends React.Component<any, {}> {}
+declare module 'focus-components/components/input/text' {
+    export = class InputText extends React.Component<{
+        name: string;
+        value?: string | number,
+        onChange: (value: string) => void
+    }, {}> {}
+}
+
+declare module 'focus-components/components/input/textarea' {
+    export = class Textarea extends React.Component<any, {}> {}
 }
 
 declare module 'focus-components/list/action-bar' {

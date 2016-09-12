@@ -2,16 +2,18 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: [
-        'webpack-dev-server/client?http://localhost:3000',
-        './src/index'
-    ],
+    entry: './src/index',
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'app.js',
         publicPath: '/static/'
     },
     resolve: {
+        alias: {
+            'focus-core/translation': path.resolve(__dirname, './node_modules/autofocus/translation.js'),
+            'focus-core/component/builder': path.resolve(__dirname, './src/$focus/builder.ts'),
+            'focus-core/component/types': path.resolve(__dirname, './src/$focus/types.ts')
+        },
         extensions: ['', '.js', '.ts', '.tsx']
     },
     module: {
