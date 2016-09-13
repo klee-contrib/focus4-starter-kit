@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityValue} from "autofocus/entity";
+import {EntityField} from "autofocus/entity";
 import {DO_COMMENTAIRE, DO_DATE, DO_ID} from "../domains";
 
 export interface Evenement {
@@ -10,9 +10,9 @@ export interface Evenement {
 }
 
 export interface EvenementData {
-    id: EntityValue<number>;
-    date: EntityValue<string>;
-    commentaire: EntityValue<string>;
+    id: EntityField<number>;
+    date: EntityField<string>;
+    commentaire: EntityField<string>;
     set: (evenement: Evenement) => void;
     clear: () => void;
 }

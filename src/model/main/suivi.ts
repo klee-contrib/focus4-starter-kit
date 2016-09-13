@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityValue, EntityArray} from "autofocus/entity";
+import {EntityField, EntityList, EntityArray} from "autofocus/entity";
 import {DO_DATE, DO_ID} from "../domains";
 import {Evenement, EvenementData} from "./evenement";
 
@@ -11,9 +11,9 @@ export interface Suivi {
 }
 
 export interface SuiviData {
-    dateCreation: EntityValue<string>;
-    nombreEvenement: EntityValue<number>;
-    evenementList: EntityArray<EvenementData>;
+    dateCreation: EntityField<string>;
+    nombreEvenement: EntityField<number>;
+    evenementList: EntityList<EntityArray<EvenementData>>;
     set: (suivi: Suivi) => void;
     clear: () => void;
 }

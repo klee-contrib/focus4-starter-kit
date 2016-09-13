@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityValue} from "autofocus/entity";
+import {EntityField} from "autofocus/entity";
 import {DO_LIBELLE_100, DO_CODE_10, DO_ID} from "../domains";
 
 export interface Adresse {
@@ -12,11 +12,11 @@ export interface Adresse {
 }
 
 export interface AdresseData {
-    id: EntityValue<number>;
-    ligne1: EntityValue<string>;
-    ligne2: EntityValue<string>;
-    codePostal: EntityValue<string>;
-    ville: EntityValue<string>;
+    id: EntityField<number>;
+    ligne1: EntityField<string>;
+    ligne2: EntityField<string>;
+    codePostal: EntityField<string>;
+    ville: EntityField<string>;
     set: (adresse: Adresse) => void;
     clear: () => void;
 }

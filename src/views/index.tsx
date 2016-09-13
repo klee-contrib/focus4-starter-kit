@@ -3,6 +3,7 @@ import Input = require("focus-components/components/input/text");
 import ScrollspyContainer = require("focus-components/components/scrollspy-container");
 
 import {Form} from "./form";
+import {SuiviComponent} from "./suivi";
 
 const RouteDisplay = observer(() => (
     <div>
@@ -29,6 +30,7 @@ export class Index extends React.Component<{}, void> {
         return (
             <ScrollspyContainer gridMenuSize={2} gridContentSize={10}>
                 <Form />
+                <SuiviComponent />
             </ScrollspyContainer>
         );
     }

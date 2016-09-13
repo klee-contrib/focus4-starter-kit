@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityValue} from "autofocus/entity";
+import {EntityField} from "autofocus/entity";
 import {DO_CODE_10, DO_EMAIL, DO_ID, DO_LIBELLE_100, DO_TELEPHONE} from "../domains";
 import {CiviliteCode} from "../references";
 
@@ -14,12 +14,12 @@ export interface Contact {
 }
 
 export interface ContactData {
-    id: EntityValue<number>;
-    nom: EntityValue<string>;
-    prenom: EntityValue<string>;
-    email: EntityValue<string>;
-    telephone: EntityValue<string>;
-    civiliteCode: EntityValue<CiviliteCode>;
+    id: EntityField<number>;
+    nom: EntityField<string>;
+    prenom: EntityField<string>;
+    email: EntityField<string>;
+    telephone: EntityField<string>;
+    civiliteCode: EntityField<CiviliteCode>;
     set: (contact: Contact) => void;
     clear: () => void;
 }

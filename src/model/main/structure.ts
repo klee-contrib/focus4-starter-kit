@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityValue} from "autofocus/entity";
+import {EntityField} from "autofocus/entity";
 import {DO_BOOLEEN, DO_CODE_10, DO_DATE, DO_ID, DO_LIBELLE_100, DO_MONTANT} from "../domains";
 import {StatutJuridiqueCode} from "../references";
 import {Adresse, AdresseData} from "./adresse";
@@ -16,13 +16,13 @@ export interface Structure {
 }
 
 export interface StructureData {
-    id: EntityValue<number>;
-    denominationSociale: EntityValue<string>;
-    capitalSocial: EntityValue<number>;
-    isBeneficiaireEffectif: EntityValue<boolean>;
-    dateDemande: EntityValue<string>;
-    statutJuridiqueCode: EntityValue<StatutJuridiqueCode>;
-    adresse: EntityValue<AdresseData>;
+    id: EntityField<number>;
+    denominationSociale: EntityField<string>;
+    capitalSocial: EntityField<number>;
+    isBeneficiaireEffectif: EntityField<boolean>;
+    dateDemande: EntityField<string>;
+    statutJuridiqueCode: EntityField<StatutJuridiqueCode>;
+    adresse: EntityField<AdresseData>;
     set: (structure: Structure) => void;
     clear: () => void;
 }
