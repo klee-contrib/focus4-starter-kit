@@ -8,4 +8,4 @@ const DO_LIBELLE_100: Domain = {
             maxLength: 100
         }
     }]
-}
+};
