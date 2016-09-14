@@ -18,6 +18,12 @@ module.exports = {
         extensions: ['', '.js', '.ts', '.tsx']
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loader: 'source-map-loader'
+            }
+        ],
         loaders: [
             {
                 test: /\.tsx?$/,
@@ -46,5 +52,6 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    devtool: 'eval'
 };

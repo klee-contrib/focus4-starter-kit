@@ -1,10 +1,11 @@
-import {React, observer, displayFor, listFor} from "autofocus";
+import {React, observer, translate} from "autofocus";
+import {displayFor, listFor, stringFor} from "autofocus/entity";
 import Panel = require("focus-components/components/panel");
 
 import {loadSuivi} from "../../services/main";
 import {mainStore} from "../../stores/main";
 
-import {EvenementLine} from "./evenement-line";
+import {EvenementData} from "../../model/main/evenement";
 
 @observer
 export class SuiviComponent extends React.Component<{}, void> {
@@ -19,7 +20,10 @@ export class SuiviComponent extends React.Component<{}, void> {
             <Panel title="Suivi de la structure">
                 {displayFor(dateCreation)}
                 {displayFor(nombreEvenement)}
-                {listFor(evenementList.value, {LineComponent: EvenementLine})}
+                <h4>{translate("suivi.evenement.title")}</h4>
+                {listFor(evenementList.value, {
+                    LineComponent: observer(({data}: {data?: EvenementData}) => <li>{stringFor(data!.date)} - {stringFor(data!.commentaire)}</li>)
+                })}
             </Panel>
         );
     }
