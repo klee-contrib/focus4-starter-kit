@@ -6,13 +6,11 @@ import moment = require("moment");
 import numeral = require("numeral");
 
 export const DO_BOOLEEN: Domain = {
-    type: "boolean",
     InputComponent: Checkbox
 };
 
 export const DO_COMMENTAIRE: Domain = {
     InputComponent: Textarea,
-    type: "string",
     validator: [{
         type: "string",
         options: {
@@ -22,7 +20,6 @@ export const DO_COMMENTAIRE: Domain = {
 };
 
 export const DO_CODE_10: Domain = {
-    type: "text",
     validator: [{
         type: "string",
         options: {
@@ -31,31 +28,24 @@ export const DO_CODE_10: Domain = {
     }]
 };
 
-export const DO_DATE: Domain = {
-    type: "date",
+export const DO_DATE = {
     InputComponent: Date,
+    formatter: (date: string) => date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : "",
+    unformatter: (text: string) => moment(text).toDate(),
+    beforeValueGetter: (value: string) => value ? moment(value).add(moment.duration({minutes: moment(value).utcOffset()})).toISOString() : "",
     locale: "fr",
     format: ["DD/MM/YYYY"],
-    formatter: date => date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : "",
-    unformatter: text => moment(text).toDate(),
-    options: {
-        beforeValueGetter: (value: string) => value ? moment(value).add(moment.duration({minutes: moment(value).utcOffset()})).toISOString() : ""
-    }
 };
 
-export const DO_ID: Domain = {
-    type: "number"
-};
+export const DO_ID: Domain = {};
 
 export const DO_EMAIL: Domain = {
-    type: "email",
     validator: [{
         type: "email"
     }]
 };
 
 export const DO_LIBELLE_100: Domain = {
-    type: "text",
     validator: [{
         type: "string",
         options: {
@@ -65,7 +55,6 @@ export const DO_LIBELLE_100: Domain = {
 };
 
 export const DO_MONTANT: Domain = {
-    type: "text",
     validator: [{
         type: "function",
         value: (input: string) => /^-?\d*\.?\d{0,2}$/.test(input),
@@ -92,7 +81,6 @@ export const DO_MONTANT: Domain = {
 };
 
 export const DO_POURCENTAGE: Domain = {
-    type: "text",
     validator: [{
         type: "function",
         value: (input: string) => /^(100(\.00?)?|[1-9]?\d(\.\d\d?)?)$/.test(input),

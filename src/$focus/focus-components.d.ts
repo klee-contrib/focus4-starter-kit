@@ -8,10 +8,6 @@ declare module 'focus-components/application/confirmation-popin' {
     }
 }
 
-declare module 'focus-components/common/field' {
-    export class component extends React.Component<any, {}> {}
-}
-
 declare module 'focus-components/components/button' {
     export = class Button extends React.Component<{
         color?: 'primary' | 'accent',
@@ -59,6 +55,10 @@ declare module 'focus-components/components/draggable-iframe' {
 declare module 'focus-components/components/dropdown' {
 
     export = class Dropdown extends React.Component<{}, {}> {}
+}
+declare module 'focus-components/components/label' {
+
+    export = class Label extends React.Component<{}, {}> {}
 }
 declare module 'focus-components/components/icon' {
     export = class Icon extends React.Component<{
@@ -121,6 +121,14 @@ declare module 'focus-components/components/topic-displayer' {
     }): JSX.Element
 
     export = TopicDisplayer;
+}
+
+
+declare module 'focus-components/components/display/text' {
+    export = class DisplayText extends React.Component<{
+        name: string;
+        value?: string | number
+    }, {}> {}
 }
 
 declare module 'focus-components/components/input/checkbox' {

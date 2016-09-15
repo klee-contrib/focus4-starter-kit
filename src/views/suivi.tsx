@@ -2,10 +2,10 @@ import {React, observer, translate} from "autofocus";
 import {displayFor, listFor, stringFor} from "autofocus/entity";
 import Panel = require("focus-components/components/panel");
 
-import {loadSuivi} from "../../services/main";
-import {mainStore} from "../../stores/main";
+import {loadSuivi} from "../services/main";
+import {mainStore} from "../stores/main";
 
-import {EvenementData} from "../../model/main/evenement";
+import {EvenementData} from "../model/main/evenement";
 
 @observer
 export class SuiviComponent extends React.Component<{}, void> {

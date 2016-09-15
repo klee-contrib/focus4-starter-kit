@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityField, EntityList, EntityArray} from "autofocus/entity";
+import {EntityField, EntityList, EntityArray, ClearSet} from "autofocus/entity";
 import {DO_DATE, DO_ID} from "../domains";
 import {Evenement, EvenementData} from "./evenement";
 
@@ -10,33 +10,31 @@ export interface Suivi {
     evenementList?: Evenement[];
 }
 
-export interface SuiviData {
+export interface SuiviData extends ClearSet<Suivi> {
     dateCreation: EntityField<string>;
     nombreEvenement: EntityField<number>;
     evenementList: EntityList<EntityArray<EvenementData>>;
-    set: (suivi: Suivi) => void;
-    clear: () => void;
 }
 
 export const SuiviEntity = {
     name: "suivi",
     fields: {
         dateCreation: {
-            type: "field",
+            type: "field" as "field",
             name: "dateCreation",
             domain: DO_DATE,
             isRequired: true,
             translationKey: "suivi.dateCreation"
         },
         nombreEvenement: {
-            type: "field",
+            type: "field" as "field",
             name: "nombreEvenement",
             domain: DO_ID,
             isRequired: true,
             translationKey: "suivi.nombreEvenement"
         },
         evenementList: {
-            type: "list",
+            type: "list" as "list",
             entityName: "evenement"
         }
     }

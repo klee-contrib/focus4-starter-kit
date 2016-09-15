@@ -1,4 +1,5 @@
-import {makeEntityStore, EntityArray} from "autofocus/entity";
+import {makeEntityStore, EntityArray, ClearSet} from "autofocus/entity";
+
 import {AdresseEntity} from "../model/main/adresse";
 import {ContactData, ContactEntity} from "../model/main/contact";
 import {EvenementEntity} from "../model/main/evenement";
@@ -10,7 +11,7 @@ export const mainStore = makeEntityStore<any>({
     structure: {},
     suivi: {}
 }, [
-    AdresseEntity as any,
+    AdresseEntity,
     ContactEntity,
     EvenementEntity,
     StructureEntity,
@@ -19,6 +20,4 @@ export const mainStore = makeEntityStore<any>({
     contactList: EntityArray<ContactData>,
     structure: StructureData,
     suivi: SuiviData,
-    set: (config: {}) => void,
-    clear: () => void;
-};
+} & ClearSet<{}>;

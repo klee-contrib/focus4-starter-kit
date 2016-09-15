@@ -12,8 +12,7 @@ module.exports = {
         alias: {
             'focus-core/translation': path.resolve(__dirname, './node_modules/autofocus/translation.js'),
             'focus-core/component/builder': path.resolve(__dirname, './src/$focus/builder.ts'),
-            'focus-core/component/types': path.resolve(__dirname, './src/$focus/types.ts'),
-            'focus-core/definition/validator/validate': path.resolve(__dirname, './node_modules/autofocus/validation')
+            'focus-core/component/types': path.resolve(__dirname, './src/$focus/types.ts')
         },
         extensions: ['', '.js', '.ts', '.tsx']
     },

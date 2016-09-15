@@ -6,7 +6,7 @@ init({
             translation: {
                 form: {
                     title: "Formulaire",
-                    content: "Bientôt..."
+                    content: "Détails"
                 }
             }
         }

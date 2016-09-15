@@ -29,7 +29,7 @@ export class Index extends React.Component<{}, void> {
     render() {
         return (
             <ScrollspyContainer gridMenuSize={2} gridContentSize={10}>
-                <Form />
+                <Form id={1} />
                 <SuiviComponent />
             </ScrollspyContainer>
         );
