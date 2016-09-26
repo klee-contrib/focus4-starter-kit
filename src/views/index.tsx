@@ -1,37 +1,15 @@
-import {React, applicationStore, observer} from "autofocus";
-import Input = require("focus-components/components/input/text");
-import ScrollspyContainer = require("focus-components/components/scrollspy-container");
+import {React, observer} from "autofocus";
+import {Layout} from "autofocus/application";
+import {render} from "react-dom";
 
-import {Form} from "./form";
-import {SuiviComponent} from "./suivi";
+import {viewStore} from "../router";
+import {Home} from "./home";
+import {Test} from "./test";
 
-const RouteDisplay = observer(() => (
-    <div>
-        {`Route: ${applicationStore.route || ""}`}
-    </div>
-));
+const Main = observer(() => viewStore.currentView.page === "test" ? <Test /> : <Home />);
 
-export class Index extends React.Component<{}, void> {
-
-    componentWillMount() {
-        applicationStore.setHeader({
-            barLeft: <Input name="route" onChange={e => applicationStore.route = e} />,
-            barRight: <RouteDisplay />,
-            cartridge: <h2>Salut autofocus</h2>,
-            summary: <strong>Salut autofocus</strong>,
-            actions: {primary: [{
-                action: () => applicationStore.canDeploy = !applicationStore.canDeploy,
-                icon: "radio_button_checked"
-            }]}
-        });
-    }
-
-    render() {
-        return (
-            <ScrollspyContainer gridMenuSize={2} gridContentSize={10}>
-                <Form id={1} />
-                <SuiviComponent />
-            </ScrollspyContainer>
-        );
-    }
-}
+render((
+    <Layout>
+        <Main />
+    </Layout>
+), document.getElementById("app"));

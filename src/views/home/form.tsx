@@ -1,13 +1,13 @@
 import {React, translate, AutoForm, observer} from "autofocus";
 import Panel = require("focus-components/components/panel");
 
-import {mainStore} from "./../stores/main";
-import {loadStructure, saveStructure} from "../services/main";
-import {referenceStore} from "../stores/reference";
-import {StructureData} from "./../model/main/structure";
+import {mainStore} from "../../stores/main";
+import {loadStructure, saveStructure} from "../../services/main";
+import {referenceStore} from "../../stores/reference";
+import {StructureData} from "../../model/main/structure";
 
 @observer
-export class Form extends AutoForm<{}, StructureData & {[key: string]: any}> {
+export class Form extends AutoForm<{}, StructureData> {
 
     constructor(props: {}) {
         super(props, mainStore.structure, {load: loadStructure, save: saveStructure});
