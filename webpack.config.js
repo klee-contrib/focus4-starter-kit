@@ -14,41 +14,51 @@ module.exports = {
             'focus-core/component/builder': path.resolve(__dirname, './src/$focus/builder.ts'),
             'focus-core/component/types': path.resolve(__dirname, './src/$focus/types.ts')
         },
-        extensions: ['', '.js', '.ts', '.tsx']
+        extensions: ['.js', '.ts', '.tsx']
     },
     module: {
-        preLoaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loader: 'source-map-loader'
-            }
-        ],
-        loaders: [
+                enforce: 'pre',
+                use: [{
+                    loader: 'source-map'
+                }]
+            },
             {
                 test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader',
-                include: [
-                    path.resolve(__dirname, './src')
-                ]
+                include: [ path.resolve(__dirname, './src')],
+                use: [{
+                    loader: 'awesome-typescript'
+                }]
             },
             {
                 test: /\.json$/,
-                loader: 'json'
+                use: [{
+                    loader: 'json'
+                }]
             },
             {
                 test: /\.scss$/,
-                loader: 'style!css!sass'
+                use: [
+                    {loader: 'style'},
+                    {loader: 'css'},
+                    {loader: 'sass'}
+                ]
             },
             {
                 test: /\.css$/,
-                loader: 'style!css'
+                use: [
+                    {loader: 'style'},
+                    {loader: 'css'}
+                ]
             },
             {
                 test: /\.(woff2?|ttf|eot|svg)$/,
-                loader: 'file',
-                query: {
-                    name: '[name].[ext]'
-                }
+                use: [{
+                    loader: 'file',
+                    options: {name: '[name].[ext]'}
+                }]
             }
         ]
     },
