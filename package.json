@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@types/numeral": "0.0.17",
-    "autofocus": "1.0.0-alpha24",
+    "autofocus": "1.0.0-alpha27",
     "focus-components": "0.17.0-beta5",
     "material-design-icons-iconfont": "3.0.0",
     "numeral": "1.5.3"
