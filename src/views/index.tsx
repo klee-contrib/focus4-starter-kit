@@ -4,9 +4,16 @@ import {render} from "react-dom";
 
 import {viewStore} from "../router";
 import {Home} from "./home";
+import {List} from "./list";
 import {Test} from "./test";
 
-const Main = observer(() => viewStore.currentView.page === "test" ? <Test /> : <Home />);
+const Main = observer(() => {
+    switch (viewStore.currentView.page) {
+        case "test": return <Test />;
+        case "list": return <List />;
+        default: return <Home />;
+    }
+});
 
 render((
     <Layout>
