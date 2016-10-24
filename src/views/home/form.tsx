@@ -1,5 +1,5 @@
-import {React, translate, AutoForm, observer} from "autofocus";
-import Panel = require("focus-components/components/panel");
+import {React, i18n, AutoForm, observer} from "autofocus";
+import Panel from  "focus-components/panel";
 
 import {mainStore} from "../../stores/main";
 import {loadStructure, saveStructure} from "../../services/main";
@@ -16,8 +16,8 @@ export class Form extends AutoForm<{}, StructureData> {
     renderContent() {
         const {denominationSociale, capitalSocial, statutJuridiqueCode} = this.entity;
         return (
-            <Panel title="form.title" actions={this.renderActions}>
-                {translate("form.content")}
+            <Panel title="form.title" {...this.getPanelButtonProps()}>
+                {i18n.t("form.content")}
                 {this.fieldFor(denominationSociale)}
                 {this.fieldFor(capitalSocial)}
                 {this.selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle"})}

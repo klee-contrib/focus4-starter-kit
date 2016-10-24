@@ -7,11 +7,7 @@
     "start": "node dev-server.js"
   },
   "dependencies": {
-    "@types/numeral": "0.0.17",
-    "autofocus": "1.0.0-alpha29",
-    "focus-components": "0.17.0-beta5",
-    "material-design-icons-iconfont": "3.0.0",
-    "numeral": "1.5.3"
+    "autofocus": "1.0.0-beta4"
   },
   "devDependencies": {
     "awesome-typescript-loader": "2.2.4",
@@ -23,9 +19,9 @@
     "source-map-loader": "0.1.5",
     "style-loader": "0.13.1",
     "tslint": "3.15.1",
-    "typescript": "2.1.0-dev.20161013",
+    "typescript": "2.1.0-dev.20161024",
     "webpack": "2.1.0-beta.25",
-    "webpack-dev-server": "1.16.1"
+    "webpack-dev-server": "1.16.2"
   },
   "author": "JabX",
   "license": "MIT"

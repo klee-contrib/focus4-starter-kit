@@ -1,4 +1,4 @@
-import "material-design-icons-iconfont/dist/material-design-icons.css";
+/// <reference path="../node_modules/autofocus/focus-components.d.ts" />
 import "focus-components/style";
-import "./init";
+import "./translation";
 import "./views";

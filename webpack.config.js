@@ -50,7 +50,13 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     {loader: 'style'},
-                    {loader: 'css'}
+                    {
+                        loader: 'css',
+                        options: {
+                            modules: true,
+                            localIdentName: "[name]-[local]--[hash:base64:5]"
+                        }
+                    }
                 ]
             },
             {

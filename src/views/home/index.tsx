@@ -1,7 +1,7 @@
 import {React, applicationStore, observer, action} from "autofocus";
-import Input = require("focus-components/components/input/text");
-import Button = require("focus-components/components/button");
-import ScrollspyContainer = require("focus-components/components/scrollspy-container");
+import Input from "focus-components/input-text";
+import Button from "focus-components/button";
+import ScrollspyContainer from "focus-components/scrollspy-container";
 
 import {Form} from "./form";
 import {SuiviComponent} from "./suivi";
@@ -38,7 +38,7 @@ export class Home extends React.Component<{}, void> {
 
     render() {
         return (
-            <ScrollspyContainer gridMenuSize={2} gridContentSize={10}>
+            <ScrollspyContainer>
                 <Form id={1} />
                 <SuiviComponent />
             </ScrollspyContainer>

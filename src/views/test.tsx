@@ -1,5 +1,5 @@
 import {React, action, observer} from "autofocus";
-import Button = require("focus-components/components/button");
+import Button from "focus-components/button";
 import {viewStore} from "../router";
 
 function toHome() {

@@ -1,9 +1,9 @@
 import {Domain} from "autofocus/entity";
-import Checkbox = require("focus-components/components/input/checkbox");
-import Date = require("focus-components/components/input/date");
-import Textarea = require("focus-components/components/input/textarea");
-import moment = require("moment");
-import numeral = require("numeral");
+import Checkbox from "focus-components/input-checkbox";
+import Date from "focus-components/input-date";
+import Textarea from "focus-components/input-textarea";
+import moment from "moment";
+import numeral from "numeral";
 
 export const DO_BOOLEEN: Domain = {
     InputComponent: Checkbox
