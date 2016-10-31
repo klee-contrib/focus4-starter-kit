@@ -7,6 +7,8 @@ import {Home} from "./home";
 import {List} from "./list";
 import {Test} from "./test";
 
+import {layout} from "./index.css";
+
 const Main = observer(() => {
     switch (viewStore.currentView.page) {
         case "test": return <Test />;
@@ -16,7 +18,7 @@ const Main = observer(() => {
 });
 
 render((
-    <Layout>
+    <Layout injectedStyle={{layout: {layout, content: "", hasMenu: ""}}}>
         <Main />
     </Layout>
 ), document.getElementById("app"));
