@@ -5,10 +5,10 @@ import ScrollspyContainer from "focus-components/scrollspy-container";
 
 import {Form} from "./form";
 import {SuiviComponent} from "./suivi";
-import {viewStore} from "../../router";
+import {homeView} from "../../router";
 
 function toTest() {
-    viewStore.currentView = {
+    homeView.currentView = {
         page: "test",
         id: Math.floor((Math.random() * 100)).toString()
     };

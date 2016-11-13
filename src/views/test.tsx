@@ -1,16 +1,21 @@
 import {React, action, observer} from "autofocus";
 import Button from "focus-components/button";
-import {viewStore} from "../router";
+import {homeView, testView} from "../router";
 
 function toHome() {
-    viewStore.currentView.page = "home";
+    homeView.currentView = {page: undefined, id: undefined};
+}
+
+function toTest() {
+    testView.currentView.lol = "salut";
 }
 
 export const Test = observer(() => {
     return (
         <div>
-            <h2>{`Salut identifiant ${viewStore.currentView.id}`}</h2>
+            <h2>{`Salut identifiant ${homeView.currentView.id}`}</h2>
             <Button label="Retourne à l'accueil" handleOnClick={toHome} />
+            <Button label="Test le deuxième viewStore" handleOnClick={toTest} />
         </div>
     );
 });

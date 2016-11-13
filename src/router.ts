@@ -1,3 +1,7 @@
 import {startRouter, ViewStore} from "autofocus/router";
-export const viewStore = new ViewStore<{page?: "home" | "test" | "list", id?: string}>(["page", "id"]);
-startRouter({}, viewStore);
+export const homeView = new ViewStore({page: "" as undefined | "test" | "list", id: "" as string | undefined}, "home");
+export const testView = new ViewStore({lol: ""}, "test");
+
+export function start() {
+    return startRouter({}, [homeView, testView]);
+};
