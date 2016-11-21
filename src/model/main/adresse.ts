@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityField, ClearSet} from "autofocus/entity";
+import {EntityField, StoreNode} from "autofocus/entity";
 import {DO_LIBELLE_100, DO_CODE_10, DO_ID} from "../domains";
 
 export interface Adresse {
@@ -11,7 +11,7 @@ export interface Adresse {
     ville?: string;
 }
 
-export interface AdresseData extends ClearSet<Adresse> {
+export interface AdresseNode extends StoreNode<Adresse> {
     id: EntityField<number>;
     ligne1: EntityField<string>;
     ligne2: EntityField<string>;

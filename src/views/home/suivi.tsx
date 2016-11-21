@@ -5,7 +5,7 @@ import Panel from "focus-components/panel";
 import {loadSuivi} from "../../services/main";
 import {mainStore} from "../../stores/main";
 
-import {EvenementData} from "../../model/main/evenement";
+import {EvenementNode} from "../../model/main/evenement";
 
 @observer
 export class SuiviComponent extends React.Component<{}, void> {
@@ -22,7 +22,7 @@ export class SuiviComponent extends React.Component<{}, void> {
                 {displayFor(nombreEvenement)}
                 <h4>{i18n.t("suivi.evenement.title")}</h4>
                 {listFor(evenementList.value, {
-                    LineComponent: observer(({data}: {data: EvenementData}) => <li>{stringFor(data.date)} - {stringFor(data.commentaire)}</li>)
+                    LineComponent: observer(({data}: {data: EvenementNode}) => <li>{stringFor(data.date)} - {stringFor(data.commentaire)}</li>)
                 })}
             </Panel>
         );

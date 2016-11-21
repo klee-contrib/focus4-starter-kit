@@ -4,10 +4,10 @@ import Panel from  "focus-components/panel";
 import {mainStore} from "../../stores/main";
 import {loadStructure, saveStructure} from "../../services/main";
 import {referenceStore} from "../../stores/reference";
-import {StructureData} from "../../model/main/structure";
+import {StructureNode} from "../../model/main/structure";
 
 @observer
-export class Form extends AutoForm<{}, StructureData> {
+export class Form extends AutoForm<{}, StructureNode> {
 
     constructor(props: {}) {
         super(props, mainStore.structure, {load: loadStructure, save: saveStructure});

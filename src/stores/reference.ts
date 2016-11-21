@@ -5,7 +5,7 @@ import {loadReference} from "../services/reference";
 export const referenceStore = makeReferenceStore(
     (refName: string) => () => loadReference(refName),
     {
-        civilite: [] as Civilite[],
-        statutJuridique: [] as StatutJuridique[]
+        civilite: {} as Civilite,
+        statutJuridique: {} as StatutJuridique
     }
 );

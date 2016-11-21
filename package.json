@@ -8,7 +8,7 @@
     "tcm": "tcm src"
   },
   "dependencies": {
-    "autofocus": "1.0.0-beta15"
+    "autofocus": "1.0.0-beta26"
   },
   "devDependencies": {
     "awesome-typescript-loader": "2.2.4",
