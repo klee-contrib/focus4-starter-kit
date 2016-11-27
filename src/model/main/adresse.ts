@@ -1,4 +1,5 @@
 /* Ce fichier doit être généré automatiquement */
+/* tslint:disable */
 
 import {EntityField, StoreNode} from "autofocus/entity";
 import {DO_LIBELLE_100, DO_CODE_10, DO_ID} from "../domains";

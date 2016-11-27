@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 import {Structure} from "../model/main/structure";
 import {Suivi} from "../model/main/suivi";
 

@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 export function loadReference(refName: string) {
     return new Promise(resolve => {
         setTimeout(() => {

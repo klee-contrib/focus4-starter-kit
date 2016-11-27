@@ -1,4 +1,4 @@
-import {React, observer} from "autofocus";
+import {observer, React} from "autofocus";
 import {Layout} from "autofocus/application";
 import {render} from "react-dom";
 

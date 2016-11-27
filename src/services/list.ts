@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 import {ListServiceParams, ListServiceResponse} from "autofocus/list";
 
 import {Contact} from "../model/main/contact";

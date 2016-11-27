@@ -1,4 +1,4 @@
-import {React, observer, i18n} from "autofocus";
+import {i18n, observer, React} from "autofocus";
 import {displayFor, listFor, stringFor} from "autofocus/entity";
 import Panel from "focus-components/panel";
 

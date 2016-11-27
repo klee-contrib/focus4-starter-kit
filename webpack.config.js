@@ -9,11 +9,6 @@ module.exports = {
         publicPath: '/static/'
     },
     resolve: {
-        alias: {
-            'focus-core/translation': path.resolve(__dirname, './node_modules/autofocus/translation.js'),
-            'focus-core/component/builder': path.resolve(__dirname, './src/$focus/builder.ts'),
-            'focus-core/component/types': path.resolve(__dirname, './src/$focus/types.ts')
-        },
         extensions: ['.js', '.ts', '.tsx']
     },
     module: {
@@ -22,36 +17,36 @@ module.exports = {
                 test: /\.js$/,
                 enforce: 'pre',
                 use: [{
-                    loader: 'source-map'
+                    loader: 'source-map-loader'
                 }]
             },
             {
                 test: /\.tsx?$/,
-                include: [ path.resolve(__dirname, './src')],
+                include: [path.resolve(__dirname, './src')],
                 use: [{
-                    loader: 'awesome-typescript'
+                    loader: 'awesome-typescript-loader'
                 }]
             },
             {
                 test: /\.json$/,
                 use: [{
-                    loader: 'json'
+                    loader: 'json-loader'
                 }]
             },
             {
                 test: /\.scss$/,
                 use: [
-                    {loader: 'style'},
-                    {loader: 'css'},
-                    {loader: 'sass'}
+                    {loader: 'style-loader'},
+                    {loader: 'css-loader'},
+                    {loader: 'sass-loader'}
                 ]
             },
             {
                 test: /\.css$/,
                 use: [
-                    {loader: 'style'},
+                    {loader: 'style-loader'},
                     {
-                        loader: 'css',
+                        loader: 'css-loader',
                         options: {
                             modules: true,
                             localIdentName: "[name]-[local]--[hash:base64:5]"
@@ -62,7 +57,7 @@ module.exports = {
             {
                 test: /\.(woff2?|ttf|eot|svg)$/,
                 use: [{
-                    loader: 'file',
+                    loader: 'file-loader',
                     options: {name: '[name].[ext]'}
                 }]
             }

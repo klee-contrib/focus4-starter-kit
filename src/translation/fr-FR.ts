@@ -1,6 +1,6 @@
-export default {
+export const fr = {
     form: {
-        title: "Formulaire",
-        content: "Détails"
+        content: "Détails",
+        title: "Formulaire"
     }
 };

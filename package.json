@@ -5,24 +5,25 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "node dev-server.js",
-    "tcm": "tcm src"
+    "tcm": "tcm src",
+    "tslint": "tslint src/**/*.ts src/**/*.tsx --force"
   },
   "dependencies": {
-    "autofocus": "1.0.0-beta26"
+    "autofocus": "1.0.0-beta30"
   },
   "devDependencies": {
     "awesome-typescript-loader": "2.2.4",
-    "css-loader": "0.25.0",
+    "css-loader": "0.26.0",
     "file-loader": "0.9.0",
     "json-loader": "0.5.4",
-    "node-sass": "3.11.2",
+    "node-sass": "3.13.0",
     "sass-loader": "4.0.2",
     "source-map-loader": "0.1.5",
     "style-loader": "0.13.1",
-    "tslint": "3.15.1",
+    "tslint": "4.0.2",
     "typed-css-modules": "0.1.13",
-    "typescript": "next",
-    "webpack": "2.1.0-beta.25",
+    "typescript": "2.2.0-dev.20161122",
+    "webpack": "2.1.0-beta.27",
     "webpack-dev-server": "1.16.2"
   },
   "author": "JabX",

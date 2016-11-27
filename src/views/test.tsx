@@ -1,4 +1,4 @@
-import {React, action, observer} from "autofocus";
+import {action, observer, React} from "autofocus";
 import Button from "focus-components/button";
 import {homeView, testView} from "../router";
 

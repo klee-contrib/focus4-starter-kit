@@ -1,10 +1,10 @@
-import {React, i18n, AutoForm, observer} from "autofocus";
+import {AutoForm, i18n, observer, React} from "autofocus";
 import Panel from  "focus-components/panel";
 
-import {mainStore} from "../../stores/main";
-import {loadStructure, saveStructure} from "../../services/main";
-import {referenceStore} from "../../stores/reference";
 import {StructureNode} from "../../model/main/structure";
+import {loadStructure, saveStructure} from "../../services/main";
+import {mainStore} from "../../stores/main";
+import {referenceStore} from "../../stores/reference";
 
 @observer
 export class Form extends AutoForm<{}, StructureNode> {
