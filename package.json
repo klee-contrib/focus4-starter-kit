@@ -9,7 +9,7 @@
     "tslint": "tslint src/**/*.ts src/**/*.tsx --force"
   },
   "dependencies": {
-    "autofocus": "1.0.0-beta30"
+    "autofocus": "1.0.0-beta35"
   },
   "devDependencies": {
     "awesome-typescript-loader": "2.2.4",
