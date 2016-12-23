@@ -1,5 +1,4 @@
-import {i18n, observer, React} from "autofocus";
-import {displayFor, listFor, stringFor} from "autofocus/entity";
+import {i18n, observer, React, displayFor, listFor, stringFor} from "autofocus";
 import Panel from "focus-components/panel";
 
 import {loadSuivi} from "../../services/main";
@@ -21,7 +20,8 @@ export class SuiviComponent extends React.Component<{}, void> {
                 {displayFor(dateCreation)}
                 {displayFor(nombreEvenement)}
                 <h4>{i18n.t("suivi.evenement.title")}</h4>
-                {listFor(evenementList.value, {
+                {listFor({
+                    data: evenementList.value,
                     LineComponent: observer(({data}: {data: EvenementNode}) => <li>{stringFor(data.date)} - {stringFor(data.commentaire)}</li>)
                 })}
             </Panel>

@@ -70,7 +70,6 @@
             "as-needed"
         ],
         "object-literal-shorthand": true,
-        "object-literal-sort-keys": true,
         "ordered-imports": [
             true
         ],
