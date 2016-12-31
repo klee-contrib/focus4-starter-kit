@@ -1,5 +1,5 @@
-import {LineProps, observer, React, stringFor} from "autofocus";
-import {ListStore, StoreTable} from "autofocus/list";
+import {LineProps, observer, React, stringFor, timelineFor} from "autofocus";
+import {ActionBar, ListStore, StoreList, StoreTable} from "autofocus/list";
 
 import {Contact, ContactEntity} from "../model/main/contact";
 import {referenceStore} from "../stores/reference";
@@ -26,28 +26,41 @@ listStore.dataList = [{
 }];
 
 const ContactTable: new() => StoreTable<Contact, LineProps<Contact>> = StoreTable;
+const ContactList: new() => StoreList<Contact, LineProps<Contact>> = StoreList;
+
+const TableLine = observer(({data}: LineProps<Contact>) => (
+    <tr>
+        <td>{data!.nom}</td>
+        <td>{data!.prenom}</td>
+        <td>{data!.email}</td>
+        <td>{stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle"})}</td>
+    </tr>
+));
+
+const ListLine = observer(({data}: LineProps<Contact>) => (
+    <div>{`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle"})} ${data!.prenom} ${data!.nom} ${data!.email}`}</div>
+));
 
 export const List = observer(() =>
-   <ContactTable
-        store={listStore}
-        LineComponent={observer((props: LineProps<Contact>) => (
-            <tr>
-                <td>{props.data!.nom}</td>
-                <td>{props.data!.prenom}</td>
-                <td>{props.data!.email}</td>
-                <td>{stringFor({$entity: ContactEntity.fields.civiliteCode, value: props.data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle"})}</td>
-            </tr>
-        ))}
-        columns={{
-            nom: "Nom",
-            prenom: "Prénom",
-            email: "Email",
-            civilite: "Civilité"
-        }}
-        sortableColumns={{
-            nom: {sortAsc: true, sortDesc: true},
-            prenom: {sortAsc: true},
-            email: {sortDesc: true}
-        }}
-    />
+    <div>
+        <ContactTable
+            store={listStore}
+            LineComponent={TableLine}
+            columns={{
+                nom: "Nom",
+                prenom: "Prénom",
+                email: "Email",
+                civilite: "Civilité"
+            }}
+            sortableColumns={["nom", "prenom"]}
+        />
+        <br />
+        <ActionBar store={listStore} hasSelection={true} />
+        <ContactList
+            store={listStore}
+            LineComponent={ListLine}
+            hasSelection={true}
+        />
+        {timelineFor({data: listStore.dataList, LineComponent: ListLine, dateSelector: line => ({$entity: ContactEntity.fields.id, value: `${line.id}`})})}
+    </div>
 );
