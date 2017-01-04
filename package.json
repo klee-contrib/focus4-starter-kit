@@ -1,6 +1,6 @@
 {
   "name": "autofocus-starter-kit",
-  "version": "1.0.7",
+  "version": "1.0.10",
   "description": "Starter kit pour autofocus",
   "main": "src/index.ts",
   "scripts": {
@@ -9,7 +9,7 @@
     "tslint": "tslint src/**/*.ts src/**/*.tsx --force"
   },
   "dependencies": {
-    "autofocus": "1.0.7"
+    "autofocus": "1.0.10"
   },
   "devDependencies": {
     "awesome-typescript-loader": "3.0.0-beta.17",
