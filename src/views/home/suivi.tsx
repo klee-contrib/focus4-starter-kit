@@ -1,4 +1,4 @@
-import {i18n, observer, React, displayFor, listFor, stringFor} from "autofocus";
+import {displayFor, i18n, listFor, observer, React, stringFor} from "autofocus";
 import Panel from "focus-components/panel";
 
 import {loadSuivi} from "../../services/main";
