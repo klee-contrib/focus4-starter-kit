@@ -2,6 +2,7 @@ import {AutoForm, i18n, observer, React} from "autofocus";
 import Panel from "focus-components/panel";
 
 import {StructureNode} from "../../model/main/structure";
+import {homeView} from "../../router";
 import {loadStructure, saveStructure} from "../../services/main";
 import {mainStore} from "../../stores/main";
 import {referenceStore} from "../../stores/reference";
@@ -10,7 +11,11 @@ import {referenceStore} from "../../stores/reference";
 export class Form extends AutoForm<{}, StructureNode> {
 
     constructor(props: {}) {
-        super(props, mainStore.structure, {load: loadStructure, save: saveStructure});
+        super(props, mainStore.structure, {
+            getLoadParams: () => [+homeView.currentView.id],
+            load: loadStructure,
+            save: saveStructure
+        });
     }
 
     renderContent() {

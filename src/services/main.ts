@@ -3,12 +3,12 @@
 import {Structure} from "../model/main/structure";
 import {Suivi} from "../model/main/suivi";
 
-export function loadStructure(id: number) {
+export function loadStructure(id?: number) {
     return new Promise<Structure>(resolve => {
         setTimeout(() => {
             resolve({
-                id: 1,
-                denominationSociale: "Ma structure",
+                id,
+                denominationSociale: `Ma structure ${id ? id : ""}`,
                 capitalSocial: 14503.32,
                 isBeneficiaireEffectif: true,
                 dateDemande: new Date(2016, 4, 23).toISOString(),

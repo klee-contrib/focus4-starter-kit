@@ -39,7 +39,7 @@ export class Home extends React.Component<{}, void> {
     render() {
         return (
             <ScrollspyContainer>
-                <Form id={1} />
+                <Form />
                 <SuiviComponent />
             </ScrollspyContainer>
         );

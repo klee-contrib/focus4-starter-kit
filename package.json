@@ -1,6 +1,6 @@
 {
   "name": "autofocus-starter-kit",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "Starter kit pour autofocus",
   "repository": "http://www.github.com/JabX/autofocus-starter-kit",
   "main": "src/index.ts",
@@ -10,21 +10,21 @@
     "tslint": "tslint src/**/*.ts src/**/*.tsx --force"
   },
   "dependencies": {
-    "autofocus": "1.0.10"
+    "autofocus": "1.1.0"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "3.0.0-beta.17",
+    "awesome-typescript-loader": "3.0.0-beta.18",
     "css-loader": "0.26.1",
     "file-loader": "0.9.0",
     "json-loader": "0.5.4",
-    "node-sass": "4.1.1",
+    "node-sass": "4.3.0",
     "sass-loader": "4.1.1",
-    "source-map-loader": "0.1.5",
+    "source-map-loader": "0.1.6",
     "style-loader": "0.13.1",
     "tslint": "4.3.1",
     "typed-css-modules": "0.1.13",
-    "typescript": "2.1.4",
-    "webpack": "2.2.0-rc.3",
+    "typescript": "2.1.5",
+    "webpack": "2.2.0-rc.4",
     "webpack-dev-server": "1.16.2"
   },
   "author": "JabX",
