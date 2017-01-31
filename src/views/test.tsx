@@ -10,12 +10,10 @@ function toTest() {
     testView.currentView.lol = "salut";
 }
 
-export const Test = observer(() => {
-    return (
-        <div>
-            <h2>{`Salut identifiant ${homeView.currentView.id}`}</h2>
-            <Button label="Retourne à l'accueil" handleOnClick={toHome} />
-            <Button label="Test le deuxième viewStore" handleOnClick={toTest} />
-        </div>
-    );
-});
+export const Test = observer(() => (
+    <div>
+        <h2>{`Salut identifiant ${homeView.currentView.id}`}</h2>
+        <Button label="Retourne à l'accueil" handleOnClick={toHome} />
+        <Button label="Test le deuxième viewStore" handleOnClick={toTest} />
+    </div>
+));
