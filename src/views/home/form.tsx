@@ -12,7 +12,7 @@ export class Form extends AutoForm<{}, StructureNode> {
 
     constructor(props: {}) {
         super(props, mainStore.structure, {
-            getLoadParams: () => [+homeView.currentView.id],
+            getLoadParams: () => [+homeView.currentView.id!],
             load: loadStructure,
             save: saveStructure
         });

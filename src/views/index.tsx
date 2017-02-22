@@ -27,7 +27,7 @@ const Main = observer(() => {
 });
 
 render((
-    <Layout injectedStyle={{layout: {layout, content: "", hasMenu: ""}}}>
+    <Layout injectedStyle={{layout: {layout}}}>
         <Main />
     </Layout>
 ), document.getElementById("app"));

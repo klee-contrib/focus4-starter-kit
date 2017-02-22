@@ -2,7 +2,7 @@
 /* tslint:disable */
 
 import {EntityField, StoreNode} from "autofocus/entity";
-import {DO_CODE_10, DO_EMAIL, DO_ID, DO_LIBELLE_100, DO_TELEPHONE} from "../domains";
+import {DO_CODE_10, DO_EMAIL, DO_ID, DO_LIBELLE_100} from "../domains";
 import {CiviliteCode} from "../references";
 
 export interface Contact {
