@@ -1,8 +1,8 @@
 {
-  "name": "autofocus-starter-kit",
-  "version": "1.2.2",
-  "description": "Starter kit pour autofocus",
-  "repository": "http://www.github.com/JabX/autofocus-starter-kit",
+  "name": "focus4-starter-kit",
+  "version": "1.2.3",
+  "description": "Starter kit pour Focus V4",
+  "repository": "http://www.github.com/get-focus/focus4-starter-kit",
   "main": "src/index.ts",
   "scripts": {
     "start": "node dev-server.js",
@@ -10,7 +10,7 @@
     "tslint": "tslint src/**/*.ts src/**/*.tsx --force"
   },
   "dependencies": {
-    "autofocus": "1.2.2"
+    "focus4": "1.2.3"
   },
   "devDependencies": {
     "awesome-typescript-loader": "3.1.2",
@@ -27,6 +27,6 @@
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1"
   },
-  "author": "JabX",
+  "author": "KleeGroup",
   "license": "MIT"
 }

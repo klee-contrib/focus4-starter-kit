@@ -1,7 +1,7 @@
 /* Ce fichier doit être généré automatiquement */
 /* tslint:disable */
 
-import {EntityField, EntityList, StoreListNode, StoreNode} from "autofocus/entity";
+import {EntityField, EntityList, StoreListNode, StoreNode} from "focus4/entity";
 import {DO_DATE, DO_ID} from "../domains";
 import {Evenement, EvenementNode} from "./evenement";
 

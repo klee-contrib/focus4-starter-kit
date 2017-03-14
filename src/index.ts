@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/autofocus/focus-components.d.ts" />
+/// <reference path="../node_modules/focus4/focus-components.d.ts" />
 import "focus-components/style";
 import "./translation";
 import "./views";

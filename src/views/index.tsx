@@ -1,5 +1,5 @@
-import {observer, React} from "autofocus";
-import {Layout} from "autofocus/application";
+import {observer, React} from "focus4";
+import {Layout} from "focus4/application";
 import Button from "focus-components/button";
 import {render} from "react-dom";
 

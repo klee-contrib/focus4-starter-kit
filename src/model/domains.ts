@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import {Domain} from "autofocus/entity";
+import {Domain} from "focus4/entity";
 import Checkbox from "focus-components/input-checkbox";
 import Date from "focus-components/input-date";
 import Textarea from "focus-components/input-textarea";

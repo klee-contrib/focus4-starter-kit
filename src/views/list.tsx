@@ -1,5 +1,5 @@
-import {LineProps, observer, React, stringFor, timelineFor} from "autofocus";
-import {ActionBar, ListStore, StoreList, StoreTable} from "autofocus/list";
+import {LineProps, observer, React, stringFor, timelineFor} from "focus4";
+import {ActionBar, ListStore, StoreList, StoreTable} from "focus4/list";
 
 import {Contact, ContactEntity} from "../model/main/contact";
 import {referenceStore} from "../stores/reference";

@@ -1,4 +1,4 @@
-import {action, applicationStore, observer, React} from "autofocus";
+import {action, applicationStore, observer, React} from "focus4";
 import Button from "focus-components/button";
 import Input from "focus-components/input-text";
 import ScrollspyContainer from "focus-components/scrollspy-container";
@@ -31,8 +31,8 @@ export class Home extends React.Component<{}, void> {
             }]},
             barLeft: <Input name="route" onChange={e => applicationStore.route = e} />,
             barRight: <RouteDisplay />,
-            cartridge: <h2>Salut autofocus</h2>,
-            summary: <strong>Salut autofocus</strong>
+            cartridge: <h2>Salut Focus V4</h2>,
+            summary: <strong>Salut Focus V4</strong>
         });
     }
 

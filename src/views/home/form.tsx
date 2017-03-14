@@ -1,4 +1,4 @@
-import {AutoForm, i18n, observer, React} from "autofocus";
+import {AutoForm, i18n, observer, React} from "focus4";
 import Panel from "focus-components/panel";
 
 import {StructureNode} from "../../model/main/structure";

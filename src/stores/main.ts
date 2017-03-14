@@ -1,4 +1,4 @@
-import {makeEntityStore} from "autofocus/entity";
+import {makeEntityStore} from "focus4/entity";
 
 import {AdresseEntity} from "../model/main/adresse";
 import {ContactEntity, ContactNode} from "../model/main/contact";

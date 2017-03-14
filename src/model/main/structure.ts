@@ -1,7 +1,7 @@
 /* Ce fichier doit être généré automatiquement */
 /* tslint:disable */
 
-import {EntityField, StoreNode} from "autofocus/entity";
+import {EntityField, StoreNode} from "focus4/entity";
 import {DO_BOOLEEN, DO_CODE_10, DO_DATE, DO_ID, DO_LIBELLE_100, DO_MONTANT} from "../domains";
 import {StatutJuridiqueCode} from "../references";
 import {Adresse, AdresseNode} from "./adresse";
