@@ -1,5 +1,6 @@
-import {LineProps, observer, React, stringFor, timelineFor} from "focus4";
-import {ActionBar, ListStore, StoreList, StoreTable} from "focus4/list";
+import {observer, React, stringFor, timelineFor} from "focus4";
+import {ListStore, StoreList, StoreTable} from "focus4/list";
+import {ActionBar} from "focus4/search";
 
 import {Contact, ContactEntity} from "../model/main/contact";
 import {referenceStore} from "../stores/reference";
@@ -25,10 +26,10 @@ listStore.dataList = [{
     prenom: "Yolo 2"
 }];
 
-const ContactTable: new() => StoreTable<Contact, LineProps<Contact>> = StoreTable;
-const ContactList: new() => StoreList<Contact, LineProps<Contact>> = StoreList;
+const ContactTable: new() => StoreTable<Contact, {data: Contact}> = StoreTable;
+const ContactList: new() => StoreList<Contact, {data: Contact}> = StoreList;
 
-const TableLine = observer(({data}: LineProps<Contact>) => (
+const TableLine = observer(({data}: {data: Contact}) => (
     <tr>
         <td>{data!.nom}</td>
         <td>{data!.prenom}</td>
@@ -37,15 +38,17 @@ const TableLine = observer(({data}: LineProps<Contact>) => (
     </tr>
 ));
 
-const ListLine = observer(({data}: LineProps<Contact>) => (
-    <div>{`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle"})} ${data!.prenom} ${data!.nom} ${data!.email}`}</div>
+const ListLine = observer(({data}: {data: Contact}) => (
+    <div style={{background: "white", padding: "15px 50px", marginBottom: "5px"}}>
+        {`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle"})} ${data!.prenom} ${data!.nom} ${data!.email}`}
+    </div>
 ));
 
 export const List = observer(() =>
     <div>
         <ContactTable
             store={listStore}
-            LineComponent={TableLine}
+            RowComponent={TableLine}
             columns={{
                 nom: "Nom",
                 prenom: "Prénom",
@@ -61,6 +64,6 @@ export const List = observer(() =>
             LineComponent={ListLine}
             hasSelection={true}
         />
-        {timelineFor({data: listStore.dataList, LineComponent: ListLine, dateSelector: line => ({$entity: ContactEntity.fields.id, value: `${line.id}`})})}
+        {timelineFor({data: listStore.dataList, TimelineComponent: ListLine, dateSelector: line => ({$entity: ContactEntity.fields.id, value: `${line.id}`})})}
     </div>
 );

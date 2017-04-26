@@ -1,7 +1,8 @@
 import {observer, React} from "focus4";
 import {Layout} from "focus4/application";
-import Button from "focus-components/button";
 import {render} from "react-dom";
+
+import Button from "focus-components/button";
 
 import {start} from "../router";
 import {Home} from "./home";

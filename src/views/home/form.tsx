@@ -1,5 +1,5 @@
-import {AutoForm, i18n, observer, React} from "focus4";
 import Panel from "focus-components/panel";
+import {AutoForm, i18n, observer, React} from "focus4";
 
 import {StructureNode} from "../../model/main/structure";
 import {homeView} from "../../router";
@@ -9,9 +9,8 @@ import {referenceStore} from "../../stores/reference";
 
 @observer
 export class Form extends AutoForm<{}, StructureNode> {
-
-    constructor(props: {}) {
-        super(props, mainStore.structure, {
+    init() {
+        this.formInit(mainStore.structure, {
             getLoadParams: () => [+homeView.currentView.id!],
             load: loadStructure,
             save: saveStructure
