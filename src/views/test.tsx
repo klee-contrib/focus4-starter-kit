@@ -1,19 +1,19 @@
 import {observer, React} from "focus4";
-import Button from "focus-components/button";
+import {Button} from "react-toolbox/lib/button";
 import {homeView, testView} from "../router";
 
 function toHome() {
-    homeView.currentView = {page: undefined, id: undefined};
+    homeView.setView({page: undefined, id: undefined});
 }
 
 function toTest() {
-    testView.currentView.lol = "salut";
+    testView.setView({lol: "salut"});
 }
 
 export const Test = observer(() => (
     <div>
         <h2>{`Salut identifiant ${homeView.currentView.id}`}</h2>
-        <Button label="Retourne à l'accueil" handleOnClick={toHome} />
-        <Button label="Test le deuxième viewStore" handleOnClick={toTest} />
+        <Button raised label="Retourne à l'accueil" onClick={toHome} />
+        <Button raised primary label="Test le deuxième viewStore" onClick={toTest} />
     </div>
 ));

@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const variables = require("./css-variables");
 
 module.exports = {
     entry: './src/index',
@@ -49,7 +50,23 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            localIdentName: "[name]-[local]--[hash:base64:5]"
+                            localIdentName: "[name]-[local]--[hash:base64:5]", // Ou ce que vous avez déjà ici
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: () => [
+                                require("postcss-import")(),
+                                require("postcss-cssnext")({
+                                    features: {
+                                        customProperties: {
+                                            variables
+                                        }
+                                    }
+                                })
+                            ]
                         }
                     }
                 ]

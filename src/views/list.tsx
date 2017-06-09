@@ -26,28 +26,25 @@ listStore.dataList = [{
     prenom: "Yolo 2"
 }];
 
-const ContactTable: new() => StoreTable<Contact, {data: Contact}> = StoreTable;
-const ContactList: new() => StoreList<Contact, {data: Contact}> = StoreList;
-
 const TableLine = observer(({data}: {data: Contact}) => (
     <tr>
         <td>{data!.nom}</td>
         <td>{data!.prenom}</td>
         <td>{data!.email}</td>
-        <td>{stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle"})}</td>
+        <td>{stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})}</td>
     </tr>
 ));
 
 const ListLine = observer(({data}: {data: Contact}) => (
     <div style={{background: "white", padding: "15px 50px", marginBottom: "5px"}}>
-        {`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle"})} ${data!.prenom} ${data!.nom} ${data!.email}`}
+        {`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})} ${data!.prenom} ${data!.nom} ${data!.email}`}
     </div>
 ));
 
 export const List = observer(() =>
     <div>
-        <ContactTable
-            store={listStore}
+        <StoreTable
+            store={listStore as any}
             RowComponent={TableLine}
             columns={{
                 nom: "Nom",
@@ -55,11 +52,11 @@ export const List = observer(() =>
                 email: "Email",
                 civilite: "Civilité"
             }}
-            sortableColumns={["nom", "prenom"]}
+            sortableColumns={["nom", "prenom"] as any}
         />
         <br />
         <ActionBar store={listStore} hasSelection={true} />
-        <ContactList
+        <StoreList
             store={listStore}
             LineComponent={ListLine}
             hasSelection={true}

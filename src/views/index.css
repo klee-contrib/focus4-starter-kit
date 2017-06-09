@@ -1,3 +1,5 @@
+@import "react-toolbox/lib/colors.css";
+
 .layout {
-    background: #EDE;
+    background: var(--palette-purple-50);
 }

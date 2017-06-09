@@ -1,18 +1,14 @@
 /* tslint:disable */
 
 import {Domain} from "focus4/entity";
-import Checkbox from "focus-components/input-checkbox";
-import Date from "focus-components/input-date";
-import Textarea from "focus-components/input-textarea";
+
 import moment from "moment";
 import numeral from "numeral";
+import { InputDate, InputDateProps } from "focus4/components";
 
-export const DO_BOOLEEN: Domain = {
-    InputComponent: Checkbox
-};
+export const DO_BOOLEEN: Domain = {};
 
 export const DO_COMMENTAIRE: Domain = {
-    InputComponent: Textarea,
     validator: [{
         type: "string",
         options: {
@@ -30,13 +26,13 @@ export const DO_CODE_10: Domain = {
     }]
 };
 
-export const DO_DATE = {
-    InputComponent: Date,
+export const DO_DATE: Domain<InputDateProps> = {
+    InputComponent: InputDate,
     formatter: (date: string) => date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : "",
     unformatter: (text: string) => moment(text).toDate(),
-    beforeValueGetter: (value: string) => value ? moment(value).add(moment.duration({minutes: moment(value).utcOffset()})).toISOString() : "",
-    locale: "fr",
-    format: ["DD/MM/YYYY"],
+    inputProps: {
+        inputFormat: ["DD/MM/YYYY"]
+    }
 };
 
 export const DO_ID: Domain = {};

@@ -1,7 +1,13 @@
-import {startRouter, ViewStore} from "focus4/router";
-export const homeView = new ViewStore({page: "" as undefined | "test" | "list", id: "" as string | undefined}, "home");
-export const testView = new ViewStore({lol: ""}, "test");
+import {makeRouter, ViewStore} from "focus4/router";
 
-export function start() {
-    return startRouter({}, [homeView, testView]);
-};
+export const homeView = new ViewStore({
+    prefix: "home" as "home",
+    view: {page: "" as undefined | "test" | "list", id: "" as string | undefined}
+});
+
+export const testView = new ViewStore({
+    prefix: "test" as "test",
+    view: {lol: ""}
+});
+
+export const router = makeRouter([homeView, testView]);

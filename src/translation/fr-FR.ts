@@ -1,7 +1,10 @@
-import {fr} from "focus4/translation";
+import {fr, icons} from "focus4/translation";
 
 export const translation = {
-    ...fr,
+    focus: {
+        ...fr,
+        icons
+    },
     form: {
         content: "Détails",
         title: "Formulaire"

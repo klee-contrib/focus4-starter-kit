@@ -1,5 +1,4 @@
-import {displayFor, i18n, listFor, observer, React, stringFor} from "focus4";
-import Panel from "focus-components/panel";
+import { displayFor, i18n, listFor, observer, Panel, React, stringFor } from "focus4";
 
 import {loadSuivi} from "../../services/main";
 import {mainStore} from "../../stores/main";
@@ -16,7 +15,7 @@ export class SuiviComponent extends React.Component<{}, void> {
     render() {
         const {dateCreation, nombreEvenement, evenementList} = mainStore.suivi;
         return (
-            <Panel title="Suivi de la structure" Buttons={null}>
+            <Panel title="Suivi de la structure" buttonsPosition="none">
                 {displayFor(dateCreation)}
                 {displayFor(nombreEvenement)}
                 <h4>{i18n.t("suivi.evenement.title")}</h4>

@@ -1,7 +1,6 @@
-import {action, applicationStore, observer, React} from "focus4";
-import Button from "focus-components/button";
-import Input from "focus-components/input-text";
 import ScrollspyContainer from "focus-components/scrollspy-container";
+import {action, applicationStore, React} from "focus4";
+import {Button} from "react-toolbox/lib/button";
 
 import {homeView} from "../../router";
 import {Form} from "./form";
@@ -14,23 +13,15 @@ function toTest() {
     });
 }
 
-const RouteDisplay = observer(() => (
-    <div>
-        {`Route: ${applicationStore.route || ""}`}
-        <Button label="Va voir le test" handleOnClick={action(toTest)} />
-    </div>
-));
-
 export class Home extends React.Component<{}, void> {
 
     componentWillMount() {
         applicationStore.setHeader({
-             actions: {primary: [{
-                action: () => applicationStore.canDeploy = !applicationStore.canDeploy,
+            actions: {primary: [{
+                onClick: () => applicationStore.canDeploy = !applicationStore.canDeploy,
                 icon: "radio_button_checked"
             }]},
-            barLeft: <Input name="route" onChange={e => applicationStore.route = e} />,
-            barRight: <RouteDisplay />,
+            barRight: <Button label="Va voir le test" onClick={action(toTest)} />,
             cartridge: <h2>Salut Focus V4</h2>,
             summary: <strong>Salut Focus V4</strong>
         });

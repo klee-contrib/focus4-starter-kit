@@ -1,24 +1,22 @@
 import {observer, React} from "focus4";
 import {Layout} from "focus4/application";
 import {render} from "react-dom";
+import {Button} from "react-toolbox/lib/button";
 
-import Button from "focus-components/button";
-
-import {start} from "../router";
+import {router} from "../router";
 import {Home} from "./home";
 import {List} from "./list";
 import {Test} from "./test";
 
 import {layout} from "./index.css";
 
-const router = start();
-
 const Main = observer(() => {
     const {currentStore} = router;
     return (
         <div>
-            <Button handleOnClick={() => router.to("home")} label="Home" />
-            <Button handleOnClick={() => router.to("test")} label="Test" />
+            <Button raised onClick={() => router.to("home")} label="Home" />
+            <Button raised onClick={() => router.to("home/list" as "home")} label="List" />
+            <Button raised onClick={() => router.to("test")} label="Test" />
             {(() => {
                 if (currentStore.prefix === "home") {
                     switch (currentStore.currentView.page) {
@@ -37,7 +35,7 @@ const Main = observer(() => {
 });
 
 render((
-    <Layout injectedStyle={{layout: {layout}}}>
+    <Layout appTheme={{layout: {layout}}}>
         <Main />
     </Layout>
 ), document.getElementById("app"));

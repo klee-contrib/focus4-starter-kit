@@ -1,5 +1,4 @@
-import Panel from "focus-components/panel";
-import {AutoForm, i18n, observer, React} from "focus4";
+import {AutoForm, i18n, observer, Panel, React} from "focus4";
 
 import {StructureNode} from "../../model/main/structure";
 import {homeView} from "../../router";
@@ -20,11 +19,11 @@ export class Form extends AutoForm<{}, StructureNode> {
     renderContent() {
         const {denominationSociale, capitalSocial, statutJuridiqueCode} = this.entity;
         return (
-            <Panel title="form.title" {...this.getPanelButtonProps()}>
+            <Panel title="form.title" {...this.getPanelProps()}>
                 {i18n.t("form.content")}
                 {this.fieldFor(denominationSociale)}
                 {this.fieldFor(capitalSocial)}
-                {this.selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle"})}
+                {this.selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
             </Panel>
         );
     }
