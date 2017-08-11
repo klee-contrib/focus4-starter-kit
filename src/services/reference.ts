@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 export function loadReference(refName: string) {
-    return new Promise(resolve => {
+    return new Promise<{}[]>(resolve => {
         setTimeout(() => {
             if (refName === "civilite") {
                 resolve([

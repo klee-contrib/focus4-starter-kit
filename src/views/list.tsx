@@ -1,5 +1,5 @@
 import {observer, React, stringFor, timelineFor} from "focus4";
-import {ListStore, StoreList, StoreTable} from "focus4/list";
+import {ListStore, storeListFor, storeTableFor} from "focus4/list";
 import {ActionBar} from "focus4/search";
 
 import {Contact, ContactEntity} from "../model/main/contact";
@@ -43,24 +43,24 @@ const ListLine = observer(({data}: {data: Contact}) => (
 
 export const List = observer(() =>
     <div>
-        <StoreTable
-            store={listStore as any}
-            RowComponent={TableLine}
-            columns={{
+        {storeTableFor({
+            store: listStore,
+            RowComponent: TableLine,
+            columns: {
                 nom: "Nom",
                 prenom: "Prénom",
                 email: "Email",
                 civilite: "Civilité"
-            }}
-            sortableColumns={["nom", "prenom"] as any}
-        />
+            },
+            sortableColumns: ["nom", "prenom"]
+        })}
         <br />
         <ActionBar store={listStore} hasSelection={true} />
-        <StoreList
-            store={listStore}
-            LineComponent={ListLine}
-            hasSelection={true}
-        />
+        {storeListFor({
+            store: listStore,
+            LineComponent: ListLine,
+            hasSelection: true
+        })}
         {timelineFor({data: listStore.dataList, TimelineComponent: ListLine, dateSelector: line => ({$entity: ContactEntity.fields.id, value: `${line.id}`})})}
     </div>
 );
