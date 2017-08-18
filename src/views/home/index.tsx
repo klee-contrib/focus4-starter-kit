@@ -1,7 +1,7 @@
-import ScrollspyContainer from "focus-components/scrollspy-container";
 import {action, applicationStore, React} from "focus4";
 import {Button} from "react-toolbox/lib/button";
 
+import {ScrollspyContainer} from "focus4/components";
 import {homeView} from "../../router";
 import {Form} from "./form";
 import {SuiviComponent} from "./suivi";
