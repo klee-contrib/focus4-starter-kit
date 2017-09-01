@@ -2,18 +2,18 @@
 /* tslint:disable */
 
 import {EntityField, StoreNode} from "focus4/entity";
-import {DO_COMMENTAIRE, DO_DATE, DO_ID} from "../domains";
+import {DO_COMMENTAIRE, DO_DATE, DO_ID} from "../../domains";
 
 export interface Evenement {
-    id?: number;
-    date?: string;
-    commentaire?: string;
+    id: number;
+    date: string;
+    commentaire: string;
 }
 
 export interface EvenementNode extends StoreNode<Evenement> {
-    id: EntityField<number>;
-    date: EntityField<string>;
-    commentaire: EntityField<string>;
+    id: EntityField<number, typeof DO_ID>;
+    date: EntityField<string, typeof DO_DATE>;
+    commentaire: EntityField<string, typeof DO_COMMENTAIRE>;
 }
 
 export const EvenementEntity = {
@@ -23,7 +23,7 @@ export const EvenementEntity = {
             type: "field" as "field",
             name: "id",
             domain: DO_ID,
-            isRequired: false,
+            isRequired: true,
             translationKey: "evenement.id"
         },
         date: {

@@ -2,27 +2,27 @@
 /* tslint:disable */
 
 import {EntityField, StoreNode} from "focus4/entity";
-import {DO_BOOLEEN, DO_CODE_10, DO_DATE, DO_ID, DO_LIBELLE_100, DO_MONTANT} from "../domains";
+import {DO_BOOLEEN, DO_CODE_10, DO_DATE, DO_ID, DO_LIBELLE_100, DO_MONTANT} from "../../domains";
 import {StatutJuridiqueCode} from "../references";
 import {Adresse, AdresseNode} from "./adresse";
 
 export interface Structure {
-    id?: number;
-    denominationSociale?: string;
+    id: number;
+    denominationSociale: string;
     capitalSocial?: number;
-    isBeneficiaireEffectif?: boolean;
+    isBeneficiaireEffectif: boolean;
     dateDemande?: string;
     statutJuridiqueCode?: StatutJuridiqueCode;
     adresse?: Adresse;
 }
 
 export interface StructureNode extends StoreNode<Structure> {
-    id: EntityField<number>;
-    denominationSociale: EntityField<string>;
-    capitalSocial: EntityField<number>;
-    isBeneficiaireEffectif: EntityField<boolean>;
-    dateDemande: EntityField<string>;
-    statutJuridiqueCode: EntityField<StatutJuridiqueCode>;
+    id: EntityField<number, typeof DO_ID>;
+    denominationSociale: EntityField<string, typeof DO_LIBELLE_100>;
+    capitalSocial: EntityField<number, typeof DO_MONTANT>;
+    isBeneficiaireEffectif: EntityField<boolean, typeof DO_BOOLEEN>;
+    dateDemande: EntityField<string, typeof DO_DATE>;
+    statutJuridiqueCode: EntityField<StatutJuridiqueCode, typeof DO_CODE_10>;
     adresse: EntityField<AdresseNode>;
 }
 
@@ -33,7 +33,7 @@ export const StructureEntity = {
             type: "field" as "field",
             name: "id",
             domain: DO_ID,
-            isRequired: false,
+            isRequired: true,
             translationKey: "structure.id"
         },
         denominationSociale: {

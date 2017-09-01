@@ -8,5 +8,6 @@ i18n.init({
         fr: {
             translation
         }
-    }
+    },
+    nsSeparator: false
 });

@@ -2,18 +2,18 @@
 /* tslint:disable */
 
 import {EntityField, EntityList, StoreListNode, StoreNode} from "focus4/entity";
-import {DO_DATE, DO_ID} from "../domains";
+import {DO_DATE, DO_ID} from "../../domains";
 import {Evenement, EvenementNode} from "./evenement";
 
 export interface Suivi {
-    dateCreation?: string;
-    nombreEvenement?: number;
-    evenementList?: Evenement[];
+    dateCreation: string;
+    nombreEvenement: number;
+    evenementList: Evenement[];
 }
 
 export interface SuiviNode extends StoreNode<Suivi> {
-    dateCreation: EntityField<string>;
-    nombreEvenement: EntityField<number>;
+    dateCreation: EntityField<string, typeof DO_DATE>;
+    nombreEvenement: EntityField<number, typeof DO_ID>;
     evenementList: EntityList<StoreListNode<EvenementNode>>;
 }
 

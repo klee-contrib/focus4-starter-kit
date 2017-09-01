@@ -2,8 +2,8 @@ import {observer, React, stringFor, timelineFor} from "focus4";
 import {ListStore, storeListFor, storeTableFor} from "focus4/list";
 import {ActionBar} from "focus4/search";
 
-import {Contact, ContactEntity} from "../model/main/contact";
-import {referenceStore} from "../stores/reference";
+import {Contact, ContactEntity} from "../../model/main/contact";
+import {referenceStore} from "../../stores";
 
 const listStore = new ListStore<Contact>();
 listStore.dataList = [{

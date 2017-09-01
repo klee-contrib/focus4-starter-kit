@@ -1,38 +1,26 @@
-import {action, applicationStore, React} from "focus4";
+import {observer, React} from "focus4";
 import {Button} from "react-toolbox/lib/button";
 
-import {ScrollspyContainer} from "focus4/components";
-import {homeView} from "../../router";
-import {Form} from "./form";
-import {SuiviComponent} from "./suivi";
+import {homeViewStore} from "../../stores";
 
-function toTest() {
-    homeView.setView({
-        id: Math.floor((Math.random() * 100)).toString(),
-        page: "test"
-    });
-}
+import {Detail} from "./detail";
+import {List} from "./list";
+export {header} from "./header";
 
-export class Home extends React.Component<{}, void> {
+import {salut} from "./__style__/index.css";
 
-    componentWillMount() {
-        applicationStore.setHeader({
-            actions: {primary: [{
-                onClick: () => applicationStore.canDeploy = !applicationStore.canDeploy,
-                icon: "radio_button_checked"
-            }]},
-            barRight: <Button label="Va voir le test" onClick={action(toTest)} />,
-            cartridge: <h2>Salut Focus V4</h2>,
-            summary: <strong>Salut Focus V4</strong>
-        });
+export const Home = observer(() => {
+    let page;
+    switch (homeViewStore.currentView.page) {
+        case "list": page = <List />; break;
+        default: page = <Detail />; break;
     }
-
-    render() {
-        return (
-            <ScrollspyContainer>
-                <Form />
-                <SuiviComponent />
-            </ScrollspyContainer>
-        );
-    }
-}
+    return (
+        <div>
+            <Button raised primary={!homeViewStore.currentView.page} onClick={() => homeViewStore.setView({page: undefined})} label="Home" />
+            <Button raised primary={!!homeViewStore.currentView.page} onClick={() => homeViewStore.setView({page: "list"})} label="List" />
+            <strong className={salut}>{`Salut identifiant ${homeViewStore.currentView.id}`}</strong>
+            {page}
+        </div>
+    );
+});

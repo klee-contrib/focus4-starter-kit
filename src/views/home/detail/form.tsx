@@ -1,16 +1,14 @@
 import {AutoForm, i18n, observer, Panel, React} from "focus4";
 
-import {StructureNode} from "../../model/main/structure";
-import {homeView} from "../../router";
-import {loadStructure, saveStructure} from "../../services/main";
-import {mainStore} from "../../stores/main";
-import {referenceStore} from "../../stores/reference";
+import {StructureNode} from "../../../model/main/structure";
+import {loadStructure, saveStructure} from "../../../services/main";
+import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
 @observer
 export class Form extends AutoForm<{}, StructureNode> {
     init() {
         this.formInit(mainStore.structure, {
-            getLoadParams: () => [+homeView.currentView.id!],
+            getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [id]),
             load: loadStructure,
             save: saveStructure
         });
