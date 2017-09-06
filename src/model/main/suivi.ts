@@ -1,7 +1,7 @@
 /* Ce fichier doit être généré automatiquement */
 /* tslint:disable */
 
-import {EntityField, EntityList, StoreListNode, StoreNode} from "focus4/entity";
+import {EntityField, StoreListNode, StoreNode} from "focus4/entity";
 import {DO_DATE, DO_ID} from "../../domains";
 import {Evenement, EvenementNode} from "./evenement";
 
@@ -14,7 +14,7 @@ export interface Suivi {
 export interface SuiviNode extends StoreNode<Suivi> {
     dateCreation: EntityField<string, typeof DO_DATE>;
     nombreEvenement: EntityField<number, typeof DO_ID>;
-    evenementList: EntityList<StoreListNode<EvenementNode>>;
+    evenementList: StoreListNode<EvenementNode>;
 }
 
 export const SuiviEntity = {

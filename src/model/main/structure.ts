@@ -23,7 +23,7 @@ export interface StructureNode extends StoreNode<Structure> {
     isBeneficiaireEffectif: EntityField<boolean, typeof DO_BOOLEEN>;
     dateDemande: EntityField<string, typeof DO_DATE>;
     statutJuridiqueCode: EntityField<StatutJuridiqueCode, typeof DO_CODE_10>;
-    adresse: EntityField<AdresseNode>;
+    adresse: AdresseNode;
 }
 
 export const StructureEntity = {
@@ -72,11 +72,8 @@ export const StructureEntity = {
             translationKey: "structure.statutJuridiqueCode"
         },
         adresse: {
-            type: "field" as "field",
+            type: "object" as "object",
             entityName: "adresse",
-            name: "adresse",
-            isRequired: false,
-            translationKey: "structure.adresse"
         }
     }
 };

@@ -19,7 +19,7 @@ export class SuiviComponent extends React.Component<{}, void> {
                 {displayFor(nombreEvenement)}
                 <h4>{i18n.t("suivi.evenement.title")}</h4>
                 {listFor({
-                    data: evenementList.value,
+                    data: evenementList,
                     LineComponent: observer(({data}: {data?: EvenementNode}) => <span>{stringFor(data!.date)} - {stringFor(data!.commentaire)}</span>)
                 })}
             </Panel>

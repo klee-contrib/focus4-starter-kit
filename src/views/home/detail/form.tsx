@@ -15,13 +15,14 @@ export class Form extends AutoForm<{}, StructureNode> {
     }
 
     renderContent() {
-        const {denominationSociale, capitalSocial, statutJuridiqueCode} = this.entity;
+        const {denominationSociale, capitalSocial, statutJuridiqueCode, adresse} = this.entity;
         return (
             <Panel title="form.title" {...this.getPanelProps()}>
                 {i18n.t("form.content")}
                 {this.fieldFor(denominationSociale)}
                 {this.fieldFor(capitalSocial)}
                 {this.selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
+                {this.fieldFor(adresse.ville)}
             </Panel>
         );
     }
