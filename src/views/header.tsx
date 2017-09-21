@@ -1,5 +1,5 @@
 import {observable, observer, React} from "focus4";
-import {HeaderActions, HeaderBarLeft, HeaderBarRight, HeaderContent, HeaderScrolling, HeaderSummary, HeaderTopRow} from "focus4/application";
+import {HeaderActions, HeaderBarRight, HeaderContent, HeaderScrolling, HeaderSummary, HeaderTopRow} from "focus4/application";
 
 import {router} from "../stores";
 import {header} from "./home";
@@ -11,18 +11,16 @@ const headerStore = observable({
 export const Header = observer(() => (
     <HeaderScrolling canDeploy={headerStore.canDeploy}>
         <HeaderTopRow>
-            <HeaderBarLeft>
-            </HeaderBarLeft>
-            <HeaderBarRight>
-                {router.currentStore.prefix === "home" ?
-                    header.barRight
-                : null}
-            </HeaderBarRight>
             <HeaderSummary>
                 {router.currentStore.prefix === "home" ?
                     header.summary
                 : <strong>Salut Focus V4</strong>}
             </HeaderSummary>
+            <HeaderBarRight>
+                {router.currentStore.prefix === "home" ?
+                    header.barRight
+                : null}
+            </HeaderBarRight>
         </HeaderTopRow>
         <HeaderContent>
             {router.currentStore.prefix === "home" ?

@@ -1,6 +1,6 @@
 {
   "name": "focus4-starter-kit",
-  "version": "7.4.7",
+  "version": "7.5.4",
   "description": "Starter kit pour Focus V4",
   "repository": "http://www.github.com/get-focus/focus4-starter-kit",
   "main": "src/index.ts",
@@ -10,7 +10,7 @@
     "tslint": "tslint --project tsconfig.json --type-check --force"
   },
   "dependencies": {
-    "focus4": "7.4.7"
+    "focus4": "7.5.4"
   },
   "devDependencies": {
     "awesome-typescript-loader": "3.2.3",
@@ -18,9 +18,9 @@
     "file-loader": "0.11.2",
     "json-loader": "0.5.7",
     "node-sass": "4.5.3",
-    "postcss": "6.0.10",
+    "postcss": "6.0.11",
     "postcss-cssnext": "3.0.2",
-    "postcss-import": "10.0.0",
+    "postcss-import": "11.0.0",
     "postcss-loader": "2.0.6",
     "sass-loader": "6.0.6",
     "source-map-loader": "0.2.1",
@@ -28,8 +28,8 @@
     "tslint": "5.7.0",
     "typed-css-modules": "0.3.0",
     "typescript": "2.5.2",
-    "webpack": "3.5.5",
-    "webpack-dev-server": "2.7.1"
+    "webpack": "3.6.0",
+    "webpack-dev-server": "2.8.2"
   },
   "author": "KleeGroup",
   "license": "MIT"
