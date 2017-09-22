@@ -28,16 +28,16 @@ listStore.dataList = [{
 
 const TableLine = observer(({data}: {data: Contact}) => (
     <tr>
-        <td>{data!.nom}</td>
-        <td>{data!.prenom}</td>
-        <td>{data!.email}</td>
-        <td>{stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})}</td>
+        <td>{data.nom}</td>
+        <td>{data.prenom}</td>
+        <td>{data.email}</td>
+        <td>{stringFor({$entity: ContactEntity.fields.civiliteCode, value: data.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})}</td>
     </tr>
 ));
 
 const ListLine = observer(({data}: {data: Contact}) => (
     <div style={{background: "white", padding: "15px 50px", marginBottom: "5px"}}>
-        {`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data!.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})} ${data!.prenom} ${data!.nom} ${data!.email}`}
+        {`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})} ${data.prenom} ${data.nom} ${data.email}`}
     </div>
 ));
 
