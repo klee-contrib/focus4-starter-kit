@@ -1,4 +1,3 @@
-import "focus-components/style";
 import {router} from "./stores";
 
 router.start().then(() => {

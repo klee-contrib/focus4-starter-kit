@@ -1,6 +1,6 @@
 {
   "name": "focus4-starter-kit",
-  "version": "7.6.0",
+  "version": "8.0.0-rc0",
   "description": "Starter kit pour Focus V4",
   "repository": "http://www.github.com/get-focus/focus4-starter-kit",
   "main": "src/index.ts",
@@ -10,19 +10,17 @@
     "tslint": "tslint --project tsconfig.json --type-check --force"
   },
   "dependencies": {
-    "focus4": "7.6.0"
+    "focus4": "8.0.0-rc0"
   },
   "devDependencies": {
     "awesome-typescript-loader": "3.2.3",
     "css-loader": "0.28.7",
     "file-loader": "0.11.2",
     "json-loader": "0.5.7",
-    "node-sass": "4.5.3",
-    "postcss": "6.0.11",
+    "postcss": "6.0.12",
     "postcss-cssnext": "3.0.2",
     "postcss-import": "11.0.0",
     "postcss-loader": "2.0.6",
-    "sass-loader": "6.0.6",
     "source-map-loader": "0.2.1",
     "style-loader": "0.18.2",
     "tslint": "5.7.0",
