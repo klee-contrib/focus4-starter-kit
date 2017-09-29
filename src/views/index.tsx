@@ -1,5 +1,5 @@
 import {observer, React} from "focus4";
-import {Layout} from "focus4/application";
+import {Layout, LayoutContent} from "focus4/layout";
 import {render} from "react-dom";
 
 import {router} from "../stores";
@@ -22,11 +22,11 @@ const Main = observer(() => {
 });
 
 render((
-    <Layout
-        appTheme={{layout: {layout}}}
-        AppHeader={Header}
-        MenuLeft={StarterMenu}
-    >
-        <Main />
+    <Layout appTheme={{layout: {layout}}}>
+        <Header />
+        <StarterMenu />
+        <LayoutContent>
+            <Main />
+        </LayoutContent>
     </Layout>
 ), document.getElementById("app"));

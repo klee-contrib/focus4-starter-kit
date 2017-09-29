@@ -1,5 +1,5 @@
 import {observer, React} from "focus4";
-import {Menu} from "focus4/application";
+import {Menu} from "focus4/layout";
 
 import {router} from "../stores";
 

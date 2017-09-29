@@ -1,5 +1,5 @@
 import {observable, observer, React} from "focus4";
-import {HeaderActions, HeaderBarRight, HeaderContent, HeaderScrolling, HeaderSummary, HeaderTopRow} from "focus4/application";
+import {HeaderActions, HeaderBarRight, HeaderContent, HeaderScrolling, HeaderSummary, HeaderTopRow} from "focus4/layout";
 
 import {router} from "../stores";
 import {header} from "./home";
