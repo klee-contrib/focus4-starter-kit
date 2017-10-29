@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dev-server.js",
     "tcm": "tcm src",
-    "tslint": "tslint --project tsconfig.json --type-check --force"
+    "tslint": "tslint --project tsconfig.json --force"
   },
   "dependencies": {
     "focus4": "8.2.1"
