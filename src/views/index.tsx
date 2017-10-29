@@ -17,7 +17,7 @@ const Main = observer(() => {
     } else if (currentStore.prefix === "test") {
         return <div>Test Store "{currentStore.currentView.lol}"</div>;
     } else {
-        return <div>déso</div>;
+        return <div>déso meuf</div>;
     }
 });
 
