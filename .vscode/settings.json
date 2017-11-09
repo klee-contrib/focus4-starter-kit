@@ -3,6 +3,5 @@
     "editor.snippetSuggestions": "bottom",
     "files.trimTrailingWhitespace": true,
     "relativePath.removeExtension": true,
-    "relativePath.removeLeadingDot": true,
     "tslint.autoFixOnSave": true
 }
