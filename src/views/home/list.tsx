@@ -1,10 +1,11 @@
 import {observer, React, stringFor, timelineFor} from "focus4";
 import {ActionBar, getDraggedItems, ListStore, storeListFor, storeTableFor} from "focus4/collections";
+import {makeField} from "focus4/entity";
 import {runInAction} from "mobx";
 import {ConnectDropTarget, DragDropContext, DropTarget} from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
-import {Contact, ContactEntity} from "../../model/main/contact";
+import {Contact} from "../../model/main/contact";
 import {referenceStore} from "../../stores";
 
 import {line} from "./__style__/list.css";
@@ -55,13 +56,13 @@ const TableLine = observer(({data}: {data: Contact}) => (
         <td>{data.nom}</td>
         <td>{data.prenom}</td>
         <td>{data.email}</td>
-        <td>{stringFor({$entity: ContactEntity.fields.civiliteCode, value: data.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})}</td>
+        <td>{stringFor(makeField(data.civiliteCode), {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})}</td>
     </tr>
 ));
 
 const ListLine = observer(({data}: {data: Contact}) => (
     <div style={{background: "white", padding: "15px 50px"}}>
-        {`${stringFor({$entity: ContactEntity.fields.civiliteCode, value: data.civiliteCode}, {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})} ${data.prenom} ${data.nom} ${data.email}`}
+        {`${stringFor(makeField(data.civiliteCode), {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})} ${data.prenom} ${data.nom} ${data.email}`}
     </div>
 ));
 
@@ -106,6 +107,6 @@ export const List = DragDropContext(HTML5Backend)(observer(() =>
             hasSelection: true,
             hasDragAndDrop: true
         })}
-        {timelineFor({data: listStore.list, TimelineComponent: ListLine, dateSelector: l => ({$entity: ContactEntity.fields.id, value: `${l.id}`})})}
+        {timelineFor({data: listStore.list, TimelineComponent: ListLine, dateSelector: l => makeField(`${l.id}`)})}
     </div>
 ));

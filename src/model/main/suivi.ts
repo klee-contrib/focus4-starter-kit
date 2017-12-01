@@ -25,14 +25,14 @@ export const SuiviEntity = {
             name: "dateCreation",
             domain: DO_DATE,
             isRequired: true,
-            translationKey: "suivi.dateCreation"
+            label: "suivi.dateCreation"
         },
         nombreEvenement: {
             type: "field" as "field",
             name: "nombreEvenement",
             domain: DO_ID,
             isRequired: true,
-            translationKey: "suivi.nombreEvenement"
+            label: "suivi.nombreEvenement"
         },
         evenementList: {
             type: "list" as "list",

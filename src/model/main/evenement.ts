@@ -24,21 +24,21 @@ export const EvenementEntity = {
             name: "id",
             domain: DO_ID,
             isRequired: true,
-            translationKey: "evenement.id"
+            label: "evenement.id"
         },
         date: {
             type: "field" as "field",
             name: "date",
             domain: DO_DATE,
             isRequired: true,
-            translationKey: "evenement.date"
+            label: "evenement.date"
         },
         commentaire: {
             type: "field" as "field",
             name: "commentaire",
             domain: DO_COMMENTAIRE,
             isRequired: true,
-            translationKey: "evenement.commentaire"
+            label: "evenement.commentaire"
         }
     }
 };

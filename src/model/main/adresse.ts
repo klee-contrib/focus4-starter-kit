@@ -28,35 +28,35 @@ export const AdresseEntity = {
             name: "id",
             domain: DO_ID,
             isRequired: true,
-            translationKey: "adresse.id"
+            label: "adresse.id"
         },
         ligne1: {
             type: "field" as "field",
             name: "ligne1",
             domain: DO_LIBELLE_100,
             isRequired: false,
-            translationKey: "adresse.ligne1"
+            label: "adresse.ligne1"
         },
         ligne2: {
             type: "field" as "field",
             name: "ligne2",
             domain: DO_LIBELLE_100,
             isRequired: false,
-            translationKey: "adresse.ligne2"
+            label: "adresse.ligne2"
         },
         codePostal: {
             type: "field" as "field",
             name: "codePostal",
             domain: DO_CODE_10,
             isRequired: true,
-            translationKey: "adresse.codePostal"
+            label: "adresse.codePostal"
         },
         ville: {
             type: "field" as "field",
             name: "ville",
             domain: DO_LIBELLE_100,
             isRequired: true,
-            translationKey: "adresse.ville"
+            label: "adresse.ville"
         },
     }
 };

@@ -34,42 +34,42 @@ export const StructureEntity = {
             name: "id",
             domain: DO_ID,
             isRequired: true,
-            translationKey: "structure.id"
+            label: "structure.id"
         },
         denominationSociale: {
             type: "field" as "field",
             name: "denominationSociale",
             domain: DO_LIBELLE_100,
             isRequired: true,
-            translationKey: "structure.denominationSociale"
+            label: "structure.denominationSociale"
         },
         capitalSocial: {
             type: "field" as "field",
             name: "capitalSocial",
             domain: DO_MONTANT,
             isRequired: false,
-            translationKey: "structure.capitalSocial"
+            label: "structure.capitalSocial"
         },
         isBeneficiaireEffectif: {
             type: "field" as "field",
             name: "isBeneficiaireEffectif",
             domain: DO_BOOLEEN,
             isRequired: true,
-            translationKey: "structure.isBeneficiaireEffectif"
+            label: "structure.isBeneficiaireEffectif"
         },
         dateDemande: {
             type: "field" as "field",
             name: "dateDemande",
             domain: DO_DATE,
             isRequired: false,
-            translationKey: "structure.dateDemande"
+            label: "structure.dateDemande"
         },
         statutJuridiqueCode: {
             type: "field" as "field",
             name: "statutJuridiqueCode",
             domain: DO_CODE_10,
             isRequired: false,
-            translationKey: "structure.statutJuridiqueCode"
+            label: "structure.statutJuridiqueCode"
         },
         adresse: {
             type: "object" as "object",

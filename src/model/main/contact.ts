@@ -29,35 +29,35 @@ export const ContactEntity = {
             name: "id",
             domain: DO_ID,
             isRequired: true,
-            translationKey: "contact.id"
+            label: "contact.id"
         },
         nom: {
             type: "field" as "field",
             name: "nom",
             domain: DO_LIBELLE_100,
             isRequired: true,
-            translationKey: "contact.nom"
+            label: "contact.nom"
         },
         prenom: {
             type: "field" as "field",
             name: "prenom",
             domain: DO_LIBELLE_100,
             isRequired: true,
-            translationKey: "contact.prenom"
+            label: "contact.prenom"
         },
         email: {
             type: "field" as "field",
             name: "email",
             domain: DO_EMAIL,
             isRequired: false,
-            translationKey: "contact.email"
+            label: "contact.email"
         },
         civiliteCode: {
             type: "field" as "field",
             name: "civiliteCode",
             domain: DO_CODE_10,
             isRequired: true,
-            translationKey: "contact.civiliteCode"
+            label: "contact.civiliteCode"
         }
     }
 };
