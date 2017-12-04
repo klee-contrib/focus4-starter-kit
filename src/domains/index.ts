@@ -9,6 +9,10 @@ import { InputDate, InputDateProps } from "focus4/components";
 export const DO_BOOLEEN: Domain = {};
 
 export const DO_COMMENTAIRE: Domain = {
+    inputProps: {
+        multiline: true,
+        rows: 4
+    },
     validator: [{
         type: "string",
         options: {
@@ -55,7 +59,7 @@ export const DO_MONTANT: Domain = {
     validator: [{
         type: "function",
         value: (input: string) => /^-?\d*\.?\d{0,2}$/.test(input),
-        options: {translationKey: "domain.validation.montant"}
+        options: {errorMessage: "domain.validation.montant"}
     }],
     displayFormatter(montant) {
         return montant && numeral(parseFloat(montant)).format("0,0.00 $") || "";
@@ -72,7 +76,7 @@ export const DO_POURCENTAGE: Domain = {
     validator: [{
         type: "function",
         value: (input: string) => /^(100(\.00?)?|[1-9]?\d(\.\d\d?)?)$/.test(input),
-        options: {translationKey: "domain.validation.pourcentage"}
+        options: {errorMessage: "domain.validation.pourcentage"}
     }],
     displayFormatter(montant) {
         return montant && numeral(parseFloat(montant)).format("0,0.00 $") || "";

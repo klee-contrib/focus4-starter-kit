@@ -1,6 +1,6 @@
 {
   "name": "focus4-starter-kit",
-  "version": "9.0.0-alpha2",
+  "version": "9.0.0-beta2",
   "description": "Starter kit pour Focus V4",
   "repository": "http://www.github.com/get-focus/focus4-starter-kit",
   "main": "src/index.ts",
@@ -10,7 +10,7 @@
     "tslint": "tslint --project tsconfig.json --force"
   },
   "dependencies": {
-    "focus4": "9.0.0-alpha2"
+    "focus4": "9.0.0-beta2"
   },
   "devDependencies": {
     "awesome-typescript-loader": "3.4.1",
