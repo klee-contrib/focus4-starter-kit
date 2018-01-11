@@ -1,7 +1,6 @@
 import {observer, React, stringFor, timelineFor} from "focus4";
-import {getDraggedItems, ListStore, storeListFor, storeTableFor} from "focus4/list";
-import {ActionBar} from "focus4/search";
-import {IObservableArray, runInAction} from "mobx";
+import {ActionBar, getDraggedItems, ListStore, storeListFor, storeTableFor} from "focus4/collections";
+import {runInAction} from "mobx";
 import {ConnectDropTarget, DragDropContext, DropTarget} from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
@@ -11,7 +10,7 @@ import {referenceStore} from "../../stores";
 import {line} from "./__style__/list.css";
 
 const listStore = new ListStore<Contact>();
-listStore.dataList = [{
+listStore.list = [{
     civiliteCode: "MME",
     email: "contact1@contact.com",
     id: 1,
@@ -49,6 +48,8 @@ listStore.dataList = [{
     prenom: "Yolo 25"
 }];
 
+listStore.isItemSelectionnable = data => !(data.id % 2);
+
 const TableLine = observer(({data}: {data: Contact}) => (
     <tr>
         <td>{data.nom}</td>
@@ -72,7 +73,7 @@ const Target = DropTarget<any>("item", {
                 if (listStore.selectedItems.has(item)) {
                     listStore.selectedList.clear();
                 }
-                (listStore.dataList as IObservableArray<Contact>).remove(item);
+                listStore.innerList.remove(item);
             });
         });
     }
@@ -105,6 +106,6 @@ export const List = DragDropContext(HTML5Backend)(observer(() =>
             hasSelection: true,
             hasDragAndDrop: true
         })}
-        {timelineFor({data: listStore.dataList, TimelineComponent: ListLine, dateSelector: l => ({$entity: ContactEntity.fields.id, value: `${l.id}`})})}
+        {timelineFor({data: listStore.list, TimelineComponent: ListLine, dateSelector: l => ({$entity: ContactEntity.fields.id, value: `${l.id}`})})}
     </div>
 ));
