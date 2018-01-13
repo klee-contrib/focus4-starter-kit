@@ -9,25 +9,23 @@ import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 @observer
 export class Form extends AutoForm {
 
-    entity = makeFormNode(mainStore.structure, entity => ({
-        ...entity,
-        // On change le domaine et le validateur du champ.
-        denominationSociale: patchField(entity.denominationSociale, {
+    entity = makeFormNode(mainStore.structure, entity => {
+        // On change le domaine et le isRequired du champ.
+        patchField(entity.denominationSociale, () => ({
             domain: DO_COMMENTAIRE,
-            validator: [{
-                type: "string",
-                options: {maxLength: 4000}
-            }]
-        }),
+            isRequired: !!entity.capitalSocial.value
+        }));
         // On ajoute un champ supplémentaire calculé.
-        email: makeField(() => entity.denominationSociale.value, {
-            domain: DO_LIBELLE_100,
-            label: "structure.email",
-            validator: [{
-                type: "email"
-            }]
-        }, email => entity.denominationSociale.value = email) // Setter.
-    }));
+        return {
+            email: makeField(() => entity.denominationSociale.value, {
+                domain: DO_LIBELLE_100,
+                label: "structure.email",
+                validator: [{
+                    type: "email"
+                }]
+            }, email => entity.denominationSociale.value = email) // Setter.
+        };
+    });
 
     init() {
         this.formInit({
