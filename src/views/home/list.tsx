@@ -6,49 +6,12 @@ import {ConnectDropTarget, DragDropContext, DropTarget} from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
 import {Contact} from "../../model/main/contact";
+import {loadContactList} from "../../services/main";
 import {referenceStore} from "../../stores";
 
 import {line} from "./__style__/list.css";
 
 const listStore = new ListStore<Contact>();
-listStore.list = [{
-    civiliteCode: "MME",
-    email: "contact1@contact.com",
-    id: 1,
-    nom: "Contact 2",
-    prenom: "Yolo 3"
-}, {
-    civiliteCode: "M",
-    email: "contact2@contact.com",
-    id: 2,
-    nom: "Contact 3",
-    prenom: "Yolo 1"
-}, {
-    civiliteCode: "MME",
-    email: "contact3@contact.com",
-    id: 3,
-    nom: "Contact 1",
-    prenom: "Yolo 2"
-}, {
-    civiliteCode: "MME",
-    email: "contact4@contact.com",
-    id: 4,
-    nom: "Contact 4",
-    prenom: "Yolo 42"
-}, {
-    civiliteCode: "MME",
-    email: "contact5@contact.com",
-    id: 5,
-    nom: "Contact 5",
-    prenom: "Yolo 36"
-}, {
-    civiliteCode: "MME",
-    email: "contact6@contact.com",
-    id: 6,
-    nom: "Contact 6",
-    prenom: "Yolo 25"
-}];
-
 listStore.isItemSelectionnable = data => !(data.id % 2);
 
 const TableLine = observer(({data}: {data: Contact}) => (
@@ -84,29 +47,40 @@ const Target = DropTarget<any>("item", {
     canDrop: monitor.canDrop()
 }))(({connectDropTarget, isOver, canDrop}: {connectDropTarget?: ConnectDropTarget, isOver?: boolean, canDrop?: boolean}) => connectDropTarget!(<div style={{width: 200, height: 200, boxSizing: "border-box", background: canDrop ? "yellow" : "transparent", borderColor: "black", borderStyle: "dashed", transition: "0.1s all ease-out", borderWidth: isOver ? 5 : 1}}>POUBELLE</div>));
 
-export const List = DragDropContext(HTML5Backend)(observer(() =>
-    <div>
-        {storeTableFor({
-            store: listStore,
-            RowComponent: TableLine,
-            columns: {
-                nom: "Nom",
-                prenom: "Prénom",
-                email: "Email",
-                civilite: "Civilité"
-            },
-            sortableColumns: ["nom", "prenom"]
-        })}
-        <br />
-        <Target />
-        <ActionBar store={listStore} hasSelection={true} />
-        {storeListFor({
-            store: listStore,
-            lineTheme: {line},
-            LineComponent: ListLine,
-            hasSelection: true,
-            hasDragAndDrop: true
-        })}
-        {timelineFor({data: listStore.list, TimelineComponent: ListLine, dateSelector: l => makeField(`${l.id}`)})}
-    </div>
-));
+@(DragDropContext(HTML5Backend) as any)
+@observer
+export class List extends React.Component<{}, void> {
+
+    async componentWillMount() {
+        listStore.list = await loadContactList();
+    }
+
+    render() {
+        return (
+            <div>
+                {storeTableFor({
+                    store: listStore,
+                    RowComponent: TableLine,
+                    columns: {
+                        nom: "Nom",
+                        prenom: "Prénom",
+                        email: "Email",
+                        civilite: "Civilité"
+                    },
+                    sortableColumns: ["nom", "prenom"]
+                })}
+                <br />
+                <Target />
+                <ActionBar store={listStore} hasSelection={true} />
+                {storeListFor({
+                    store: listStore,
+                    lineTheme: {line},
+                    LineComponent: ListLine,
+                    hasSelection: true,
+                    hasDragAndDrop: true
+                })}
+                {timelineFor({data: listStore.list, TimelineComponent: ListLine, dateSelector: l => makeField(`${l.id}`)})}
+            </div>
+        );
+    }
+}

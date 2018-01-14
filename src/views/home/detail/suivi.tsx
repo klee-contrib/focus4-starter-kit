@@ -1,8 +1,14 @@
 import {displayFor, i18n, listFor, observer, Panel, React, stringFor} from "focus4";
+import {patchField} from "focus4/entity";
 
 import {EvenementNode} from "../../../model/main/evenement";
 import {loadSuivi} from "../../../services/main";
 import {mainStore} from "../../../stores";
+
+// On patch en mode yolo ce noeud de store, pour la démo.
+mainStore.suivi.evenementList.$transform = evt => {
+    patchField(evt.commentaire, {displayFormatter: text => text && text.toUpperCase()});
+};
 
 @observer
 export class SuiviComponent extends React.Component<{}, void> {
