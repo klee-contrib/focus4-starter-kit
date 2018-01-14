@@ -11,7 +11,7 @@ export class FormList extends AutoForm {
         patchField(entity.nom, {isRequired: false});
         patchField(entity.prenom, () => ({isRequired: !!entity.nom.value}));
         return {
-            nomPrenom: makeField(() => `${entity.nom.value || ""} ${entity.prenom.value || ""}`, {
+            nomPrenom: makeField(() => `${entity.nom.value || ""} ${entity.prenom.value || ""}`.trim(), {
                 label: "contact.nomPrenom"
             })
         };
@@ -32,9 +32,9 @@ export class FormList extends AutoForm {
                     data: this.entity,
                     perPage: 2,
                     isManualFetch: true,
-                    LineComponent: observer(({data}) => (
+                    LineComponent: observer(({data}: {data: FormList["entity"][0]}) => (
                         <div>
-                            <h6>{data.nomPrenom.value}</h6>
+                            <h6>{data.nomPrenom.value || "Contact"}</h6>
                             {this.fieldFor(data.nom)}
                             {this.fieldFor(data.prenom)}
                             {this.fieldFor(data.email)}
