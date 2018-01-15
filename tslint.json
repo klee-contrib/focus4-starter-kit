@@ -86,11 +86,6 @@
         "no-return-await": true,
         "no-shadowed-variable": true,
         "no-string-throw": true,
-        "no-submodule-imports": [
-            true,
-            "focus4",
-            "react-toolbox"
-        ],
         "no-this-assignment": [
             true,
             {"allow-destructuring": true}
@@ -125,6 +120,7 @@
             true,
             "ignore-for-loop"
         ],
+        "newline-per-chained-call": true,
         "no-sparse-arrays": true,
         "prefer-const": true,
         "prefer-function-over-method": [
@@ -133,6 +129,7 @@
             "allow-protected"
         ],
         "prefer-object-spread": true,
+        "prefer-readonly": true,
         "prefer-switch": true,
         "prefer-template": true,
         "quotemark": [
@@ -164,7 +161,6 @@
                 "variable-declaration": "nospace"
             }
         ],
-        "typeof-compare": true,
         "use-default-type-parameter": true,
         "use-isnan": true,
         "variable-name": [

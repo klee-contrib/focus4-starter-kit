@@ -5,7 +5,7 @@ const variables = require("./css-variables");
 module.exports = {
     entry: './src/index',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'static'),
         filename: 'app.js',
         publicPath: '/static/'
     },
