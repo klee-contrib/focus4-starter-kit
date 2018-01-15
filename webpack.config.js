@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'static'),
         filename: 'app.js',
-        publicPath: '/static/'
+        publicPath: './static/'
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx']
