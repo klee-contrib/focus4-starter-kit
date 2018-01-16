@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const variables = require("./css-variables");
 
 module.exports = {
-    entry: './src/index',
+    entry: './src',
     output: {
         path: path.join(__dirname, 'static'),
         filename: 'app.js',
