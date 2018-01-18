@@ -1,4 +1,4 @@
-import {autobind, AutoForm, makeFormNode, observer, Panel, React} from "focus4";
+import {autobind, AutoForm, fieldFor, makeFormNode, observer, Panel, React} from "focus4";
 
 import {mainStore} from "../../../../stores";
 
@@ -6,14 +6,11 @@ import {mainStore} from "../../../../stores";
 @observer
 export class SuiviCreation extends AutoForm<{close: () => void}> {
 
-    entity = makeFormNode(mainStore.evenement);
+    entity = makeFormNode(mainStore.evenement, undefined, true);
 
     init() {
         mainStore.evenement.clear();
-        this.formInit(
-            {save: async x  => { mainStore.suivi.evenementList.pushNode(x); return x; }},
-            {initiallyEditing: true}
-        );
+        this.formInit({save: async x  => { mainStore.suivi.evenementList.pushNode(x); return x; }});
     }
 
     toggleEdit(edit: boolean) {
@@ -25,14 +22,15 @@ export class SuiviCreation extends AutoForm<{close: () => void}> {
     }
 
     onFormSaved() {
+        super.onFormSaved();
         this.props.close();
     }
 
     renderContent() {
         return (
             <Panel hideOnScrollspy title="Ajouter un évènement" {...this.getPanelProps()}>
-                {this.fieldFor(this.entity.commentaire)}
-                {this.fieldFor(this.entity.date)}
+                {fieldFor(this.entity.commentaire)}
+                {fieldFor(this.entity.date)}
             </Panel>
         );
     }

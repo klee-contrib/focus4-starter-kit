@@ -1,4 +1,4 @@
-import {AutoForm, i18n, makeFormNode, observer, Panel, React} from "focus4";
+import {autobind, AutoForm, fieldFor, i18n, makeFormNode, observer, Panel, React, selectFor} from "focus4";
 import {makeField, patchField} from "focus4/entity";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
@@ -6,6 +6,7 @@ import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
 import {loadStructure, saveStructure} from "../../../services/main";
 import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
+@autobind
 @observer
 export class Form extends AutoForm {
 
@@ -15,6 +16,9 @@ export class Form extends AutoForm {
             domain: DO_COMMENTAIRE,
             isRequired: !!entity.capitalSocial.value
         }));
+
+        patchField(entity.capitalSocial, () => ({isEdit: entity.statutJuridiqueCode.value !== "EARL"}));
+
         // On ajoute un champ supplémentaire calculé.
         return {
             email: makeField(() => entity.denominationSociale.value, {
@@ -33,6 +37,7 @@ export class Form extends AutoForm {
             load: loadStructure,
             save: saveStructure
         });
+        this.entity.adresse.form!.isEdit = false;
     }
 
     renderContent() {
@@ -40,11 +45,11 @@ export class Form extends AutoForm {
         return (
             <Panel title="form.title" {...this.getPanelProps()}>
                 {i18n.t("form.content")}
-                {this.fieldFor(denominationSociale)}
-                {this.fieldFor(email)}
-                {this.fieldFor(capitalSocial)}
-                {this.selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
-                {this.fieldFor(adresse.ville)}
+                {fieldFor(denominationSociale)}
+                {fieldFor(email)}
+                {fieldFor(capitalSocial)}
+                {selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
+                {fieldFor(adresse.ville)}
             </Panel>
         );
     }

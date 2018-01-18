@@ -1,4 +1,4 @@
-import {AutoForm, listFor, makeFormNode, observer, Panel, React} from "focus4";
+import {AutoForm, fieldFor, listFor, makeFormNode, observer, Panel, React, selectFor} from "focus4";
 import {makeField, patchField} from "focus4/entity";
 
 import {loadContactList} from "../../../services/main";
@@ -35,10 +35,10 @@ export class FormList extends AutoForm {
                     LineComponent: observer(({data}: {data: FormList["entity"][0]}) => (
                         <div>
                             <h6>{data.nomPrenom.value || "Contact"}</h6>
-                            {this.fieldFor(data.nom)}
-                            {this.fieldFor(data.prenom)}
-                            {this.fieldFor(data.email)}
-                            {this.selectFor(data.civiliteCode, referenceStore.civilite, {labelKey: "libelle" as "libelle"})}
+                            {fieldFor(data.nom)}
+                            {fieldFor(data.prenom)}
+                            {fieldFor(data.email)}
+                            {selectFor(data.civiliteCode, referenceStore.civilite, {labelKey: "libelle" as "libelle"})}
                         </div>
                     ))
                 })}

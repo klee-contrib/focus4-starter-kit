@@ -1,4 +1,4 @@
-import {displayFor, i18n, listFor, observable, observer, Panel, Popin, React, stringFor} from "focus4";
+import {fieldFor, i18n, listFor, observable, observer, Panel, Popin, React, stringFor} from "focus4";
 import {patchField} from "focus4/entity";
 import {Button} from "react-toolbox/lib/button";
 
@@ -26,8 +26,8 @@ export class SuiviComponent extends React.Component<{}, void> {
         const {dateCreation, nombreEvenement, evenementList} = mainStore.suivi;
         return (
             <Panel title="Suivi de la structure">
-                {displayFor(dateCreation)}
-                {displayFor(nombreEvenement)}
+                {fieldFor(dateCreation)}
+                {fieldFor(nombreEvenement)}
                 <h4>{i18n.t("suivi.evenement.title")}</h4>
                 <Button label="Ajouter un évènement" onClick={() => this.popinOpened = true} icon="add" />
                 <br /><br />
