@@ -1,5 +1,5 @@
 import {autobind, AutoForm, fieldFor, i18n, makeFormNode, observer, Panel, React, selectFor} from "focus4";
-import {makeField, patchField} from "focus4/entity";
+import {makeField, patchField, patchNodeEdit} from "focus4/entity";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
 
@@ -17,16 +17,15 @@ export class Form extends AutoForm {
             isRequired: !!entity.capitalSocial.value
         }));
 
-        patchField(entity.capitalSocial, () => ({isEdit: entity.statutJuridiqueCode.value !== "EARL"}));
+        patchField(entity.capitalSocial, {}, () => entity.statutJuridiqueCode.value !== "EARL");
+        patchNodeEdit(entity.adresse, false);
 
         // On ajoute un champ supplémentaire calculé.
         return {
             email: makeField(() => entity.denominationSociale.value, {
                 domain: DO_LIBELLE_100,
                 label: "structure.email",
-                validator: [{
-                    type: "email"
-                }]
+                validator: {type: "email"}
             }, email => entity.denominationSociale.value = email) // Setter.
         };
     });
@@ -37,7 +36,6 @@ export class Form extends AutoForm {
             load: loadStructure,
             save: saveStructure
         });
-        this.entity.adresse.form!.isEdit = false;
     }
 
     renderContent() {
@@ -49,6 +47,7 @@ export class Form extends AutoForm {
                 {fieldFor(email)}
                 {fieldFor(capitalSocial)}
                 {selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
+                {fieldFor(adresse.codePostal)}
                 {fieldFor(adresse.ville)}
             </Panel>
         );

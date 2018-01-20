@@ -14,22 +14,22 @@ export const DO_COMMENTAIRE: Domain = {
         rows: 4,
         maxLength: 3000
     },
-    validator: [{
+    validator: {
         type: "string",
         maxLength: 3000
-    }]
+    }
 };
 
 export const DO_CODE_10: Domain = {
     inputProps: {maxLength: 10},
-    validator: [{
+    validator: {
         type: "string",
         maxLength: 10
-    }]
+    }
 };
 
 export const DO_DATE: Domain<InputDateProps> = {
-    validator: [{type: "date"}],
+    validator: {type: "date"},
     InputComponent: InputDate,
     displayFormatter: (date: string) => date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : "",
     inputProps: {
@@ -40,19 +40,19 @@ export const DO_DATE: Domain<InputDateProps> = {
 export const DO_ID: Domain = {};
 
 export const DO_EMAIL: Domain = {
-    validator: [{type: "email"}]
+    validator: {type: "email"}
 };
 
 export const DO_LIBELLE_100: Domain = {
     inputProps: {maxLength: 100},
-    validator: [{
+    validator: {
         type: "string",
         maxLength: 100
-    }]
+    }
 };
 
 export const DO_MONTANT: Domain = {
-    validator: [(input: string) => !/^-?\d*\.?\d{0,2}$/.test(input) && "domain.validation.montant"],
+    validator: (input: string) => !/^-?\d*\.?\d{0,2}$/.test(input) && "domain.validation.montant",
     displayFormatter(montant) {
         return montant && numeral(parseFloat(montant)).format("0,0.00 $") || "";
     },
@@ -65,7 +65,7 @@ export const DO_MONTANT: Domain = {
 };
 
 export const DO_POURCENTAGE: Domain = {
-    validator: [(input: string) => !/^(100(\.00?)?|[1-9]?\d(\.\d\d?)?)$/.test(input) && "domain.validation.montant"],
+    validator: (input: string) => !/^(100(\.00?)?|[1-9]?\d(\.\d\d?)?)$/.test(input) && "domain.validation.montant",
     displayFormatter(montant) {
         return montant && numeral(parseFloat(montant)).format("0,0.00 $") || "";
     },
@@ -77,12 +77,9 @@ export const DO_POURCENTAGE: Domain = {
     }
 };
 
-export const DO_TELEPHONE = {
-    type: "string",
-    validator: [{
+export const DO_TELEPHONE: Domain = {
+    validator: {
         type: "string",
-        options: {
-            maxLength: 13
-        }
-    }]
+        maxLength: 13
+    }
 };

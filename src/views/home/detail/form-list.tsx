@@ -1,5 +1,6 @@
-import {AutoForm, fieldFor, listFor, makeFormNode, observer, Panel, React, selectFor} from "focus4";
-import {makeField, patchField} from "focus4/entity";
+import {AutoForm, fieldFor, listFor, makeFormNode, observable, observer, Panel, React, selectFor} from "focus4";
+import {makeField, patchField, patchNodeEdit} from "focus4/entity";
+import {Input} from "react-toolbox/lib/input";
 
 import {loadContactList} from "../../../services/main";
 import {homeViewStore, mainStore, referenceStore} from "../../../stores";
@@ -7,15 +8,20 @@ import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 @observer
 export class FormList extends AutoForm {
 
+    @observable magicWord = "";
+
     entity = makeFormNode(mainStore.contactList, entity => {
         patchField(entity.nom, {isRequired: false});
         patchField(entity.prenom, () => ({isRequired: !!entity.nom.value}));
+
+        patchNodeEdit(entity, () => !!(entity.id.value! % 2));
+
         return {
             nomPrenom: makeField(() => `${entity.nom.value || ""} ${entity.prenom.value || ""}`.trim(), {
                 label: "contact.nomPrenom"
             })
         };
-    });
+    }, () => this.magicWord === "yolo");
 
     init() {
         this.formInit({
@@ -28,6 +34,7 @@ export class FormList extends AutoForm {
     renderContent() {
         return (
             <Panel title="Formulaire liste" {...this.getPanelProps()}>
+                <Input value={this.magicWord} onChange={(text: string) => this.magicWord = text} />
                 {listFor({
                     data: this.entity,
                     perPage: 2,
