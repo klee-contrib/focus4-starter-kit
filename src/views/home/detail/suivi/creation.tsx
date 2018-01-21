@@ -1,37 +1,29 @@
-import {autobind, AutoForm, fieldFor, makeFormNode, observer, Panel, React} from "focus4";
+import {fieldFor, Form, makeFormActions, makeFormNode, observer, Panel, React} from "focus4";
 
 import {mainStore} from "../../../../stores";
 
-@autobind
 @observer
-export class SuiviCreation extends AutoForm<{close: () => void}> {
+export class SuiviCreation extends React.Component<{close: () => void}, void> {
 
-    entity = makeFormNode(mainStore.evenement, undefined, true);
-
-    init() {
-        mainStore.evenement.clear();
-        this.formInit({save: async x  => { mainStore.suivi.evenementList.pushNode(x); return x; }});
-    }
-
-    toggleEdit(edit: boolean) {
-        if (!edit) {
-            this.props.close();
-        } else {
-            super.toggleEdit(true);
+    entity = makeFormNode(mainStore.evenement, () => ({}), true);
+    actions = makeFormActions(
+        this.entity,
+        {save: async x  => { mainStore.suivi.evenementList.pushNode(x); return x; }},
+        {
+            clearBeforeLoad: true,
+            onFormSaved: () => this.props.close(),
+            onToggleEdit: edit => !edit && this.props.close()
         }
-    }
+    );
 
-    onFormSaved() {
-        super.onFormSaved();
-        this.props.close();
-    }
-
-    renderContent() {
+    render() {
         return (
-            <Panel hideOnScrollspy title="Ajouter un évènement" {...this.getPanelProps()}>
-                {fieldFor(this.entity.commentaire)}
-                {fieldFor(this.entity.date)}
-            </Panel>
+            <Form {...this.actions.formProps}>
+                <Panel hideOnScrollspy title="Ajouter un évènement" {...this.actions.panelProps}>
+                    {fieldFor(this.entity.commentaire)}
+                    {fieldFor(this.entity.date)}
+                </Panel>
+            </Form>
         );
     }
 }

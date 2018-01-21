@@ -1,14 +1,13 @@
-import {autobind, AutoForm, fieldFor, i18n, makeFormNode, observer, Panel, React, selectFor} from "focus4";
-import {makeField, patchField, patchNodeEdit} from "focus4/entity";
+import {fieldFor, Form, i18n, makeField, makeFormActions, makeFormNode, observer, Panel, patchField, React, selectFor} from "focus4";
+import {patchNodeEdit} from "focus4/entity";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
 
 import {loadStructure, saveStructure} from "../../../services/main";
 import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
-@autobind
 @observer
-export class Form extends AutoForm {
+export class BasicForm extends React.Component<{}, void> {
 
     entity = makeFormNode(mainStore.structure, entity => {
         // On change le domaine et le isRequired du champ.
@@ -30,26 +29,26 @@ export class Form extends AutoForm {
         };
     });
 
-    init() {
-        this.formInit({
-            getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [+id]),
-            load: loadStructure,
-            save: saveStructure
-        });
-    }
+    actions = makeFormActions(this.entity, {
+        getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [+id]),
+        load: loadStructure,
+        save: saveStructure
+    });
 
-    renderContent() {
+    render() {
         const {denominationSociale, capitalSocial, email, statutJuridiqueCode, adresse} = this.entity;
         return (
-            <Panel title="form.title" {...this.getPanelProps()}>
-                {i18n.t("form.content")}
-                {fieldFor(denominationSociale)}
-                {fieldFor(email)}
-                {fieldFor(capitalSocial)}
-                {selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
-                {fieldFor(adresse.codePostal)}
-                {fieldFor(adresse.ville)}
-            </Panel>
+            <Form {...this.actions.formProps}>
+                <Panel title="form.title" {...this.actions.panelProps}>
+                    {i18n.t("form.content")}
+                    {fieldFor(denominationSociale)}
+                    {fieldFor(email)}
+                    {fieldFor(capitalSocial)}
+                    {selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
+                    {fieldFor(adresse.codePostal)}
+                    {fieldFor(adresse.ville)}
+                </Panel>
+            </Form>
         );
     }
 }
