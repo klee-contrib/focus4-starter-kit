@@ -19,13 +19,13 @@ const TableLine = observer(({data}: {data: Contact}) => (
         <td>{data.nom}</td>
         <td>{data.prenom}</td>
         <td>{data.email}</td>
-        <td>{stringFor(makeField(data.civiliteCode), {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})}</td>
+        <td>{stringFor(makeField(data.civiliteCode), referenceStore.civilite)}</td>
     </tr>
 ));
 
 const ListLine = observer(({data}: {data: Contact}) => (
     <div style={{background: "white", padding: "15px 50px"}}>
-        {`${stringFor(makeField(data.civiliteCode), {values: referenceStore.civilite, labelKey: "libelle" as "libelle"})} ${data.prenom} ${data.nom} ${data.email}`}
+        {`${stringFor(makeField(data.civiliteCode), referenceStore.civilite)} ${data.prenom} ${data.nom} ${data.email}`}
     </div>
 ));
 

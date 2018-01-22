@@ -44,7 +44,7 @@ export class FormList extends React.Component<{}, void> {
                                 {fieldFor(data.nom)}
                                 {fieldFor(data.prenom)}
                                 {fieldFor(data.email)}
-                                {selectFor(data.civiliteCode, referenceStore.civilite, {labelKey: "libelle" as "libelle"})}
+                                {selectFor(data.civiliteCode, referenceStore.civilite)}
                             </div>
                         ))
                     })}

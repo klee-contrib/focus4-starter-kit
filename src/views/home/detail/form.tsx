@@ -44,7 +44,7 @@ export class BasicForm extends React.Component<{}, void> {
                     {fieldFor(denominationSociale)}
                     {fieldFor(email)}
                     {fieldFor(capitalSocial)}
-                    {selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelKey: "libelle" as "libelle"})}
+                    {selectFor(statutJuridiqueCode, referenceStore.statutJuridique)}
                     {fieldFor(adresse.codePostal)}
                     {fieldFor(adresse.ville)}
                 </Panel>
