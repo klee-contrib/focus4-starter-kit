@@ -12,7 +12,6 @@
         "experimentalDecorators": true,
         "skipLibCheck": true,
         "strict": true,
-        "strictFunctionTypes": false,
 
         // Options additionnelles
         "importHelpers": true,
