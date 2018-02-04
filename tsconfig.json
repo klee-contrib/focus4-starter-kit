@@ -1,22 +1,24 @@
 {
     "compilerOptions": {
-        "module": "es2015",
-        "target": "es5",
-        "moduleResolution": "node",
-        "outDir": "dist",
+        // Général
+        "lib": ["es2018", "dom"],
         "jsx": "react",
-        "lib": ["es2015", "dom"],
-        "importHelpers": true,
+        "module": "es2015",
+        "moduleResolution": "node",
+        "target": "es5",
+
+        // Options obligatoires
         "allowSyntheticDefaultImports": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "strictNullChecks": true,
         "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "strictFunctionTypes": false,
+
+        // Options additionnelles
+        "importHelpers": true,
         "noFallthroughCasesInSwitch": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "skipLibCheck": true
+        "noUnusedParameters": true
     },
     "exclude": [
         "dist",

@@ -30,7 +30,7 @@ export const DO_DATE: Domain<InputDateProps> = {
     InputComponent: InputDate,
     displayFormatter: (date: string) => date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : "",
     inputProps: {
-        inputFormat: ["DD/MM/YYYY"]
+        inputFormat: "DD/MM/YYYY"
     }
 };
 

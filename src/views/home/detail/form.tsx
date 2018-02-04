@@ -8,7 +8,7 @@ import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 export class Form extends AutoForm<{}, StructureNode> {
     init() {
         this.formInit(mainStore.structure, {
-            getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [id]),
+            getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [+id]),
             load: loadStructure,
             save: saveStructure
         });
