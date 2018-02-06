@@ -10,7 +10,7 @@
     "tslint": "tslint --project tsconfig.json --force"
   },
   "dependencies": {
-    "focus4": "8.7.2-rc"
+    "focus4": "8.7.2"
   },
   "devDependencies": {
     "awesome-typescript-loader": "3.4.1",
