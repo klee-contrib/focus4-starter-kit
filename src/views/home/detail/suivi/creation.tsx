@@ -10,7 +10,7 @@ export class SuiviCreation extends React.Component<{close: () => void}, void> {
         this.entity,
         {save: async x  => { mainStore.suivi.evenementList.pushNode(x); return x; }},
         {
-            clearBeforeLoad: true,
+            clearBeforeInit: true,
             onFormSaved: () => this.props.close(),
             onToggleEdit: edit => !edit && this.props.close()
         }

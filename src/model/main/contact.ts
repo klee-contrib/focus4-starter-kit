@@ -1,38 +1,26 @@
 /* Ce fichier doit être généré automatiquement */
-/* tslint:disable */
 
-import {EntityField, StoreNode} from "focus4/entity";
+import {EntityToType, StoreNode} from "focus4/entity";
 import {DO_CODE_10, DO_EMAIL, DO_ID, DO_LIBELLE_100} from "../../domains";
 import {CiviliteCode} from "../references";
 
-export interface Contact {
-    id: number;
-    nom: string;
-    prenom: string;
-    email?: string;
-    civiliteCode: CiviliteCode;
-}
-
-export interface ContactNode extends StoreNode<Contact> {
-    id: EntityField<number, typeof DO_ID>;
-    nom: EntityField<string, typeof DO_LIBELLE_100>;
-    prenom: EntityField<string, typeof DO_LIBELLE_100>;
-    email: EntityField<string, typeof DO_EMAIL>;
-    civiliteCode: EntityField<CiviliteCode, typeof DO_CODE_10>;
-}
+export type Contact = EntityToType<typeof ContactEntity>;
+export type ContactNode = StoreNode<typeof ContactEntity>;
 
 export const ContactEntity = {
     name: "contact",
     fields: {
         id: {
             type: "field" as "field",
+            fieldType: 0,
             name: "id",
             domain: DO_ID,
-            isRequired: true,
+            isRequired: false,
             label: "contact.id"
         },
         nom: {
             type: "field" as "field",
+            fieldType: "",
             name: "nom",
             domain: DO_LIBELLE_100,
             isRequired: true,
@@ -40,6 +28,7 @@ export const ContactEntity = {
         },
         prenom: {
             type: "field" as "field",
+            fieldType: "",
             name: "prenom",
             domain: DO_LIBELLE_100,
             isRequired: true,
@@ -47,6 +36,7 @@ export const ContactEntity = {
         },
         email: {
             type: "field" as "field",
+            fieldType: "",
             name: "email",
             domain: DO_EMAIL,
             isRequired: false,
@@ -54,6 +44,7 @@ export const ContactEntity = {
         },
         civiliteCode: {
             type: "field" as "field",
+            fieldType: "" as CiviliteCode,
             name: "civiliteCode",
             domain: DO_CODE_10,
             isRequired: true,

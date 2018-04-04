@@ -1,26 +1,17 @@
 /* Ce fichier doit être généré automatiquement */
-/* tslint:disable */
 
-import {EntityField, StoreNode} from "focus4/entity";
+import {EntityToType, StoreNode} from "focus4/entity";
 import {DO_COMMENTAIRE, DO_DATE, DO_ID} from "../../domains";
 
-export interface Evenement {
-    id?: number;
-    date: string;
-    commentaire: string;
-}
-
-export interface EvenementNode extends StoreNode<Evenement> {
-    id?: EntityField<number, typeof DO_ID>;
-    date: EntityField<string, typeof DO_DATE>;
-    commentaire: EntityField<string, typeof DO_COMMENTAIRE>;
-}
+export type Evenement = EntityToType<typeof EvenementEntity>;
+export type EvenementNode = StoreNode<typeof EvenementEntity>;
 
 export const EvenementEntity = {
     name: "evenement",
     fields: {
         id: {
             type: "field" as "field",
+            fieldType: 0,
             name: "id",
             domain: DO_ID,
             isRequired: false,
@@ -28,6 +19,7 @@ export const EvenementEntity = {
         },
         date: {
             type: "field" as "field",
+            fieldType: "",
             name: "date",
             domain: DO_DATE,
             isRequired: true,
@@ -35,6 +27,7 @@ export const EvenementEntity = {
         },
         commentaire: {
             type: "field" as "field",
+            fieldType: "",
             name: "commentaire",
             domain: DO_COMMENTAIRE,
             isRequired: true,

@@ -1,43 +1,27 @@
 /* Ce fichier doit être généré automatiquement */
-/* tslint:disable */
 
-import {EntityField, StoreNode} from "focus4/entity";
+import {EntityToType, StoreNode} from "focus4/entity";
 import {DO_BOOLEEN, DO_CODE_10, DO_DATE, DO_ID, DO_LIBELLE_100, DO_MONTANT} from "../../domains";
 import {StatutJuridiqueCode} from "../references";
-import {Adresse, AdresseNode} from "./adresse";
+import {AdresseEntity} from "./adresse";
 
-export interface Structure {
-    id: number;
-    denominationSociale: string;
-    capitalSocial?: number;
-    isBeneficiaireEffectif: boolean;
-    dateDemande?: string;
-    statutJuridiqueCode?: StatutJuridiqueCode;
-    adresse?: Adresse;
-}
-
-export interface StructureNode extends StoreNode<Structure> {
-    id: EntityField<number, typeof DO_ID>;
-    denominationSociale: EntityField<string, typeof DO_LIBELLE_100>;
-    capitalSocial: EntityField<number, typeof DO_MONTANT>;
-    isBeneficiaireEffectif: EntityField<boolean, typeof DO_BOOLEEN>;
-    dateDemande: EntityField<string, typeof DO_DATE>;
-    statutJuridiqueCode: EntityField<StatutJuridiqueCode, typeof DO_CODE_10>;
-    adresse: AdresseNode;
-}
+export type Structure = EntityToType<typeof StructureEntity>;
+export type StructureNode = StoreNode<typeof StructureEntity>;
 
 export const StructureEntity = {
     name: "structure",
     fields: {
         id: {
             type: "field" as "field",
+            fieldType: 0,
             name: "id",
             domain: DO_ID,
-            isRequired: true,
+            isRequired: false,
             label: "structure.id"
         },
         denominationSociale: {
             type: "field" as "field",
+            fieldType: "",
             name: "denominationSociale",
             domain: DO_LIBELLE_100,
             isRequired: true,
@@ -45,6 +29,7 @@ export const StructureEntity = {
         },
         capitalSocial: {
             type: "field" as "field",
+            fieldType: 0,
             name: "capitalSocial",
             domain: DO_MONTANT,
             isRequired: false,
@@ -52,6 +37,7 @@ export const StructureEntity = {
         },
         isBeneficiaireEffectif: {
             type: "field" as "field",
+            fieldType: false,
             name: "isBeneficiaireEffectif",
             domain: DO_BOOLEEN,
             isRequired: true,
@@ -59,6 +45,7 @@ export const StructureEntity = {
         },
         dateDemande: {
             type: "field" as "field",
+            fieldType: "",
             name: "dateDemande",
             domain: DO_DATE,
             isRequired: false,
@@ -66,6 +53,7 @@ export const StructureEntity = {
         },
         statutJuridiqueCode: {
             type: "field" as "field",
+            fieldType: "" as StatutJuridiqueCode,
             name: "statutJuridiqueCode",
             domain: DO_CODE_10,
             isRequired: false,
@@ -73,7 +61,7 @@ export const StructureEntity = {
         },
         adresse: {
             type: "object" as "object",
-            entityName: "adresse",
+            entity: AdresseEntity,
         }
     }
 };

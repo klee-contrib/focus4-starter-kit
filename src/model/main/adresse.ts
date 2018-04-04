@@ -1,37 +1,25 @@
 /* Ce fichier doit être généré automatiquement */
-/* tslint:disable */
 
-import {EntityField, StoreNode} from "focus4/entity";
-import {DO_LIBELLE_100, DO_CODE_10, DO_ID} from "../../domains";
+import {EntityToType, StoreNode} from "focus4/entity";
+import {DO_CODE_10, DO_ID, DO_LIBELLE_100} from "../../domains";
 
-export interface Adresse {
-    id: number;
-    ligne1?: string;
-    ligne2?: string;
-    codePostal: string;
-    ville: string;
-}
-
-export interface AdresseNode extends StoreNode<Adresse> {
-    id: EntityField<number, typeof DO_ID>;
-    ligne1: EntityField<string, typeof DO_LIBELLE_100>;
-    ligne2: EntityField<string, typeof DO_LIBELLE_100>;
-    codePostal: EntityField<string, typeof DO_CODE_10>;
-    ville: EntityField<string, typeof DO_LIBELLE_100>;
-}
+export type Adresse = EntityToType<typeof AdresseEntity>;
+export type AdresseNode = StoreNode<typeof AdresseEntity>;
 
 export const AdresseEntity = {
     name: "adresse",
     fields: {
         id: {
             type: "field" as "field",
+            fieldType: 0,
             name: "id",
             domain: DO_ID,
-            isRequired: true,
+            isRequired: false,
             label: "adresse.id"
         },
         ligne1: {
             type: "field" as "field",
+            fieldType: "",
             name: "ligne1",
             domain: DO_LIBELLE_100,
             isRequired: false,
@@ -39,6 +27,7 @@ export const AdresseEntity = {
         },
         ligne2: {
             type: "field" as "field",
+            fieldType: "",
             name: "ligne2",
             domain: DO_LIBELLE_100,
             isRequired: false,
@@ -46,6 +35,7 @@ export const AdresseEntity = {
         },
         codePostal: {
             type: "field" as "field",
+            fieldType: "",
             name: "codePostal",
             domain: DO_CODE_10,
             isRequired: true,
@@ -53,6 +43,7 @@ export const AdresseEntity = {
         },
         ville: {
             type: "field" as "field",
+            fieldType: "",
             name: "ville",
             domain: DO_LIBELLE_100,
             isRequired: true,

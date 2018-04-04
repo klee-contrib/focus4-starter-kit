@@ -12,7 +12,7 @@ import {referenceStore} from "../../stores";
 import {line} from "./__style__/list.css";
 
 const listStore = new ListStore<Contact>();
-listStore.isItemSelectionnable = data => !(data.id % 2);
+listStore.isItemSelectionnable = data => !(data.id! % 2);
 
 const TableLine = observer(({data}: {data: Contact}) => (
     <tr>
