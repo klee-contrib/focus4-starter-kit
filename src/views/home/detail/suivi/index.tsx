@@ -14,7 +14,7 @@ mainStore.suivi.evenementList.$transform = evt => {
 };
 
 @observer
-export class SuiviComponent extends React.Component<{}, void> {
+export class SuiviComponent extends React.Component {
 
     @observable popinOpened = false;
 

@@ -6,7 +6,7 @@ import {loadContactList} from "../../../services/main";
 import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
 @observer
-export class FormList extends React.Component<{}, void> {
+export class FormList extends React.Component {
 
     @observable magicWord = "";
 

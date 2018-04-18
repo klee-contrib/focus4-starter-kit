@@ -3,12 +3,12 @@ import {fieldFor, Form, makeFormActions, makeFormNode, observer, Panel, React} f
 import {mainStore} from "../../../../stores";
 
 @observer
-export class SuiviCreation extends React.Component<{close: () => void}, void> {
+export class SuiviCreation extends React.Component<{close: () => void}> {
 
     entity = makeFormNode(mainStore.evenement, () => ({}), true);
     actions = makeFormActions(
         this.entity,
-        {save: async x  => { mainStore.suivi.evenementList.pushNode(x); return x; }},
+        {save: async x  => { mainStore.suivi.evenementList.pushNode(x); }},
         {
             clearBeforeInit: true,
             onFormSaved: () => this.props.close(),

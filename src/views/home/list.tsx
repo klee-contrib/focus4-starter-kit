@@ -49,7 +49,7 @@ const Target = DropTarget<any>("item", {
 
 @(DragDropContext(HTML5Backend) as any)
 @observer
-export class List extends React.Component<{}, void> {
+export class List extends React.Component<{}> {
 
     async componentWillMount() {
         listStore.list = await loadContactList();
