@@ -39,13 +39,13 @@ export class FormList extends React.Component {
                         perPage: 2,
                         isManualFetch: true,
                         LineComponent: observer(({data}: {data: FormList["entity"][0]}) => (
-                            <div>
+                            <>
                                 <h6>{data.nomPrenom.value || "Contact"}</h6>
                                 {fieldFor(data.nom)}
                                 {fieldFor(data.prenom)}
                                 {fieldFor(data.email)}
                                 {selectFor(data.civiliteCode, referenceStore.civilite)}
-                            </div>
+                            </>
                         ))
                     })}
                 </Panel>

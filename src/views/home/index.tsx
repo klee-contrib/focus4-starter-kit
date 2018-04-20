@@ -16,11 +16,11 @@ export const Home = observer(() => {
         default: page = <Detail />; break;
     }
     return (
-        <div>
+        <>
             <Button raised primary={!homeViewStore.currentView.page} onClick={() => homeViewStore.setView({page: undefined})} label="Home" />
             <Button raised primary={!!homeViewStore.currentView.page} onClick={() => homeViewStore.setView({page: "list"})} label="List" />
             <strong className={salut}>{`Salut identifiant ${homeViewStore.currentView.id}`}</strong>
             {page}
-        </div>
+        </>
     );
 });
