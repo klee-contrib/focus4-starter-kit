@@ -57,7 +57,7 @@ export class List extends React.Component<{}> {
 
     render() {
         return (
-            <div>
+            <>
                 {storeTableFor({
                     store: listStore,
                     RowComponent: TableLine,
@@ -80,7 +80,7 @@ export class List extends React.Component<{}> {
                     hasDragAndDrop: true
                 })}
                 {timelineFor({data: listStore.list, TimelineComponent: ListLine, dateSelector: l => makeField(`${l.id}`)})}
-            </div>
+            </>
         );
     }
 }
