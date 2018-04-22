@@ -1,4 +1,16 @@
-import {fieldFor, Form, i18n, makeField, makeFormActions, makeFormNode, observer, Panel, patchField, React, selectFor} from "focus4";
+import {
+    fieldFor,
+    Form,
+    i18n,
+    makeField,
+    makeFormActions,
+    makeFormNode,
+    observer,
+    Panel,
+    patchField,
+    React,
+    selectFor
+} from "focus4";
 import {patchNodeEdit} from "focus4/entity";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
@@ -8,7 +20,6 @@ import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
 @observer
 export class BasicForm extends React.Component {
-
     entity = makeFormNode(mainStore.structure, entity => {
         // On change le domaine et le isRequired du champ.
         patchField(entity.denominationSociale, () => ({
@@ -21,11 +32,15 @@ export class BasicForm extends React.Component {
 
         // On ajoute un champ supplémentaire calculé.
         return {
-            email: makeField(() => entity.denominationSociale.value, {
-                domain: DO_LIBELLE_100,
-                label: "structure.email",
-                validator: {type: "email"}
-            }, email => entity.denominationSociale.value = email) // Setter.
+            email: makeField(
+                () => entity.denominationSociale.value,
+                {
+                    domain: DO_LIBELLE_100,
+                    label: "structure.email",
+                    validator: {type: "email"}
+                },
+                email => (entity.denominationSociale.value = email)
+            ) // Setter.
         };
     });
 

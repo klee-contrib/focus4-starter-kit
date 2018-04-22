@@ -61,7 +61,7 @@ export const StructureEntity = {
         },
         adresse: {
             type: "object" as "object",
-            entity: AdresseEntity,
+            entity: AdresseEntity
         }
     }
 };

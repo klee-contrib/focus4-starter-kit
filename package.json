@@ -1,35 +1,36 @@
 {
-  "name": "focus4-starter-kit",
-  "version": "9.5.0-preview",
-  "description": "Starter kit pour Focus V4",
-  "repository": "http://www.github.com/get-focus/focus4-starter-kit",
-  "main": "src/index.ts",
-  "scripts": {
-    "build": "rm -rf static/* && webpack --hide-modules -p --progress --devtool false",
-    "start": "rm -rf static/* && node dev-server.js",
-    "tcm": "tcm src",
-    "tslint": "tslint --project tsconfig.json --force"
-  },
-  "dependencies": {
-    "focus4": "9.5.0-preview"
-  },
-  "devDependencies": {
-    "awesome-typescript-loader": "4.0.1",
-    "css-loader": "0.28.11",
-    "file-loader": "1.1.11",
-    "json-loader": "0.5.7",
-    "postcss": "6.0.21",
-    "postcss-cssnext": "3.1.0",
-    "postcss-import": "11.1.0",
-    "postcss-loader": "2.1.3",
-    "source-map-loader": "0.2.3",
-    "style-loader": "0.20.3",
-    "tslint": "5.9.1",
-    "typed-css-modules": "0.3.1",
-    "typescript": "2.8.1",
-    "webpack": "3.10.0",
-    "webpack-dev-server": "2.11.1"
-  },
-  "author": "KleeGroup",
-  "license": "MIT"
+    "name": "focus4-starter-kit",
+    "version": "9.5.0-preview",
+    "description": "Starter kit pour Focus V4",
+    "repository": "http://www.github.com/get-focus/focus4-starter-kit",
+    "main": "src/index.ts",
+    "scripts": {
+        "build": "rm -rf static/* && webpack --hide-modules -p --progress --devtool false",
+        "start": "rm -rf static/* && node dev-server.js",
+        "stylelint": "stylelint src/**/*.css",
+        "tcm": "tcm src",
+        "tslint": "tslint --project tsconfig.json --force"
+    },
+    "dependencies": {
+        "focus4": "9.5.0-preview"
+    },
+    "devDependencies": {
+        "awesome-typescript-loader": "4.0.1",
+        "css-loader": "0.28.11",
+        "file-loader": "1.1.11",
+        "json-loader": "0.5.7",
+        "postcss": "6.0.21",
+        "postcss-cssnext": "3.1.0",
+        "postcss-import": "11.1.0",
+        "postcss-loader": "2.1.3",
+        "source-map-loader": "0.2.3",
+        "style-loader": "0.20.3",
+        "tslint": "5.9.1",
+        "typed-css-modules": "0.3.1",
+        "typescript": "2.8.1",
+        "webpack": "3.10.0",
+        "webpack-dev-server": "2.11.1"
+    },
+    "author": "KleeGroup",
+    "license": "MIT"
 }

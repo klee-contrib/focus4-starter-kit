@@ -15,7 +15,6 @@ mainStore.suivi.evenementList.$transform = evt => {
 
 @observer
 export class SuiviComponent extends React.Component {
-
     @observable popinOpened = false;
 
     async componentWillMount() {
@@ -29,14 +28,19 @@ export class SuiviComponent extends React.Component {
                 {fieldFor(dateCreation)}
                 {fieldFor(nombreEvenement)}
                 <h4>{i18n.t("suivi.evenement.title")}</h4>
-                <Button label="Ajouter un évènement" onClick={() => this.popinOpened = true} icon="add" />
-                <br /><br />
+                <Button label="Ajouter un évènement" onClick={() => (this.popinOpened = true)} icon="add" />
+                <br />
+                <br />
                 {listFor({
                     data: evenementList,
-                    LineComponent: observer(({data}: {data: EvenementNode}) => <span>{stringFor(data.date)} - {stringFor(data.commentaire)}</span>)
+                    LineComponent: observer(({data}: {data: EvenementNode}) => (
+                        <span>
+                            {stringFor(data.date)} - {stringFor(data.commentaire)}
+                        </span>
+                    ))
                 })}
-                <Popin opened={this.popinOpened} closePopin={() => this.popinOpened = false}>
-                    <SuiviCreation close={() => this.popinOpened = false} />
+                <Popin opened={this.popinOpened} closePopin={() => (this.popinOpened = false)}>
+                    <SuiviCreation close={() => (this.popinOpened = false)} />
                 </Popin>
             </Panel>
         );

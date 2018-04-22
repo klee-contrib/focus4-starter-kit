@@ -29,28 +29,57 @@ const ListLine = observer(({data}: {data: Contact}) => (
     </div>
 ));
 
-const Target = DropTarget<any>("item", {
+const Target = DropTarget<any>(
+    "item",
+    {
         drop(_, monitor) {
-        const dragged = getDraggedItems<Contact>(monitor);
-        runInAction(() => {
-            dragged.forEach(item => {
-                if (listStore.selectedItems.has(item)) {
-                    listStore.selectedList.clear();
-                }
-                listStore.innerList.remove(item);
+            const dragged = getDraggedItems<Contact>(monitor);
+            runInAction(() => {
+                dragged.forEach(item => {
+                    if (listStore.selectedItems.has(item)) {
+                        listStore.selectedList.clear();
+                    }
+                    listStore.innerList.remove(item);
+                });
             });
-        });
-    }
-}, (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
-}))(({connectDropTarget, isOver, canDrop}: {connectDropTarget?: ConnectDropTarget, isOver?: boolean, canDrop?: boolean}) => connectDropTarget!(<div style={{width: 200, height: 200, boxSizing: "border-box", background: canDrop ? "yellow" : "transparent", borderColor: "black", borderStyle: "dashed", transition: "0.1s all ease-out", borderWidth: isOver ? 5 : 1}}>POUBELLE</div>));
+        }
+    },
+    (connect, monitor) => ({
+        connectDropTarget: connect.dropTarget(),
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop()
+    })
+)(
+    ({
+        connectDropTarget,
+        isOver,
+        canDrop
+    }: {
+        connectDropTarget?: ConnectDropTarget;
+        isOver?: boolean;
+        canDrop?: boolean;
+    }) =>
+        connectDropTarget!(
+            <div
+                style={{
+                    width: 200,
+                    height: 200,
+                    boxSizing: "border-box",
+                    background: canDrop ? "yellow" : "transparent",
+                    borderColor: "black",
+                    borderStyle: "dashed",
+                    transition: "0.1s all ease-out",
+                    borderWidth: isOver ? 5 : 1
+                }}
+            >
+                POUBELLE
+            </div>
+        )
+);
 
 @(DragDropContext(HTML5Backend) as any)
 @observer
 export class List extends React.Component<{}> {
-
     async componentWillMount() {
         listStore.list = await loadContactList();
     }
@@ -79,7 +108,11 @@ export class List extends React.Component<{}> {
                     hasSelection: true,
                     hasDragAndDrop: true
                 })}
-                {timelineFor({data: listStore.list, TimelineComponent: ListLine, dateSelector: l => makeField(`${l.id}`)})}
+                {timelineFor({
+                    data: listStore.list,
+                    TimelineComponent: ListLine,
+                    dateSelector: l => makeField(`${l.id}`)
+                })}
             </>
         );
     }

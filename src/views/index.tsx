@@ -21,12 +21,13 @@ const Main = observer(() => {
     }
 });
 
-render((
+render(
     <Layout appTheme={{layout: {layout}}}>
         <Header />
         <StarterMenu />
         <LayoutContent>
             <Main />
         </LayoutContent>
-    </Layout>
-), document.getElementById("app"));
+    </Layout>,
+    document.getElementById("app")
+);

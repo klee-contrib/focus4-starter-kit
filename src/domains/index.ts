@@ -1,10 +1,8 @@
-/* tslint:disable */
-
+import {InputDate, InputDateProps} from "focus4/components";
 import {Domain} from "focus4/entity";
 
 import moment from "moment";
 import numeral from "numeral";
-import { InputDate, InputDateProps } from "focus4/components";
 
 export const DO_BOOLEEN: Domain = {};
 
@@ -31,7 +29,7 @@ export const DO_CODE_10: Domain = {
 export const DO_DATE: Domain<InputDateProps> = {
     validator: {type: "date"},
     InputComponent: InputDate,
-    displayFormatter: (date: string) => date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : "",
+    displayFormatter: (date: string) => (date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : ""),
     inputProps: {
         inputFormat: "DD/MM/YYYY"
     }
@@ -54,26 +52,26 @@ export const DO_LIBELLE_100: Domain = {
 export const DO_MONTANT: Domain = {
     validator: (input: string) => !/^-?\d*\.?\d{0,2}$/.test(input) && "domain.validation.montant",
     displayFormatter(montant) {
-        return montant && numeral(parseFloat(montant)).format("0,0.00 $") || "";
+        return (montant && numeral(parseFloat(montant)).format("0,0.00 $")) || "";
     },
     inputFormatter(montant) {
-        return montant && montant.toString().replace(".", ",") || "";
+        return (montant && montant.toString().replace(".", ",")) || "";
     },
     unformatter(text) {
-        return text && text.replace(",", ".") || "";
+        return (text && text.replace(",", ".")) || "";
     }
 };
 
 export const DO_POURCENTAGE: Domain = {
     validator: (input: string) => !/^(100(\.00?)?|[1-9]?\d(\.\d\d?)?)$/.test(input) && "domain.validation.montant",
     displayFormatter(montant) {
-        return montant && numeral(parseFloat(montant)).format("0,0.00 $") || "";
+        return (montant && numeral(parseFloat(montant)).format("0,0.00 $")) || "";
     },
     inputFormatter(montant) {
-        return montant && montant.toString().replace(".", ",") || "";
+        return (montant && montant.toString().replace(".", ",")) || "";
     },
     unformatter(text) {
-        return text && text.replace(",", ".") || "";
+        return (text && text.replace(",", ".")) || "";
     }
 };
 

@@ -10,6 +10,6 @@ export const homeViewStore = new ViewStore({
     prefix: "home" as "home",
     view: {
         id: "" as string,
-        page: "" as "list",
+        page: "" as "list"
     }
 });

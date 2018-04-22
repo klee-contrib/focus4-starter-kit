@@ -7,7 +7,7 @@ export interface Civilite {
 }
 export const civilite = {valueKey: "code", labelKey: "libelle", type: {} as Civilite};
 
-export type StatutJuridiqueCode =  "ASSO" | "AUTO_ENTR" | "AUTRES" | "EARL" | "EIRL" | "ENTR_INDIV" | "EURL" | "GCSMS" | "GIE" | "GIP" | "SA" | "SARL" | "SAS" | "SASU" | "SCA" | "SCI" | "SCM" | "SCP" | "SCS" | "SELARL" | "SEM" | "SNC";
+export type StatutJuridiqueCode = "ASSO" | "AUTO_ENTR" | "AUTRES" | "EARL" | "EIRL" | "ENTR_INDIV" | "EURL" | "GCSMS" | "GIE" | "GIP" | "SA" | "SARL" | "SAS" | "SASU" | "SCA" | "SCI" | "SCM" | "SCP" | "SCS" | "SELARL" | "SEM" | "SNC";
 export interface StatutJuridique {
     code: StatutJuridiqueCode;
     libelle: string;

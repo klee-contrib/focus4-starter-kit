@@ -48,6 +48,6 @@ export const AdresseEntity = {
             domain: DO_LIBELLE_100,
             isRequired: true,
             label: "adresse.ville"
-        },
+        }
     }
 };
