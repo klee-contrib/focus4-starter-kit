@@ -4,7 +4,12 @@
     "printWidth": 120,
     "overrides": [
         {
-            "files": ["package.json", "**/references.ts"],
+            "files": [
+                "package.json",
+                "package-lock.json",
+                "app/model/**",
+                "app/services/**"
+            ],
             "options": {
                 "printWidth": 50000
             }
