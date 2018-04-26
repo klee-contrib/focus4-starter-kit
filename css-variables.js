@@ -7,5 +7,8 @@ module.exports = css({
     // Variables Focus (autocomplétion !)
     headerColor: "var(--color-white)",
     headerContentBackground: "var(--palette-purple-200)",
-    headerToprowBackground: "var(--palette-purple-200)"
+    headerToprowBackground: "var(--palette-purple-200)",
+
+    selectLineColor: "var(--color-primary)",
+    selectArrowColor: "var(--color-primary)"
 });
