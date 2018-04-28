@@ -18,7 +18,7 @@ export class SuiviComponent extends React.Component {
     @observable popinOpened = false;
 
     async componentWillMount() {
-        mainStore.suivi.set(await loadSuivi());
+        mainStore.suivi.replace(await loadSuivi());
     }
 
     render() {
