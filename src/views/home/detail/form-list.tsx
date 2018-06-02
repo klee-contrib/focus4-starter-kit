@@ -1,7 +1,6 @@
 import {
     fieldFor,
     Form,
-    listFor,
     makeField,
     makeFormActions,
     makeFormNode,
@@ -12,6 +11,7 @@ import {
     React,
     selectFor
 } from "focus4";
+import {List} from "focus4/collections";
 import {patchNodeEdit} from "focus4/entity";
 import {Input} from "react-toolbox/lib/input";
 
@@ -24,6 +24,7 @@ export class FormList extends React.Component {
 
     entity = makeFormNode(
         mainStore.contactList,
+        () => this.magicWord === "yolo",
         entity => {
             patchField(entity.nom, {isRequired: false});
             patchField(entity.prenom, () => ({isRequired: !!entity.nom.value}));
@@ -35,8 +36,7 @@ export class FormList extends React.Component {
                     label: "contact.nomPrenom"
                 })
             };
-        },
-        () => this.magicWord === "yolo"
+        }
     );
 
     actions = makeFormActions(this.entity, {
@@ -50,11 +50,11 @@ export class FormList extends React.Component {
             <Form {...this.actions.formProps}>
                 <Panel title="Formulaire liste" {...this.actions.panelProps}>
                     <Input value={this.magicWord} onChange={(text: string) => (this.magicWord = text)} />
-                    {listFor({
-                        data: this.entity,
-                        perPage: 2,
-                        isManualFetch: true,
-                        LineComponent: observer(({data}: {data: FormList["entity"][0]}) => (
+                    <List
+                        data={this.entity}
+                        perPage={2}
+                        isManualFetch
+                        LineComponent={observer(({data}) => (
                             <>
                                 <h6>{data.nomPrenom.value || "Contact"}</h6>
                                 {fieldFor(data.nom)}
@@ -62,8 +62,8 @@ export class FormList extends React.Component {
                                 {fieldFor(data.email)}
                                 {selectFor(data.civiliteCode, referenceStore.civilite)}
                             </>
-                        ))
-                    })}
+                        ))}
+                    />
                 </Panel>
             </Form>
         );

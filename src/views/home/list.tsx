@@ -1,8 +1,8 @@
-import {observer, React, stringFor, timelineFor} from "focus4";
-import {ActionBar, getDraggedItems, ListStore, storeListFor, storeTableFor} from "focus4/collections";
+import {observer, React, stringFor} from "focus4";
+import {ActionBar, getDraggedItems, ListStore, StoreList, StoreTable, Timeline} from "focus4/collections";
 import {makeField} from "focus4/entity";
 import {runInAction} from "mobx";
-import {ConnectDropTarget, DragDropContext, DropTarget} from "react-dnd";
+import {DragDropContext, DropTarget} from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
 import {Contact} from "../../model/main/contact";
@@ -29,7 +29,7 @@ const ListLine = observer(({data}: {data: Contact}) => (
     </div>
 ));
 
-const Target = DropTarget<any>(
+const Target = DropTarget(
     "item",
     {
         drop(_, monitor) {
@@ -49,35 +49,25 @@ const Target = DropTarget<any>(
         isOver: monitor.isOver(),
         canDrop: monitor.canDrop()
     })
-)(
-    ({
-        connectDropTarget,
-        isOver,
-        canDrop
-    }: {
-        connectDropTarget?: ConnectDropTarget;
-        isOver?: boolean;
-        canDrop?: boolean;
-    }) =>
-        connectDropTarget!(
-            <div
-                style={{
-                    width: 200,
-                    height: 200,
-                    boxSizing: "border-box",
-                    background: canDrop ? "yellow" : "transparent",
-                    borderColor: "black",
-                    borderStyle: "dashed",
-                    transition: "0.1s all ease-out",
-                    borderWidth: isOver ? 5 : 1
-                }}
-            >
-                POUBELLE
-            </div>
-        )
-);
+)((({connectDropTarget, isOver, canDrop}: any) =>
+    connectDropTarget!(
+        <div
+            style={{
+                width: 200,
+                height: 200,
+                boxSizing: "border-box",
+                background: canDrop ? "yellow" : "transparent",
+                borderColor: "black",
+                borderStyle: "dashed",
+                transition: "0.1s all ease-out",
+                borderWidth: isOver ? 5 : 1
+            }}
+        >
+            POUBELLE
+        </div>
+    )) as any);
 
-@(DragDropContext(HTML5Backend) as any)
+@DragDropContext(HTML5Backend)
 @observer
 export class List extends React.Component<{}> {
     async componentWillMount() {
@@ -87,32 +77,21 @@ export class List extends React.Component<{}> {
     render() {
         return (
             <>
-                {storeTableFor({
-                    store: listStore,
-                    RowComponent: TableLine,
-                    columns: {
+                <StoreTable
+                    store={listStore}
+                    RowComponent={TableLine}
+                    columns={{
                         nom: "Nom",
                         prenom: "Prénom",
                         email: "Email",
                         civilite: "Civilité"
-                    },
-                    sortableColumns: ["nom", "prenom"]
-                })}
-                <br />
+                    }}
+                    sortableColumns={["nom", "prenom"]}
+                />
                 <Target />
                 <ActionBar store={listStore} hasSelection={true} />
-                {storeListFor({
-                    store: listStore,
-                    lineTheme: {line},
-                    LineComponent: ListLine,
-                    hasSelection: true,
-                    hasDragAndDrop: true
-                })}
-                {timelineFor({
-                    data: listStore.list,
-                    TimelineComponent: ListLine,
-                    dateSelector: l => makeField(`${l.id}`)
-                })}
+                <StoreList store={listStore} lineTheme={{line}} LineComponent={ListLine} hasSelection hasDragAndDrop />
+                <Timeline data={listStore.list} TimelineComponent={ListLine} dateSelector={l => makeField(`${l.id}`)} />
             </>
         );
     }
