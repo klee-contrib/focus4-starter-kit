@@ -1,17 +1,25 @@
 const path = require("path");
 const webpack = require("webpack");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const variables = require("./css-variables");
 
 module.exports = {
+    stats: {modules: false, warningsFilter: /export .* was not found in/},
+    performance: {hints: false},
     entry: "./src",
     output: {
         path: path.join(__dirname, "static"),
         filename: "app.js",
         publicPath: "./static/"
     },
+    devServer: {
+        publicPath: "/static/",
+        port: 3000
+    },
     resolve: {
         extensions: [".js", ".ts", ".tsx"]
     },
+    plugins: [new webpack.WatchIgnorePlugin([/.d\.ts$/, /.\.js$/]), new ForkTsCheckerWebpackPlugin({tslint: true})],
     module: {
         rules: [
             {
@@ -28,7 +36,10 @@ module.exports = {
                 include: [path.resolve(__dirname, "./src")],
                 use: [
                     {
-                        loader: "awesome-typescript-loader"
+                        loader: "ts-loader",
+                        options: {
+                            transpileOnly: true
+                        }
                     }
                 ]
             },
@@ -45,10 +56,12 @@ module.exports = {
                 use: [
                     {loader: "style-loader"},
                     {
-                        loader: "css-loader",
+                        loader: "typings-for-css-modules-loader",
                         options: {
                             modules: true,
-                            localIdentName: "[name]-[local]--[hash:base64:5]", // Ou ce que vous avez déjà ici
+                            silent: true,
+                            namedExport: true,
+                            localIdentName: "[name]-[local]--[hash:base64:5]",
                             importLoaders: 1
                         }
                     },
@@ -70,7 +83,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(woff2?|ttf|eot|svg)$/,
+                test: /\.(woff2?|ttf|eot|svg|png)$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -79,6 +92,5 @@ module.exports = {
                 ]
             }
         ]
-    },
-    devtool: "source-map"
+    }
 };

@@ -6,6 +6,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "target": "es5",
+        "sourceMap": true,
 
         // Options obligatoires
         "allowSyntheticDefaultImports": true,
