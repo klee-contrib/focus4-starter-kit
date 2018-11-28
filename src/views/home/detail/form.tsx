@@ -20,7 +20,7 @@ import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
 @observer
 export class BasicForm extends React.Component {
-    entity = makeFormNode(mainStore.structure, false, entity => {
+    entity = makeFormNode(mainStore.structure, {}, entity => {
         // On change le domaine et le isRequired du champ.
         patchField(entity.denominationSociale, () => ({
             domain: DO_COMMENTAIRE,

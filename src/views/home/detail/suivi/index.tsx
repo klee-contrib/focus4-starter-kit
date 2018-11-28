@@ -9,7 +9,7 @@ import {mainStore} from "../../../../stores";
 import {SuiviCreation} from "./creation";
 
 // On patch en mode yolo ce noeud de store, pour la démo.
-mainStore.suivi.evenementList.$transform = evt => {
+mainStore.suivi.evenementList.$initializer = evt => {
     patchField(evt.commentaire, {displayFormatter: text => text && text.toUpperCase()});
 };
 

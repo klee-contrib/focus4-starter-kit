@@ -4,7 +4,7 @@ import {mainStore} from "../../../../stores";
 
 @observer
 export class SuiviCreation extends React.Component<{close: () => void}> {
-    entity = makeFormNode(mainStore.evenement, true);
+    entity = makeFormNode(mainStore.evenement, {isEdit: true, isEmpty: true});
     actions = makeFormActions(
         this.entity,
         {
@@ -13,9 +13,8 @@ export class SuiviCreation extends React.Component<{close: () => void}> {
             }
         },
         {
-            clearBeforeInit: true,
             onFormSaved: () => this.props.close(),
-            onToggleEdit: edit => !edit && this.props.close()
+            onClickCancel: () => this.props.close()
         }
     );
 
