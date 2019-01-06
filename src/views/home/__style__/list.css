@@ -1,11 +1,3 @@
-.line {
-    margin: 4px 0;
-}
-
-.line:first-child {
-    margin-top: 0;
-}
-
-.line:last-child {
-    margin-bottom: 0;
+.line:not(:last-child) {
+    margin-bottom: 4px;
 }

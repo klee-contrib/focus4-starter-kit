@@ -23,8 +23,8 @@ const TableLine = observer(({data}: {data: Contact}) => (
     </tr>
 ));
 
-const ListLine = observer(({data}: {data: Contact}) => (
-    <div style={{background: "white", padding: "15px 50px"}}>
+const ListLine = observer(({data, openDetail}: {data: Contact; openDetail?: () => void}) => (
+    <div style={{background: "white", padding: "15px 50px"}} onClick={openDetail}>
         {`${stringFor(makeField(data.civiliteCode), referenceStore.civilite)} ${data.prenom} ${data.nom} ${data.email}`}
     </div>
 ));
@@ -80,6 +80,7 @@ export class List extends React.Component {
                 <StoreTable
                     store={listStore}
                     RowComponent={TableLine}
+                    itemKey={d => d.email}
                     columns={{
                         nom: "Nom",
                         prenom: "Prénom",
@@ -90,8 +91,25 @@ export class List extends React.Component {
                 />
                 <Target />
                 <ActionBar store={listStore} hasSelection={true} />
-                <StoreList store={listStore} lineTheme={{line}} LineComponent={ListLine} hasSelection hasDragAndDrop />
-                <Timeline data={listStore.list} TimelineComponent={ListLine} dateSelector={l => makeField(`${l.id}`)} />
+                <StoreList
+                    store={listStore}
+                    LineComponent={ListLine}
+                    itemKey={d => d.email}
+                    lineTheme={{line}}
+                    hasSelection
+                    hasDragAndDrop
+                    DetailComponent={({data}) => (
+                        <h2>
+                            {data.nom} {data.prenom}
+                        </h2>
+                    )}
+                />
+                <Timeline
+                    data={listStore.list}
+                    TimelineComponent={ListLine}
+                    dateSelector={l => makeField(`${l.id}`)}
+                    itemKey={d => d.email}
+                />
             </>
         );
     }

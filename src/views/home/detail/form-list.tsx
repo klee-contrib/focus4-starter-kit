@@ -11,7 +11,7 @@ import {
     React,
     selectFor
 } from "focus4";
-import {List} from "focus4/collections";
+import {listFor} from "focus4/collections";
 import {patchNodeEdit} from "focus4/entity";
 import {Input} from "react-toolbox/lib/input";
 
@@ -46,11 +46,12 @@ export class FormList extends React.Component {
             <Form {...this.actions.formProps}>
                 <Panel title="Formulaire liste" {...this.actions.panelProps}>
                     <Input value={this.magicWord} onChange={(text: string) => (this.magicWord = text)} />
-                    <List
-                        data={this.entity}
-                        perPage={2}
-                        isManualFetch
-                        LineComponent={observer(({data}) => (
+                    {listFor({
+                        data: this.entity,
+                        perPage: 2,
+                        isManualFetch: true,
+                        itemKey: d => d.id.value,
+                        LineComponent: observer(({data}) => (
                             <>
                                 <h6>{data.nomPrenom.value || "Contact"}</h6>
                                 {fieldFor(data.nom)}
@@ -58,8 +59,8 @@ export class FormList extends React.Component {
                                 {fieldFor(data.email)}
                                 {selectFor(data.civiliteCode, referenceStore.civilite)}
                             </>
-                        ))}
-                    />
+                        ))
+                    })}
                 </Panel>
             </Form>
         );

@@ -33,6 +33,7 @@ export class SuiviComponent extends React.Component {
                 <br />
                 {listFor({
                     data: evenementList,
+                    itemKey: d => d.id.value,
                     LineComponent: observer(({data}: {data: EvenementNode}) => (
                         <span>
                             {stringFor(data.date)} - {stringFor(data.commentaire)}
