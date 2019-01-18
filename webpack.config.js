@@ -70,13 +70,14 @@ module.exports = {
                         options: {
                             plugins: () => [
                                 require("postcss-import")(),
+                                require("postcss-custom-properties")({
+                                    variables
+                                }),
+                                require("postcss-color-function")(),
                                 require("postcss-preset-env")({
                                     features: {
                                         "nesting-rules": true
                                     }
-                                }),
-                                require("postcss-custom-properties")({
-                                    variables
                                 })
                             ]
                         }
