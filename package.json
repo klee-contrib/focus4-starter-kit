@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "9.8.0-rc5",
+    "version": "9.8.0-rc6",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
@@ -12,27 +12,29 @@
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "focus4": "9.8.0-rc5"
+        "focus4": "9.8.0-rc6"
     },
     "devDependencies": {
         "css-loader": "1.0.1",
         "file-loader": "3.0.1",
         "fork-ts-checker-webpack-plugin": "0.5.2",
         "json-loader": "0.5.7",
-        "postcss": "7.0.13",
-        "postcss-preset-env": "6.5.0",
+        "postcss": "7.0.14",
+        "postcss-color-function": "4.0.1",
+        "postcss-custom-properties": "7.0.0",
         "postcss-import": "12.0.1",
         "postcss-loader": "3.0.0",
+        "postcss-preset-env": "6.5.0",
         "source-map-loader": "0.2.4",
         "style-loader": "0.23.1",
-        "stylelint": "9.10.0",
+        "stylelint": "9.10.1",
         "ts-loader": "5.3.3",
         "tslint": "5.12.1",
         "typescript": "3.2.4",
         "typed-css-modules": "0.3.7",
         "typings-for-css-modules-loader": "1.7.0",
         "url-loader": "1.1.2",
-        "webpack": "4.28.4",
+        "webpack": "4.29.0",
         "webpack-cli": "3.2.1",
         "webpack-dev-server": "3.1.14"
     },

@@ -71,6 +71,7 @@ module.exports = {
                             plugins: () => [
                                 require("postcss-import")(),
                                 require("postcss-custom-properties")({
+                                    preserve: false,
                                     variables
                                 }),
                                 require("postcss-color-function")(),
