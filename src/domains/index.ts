@@ -1,12 +1,16 @@
-import {InputDate, InputDateProps} from "focus4/components";
-import {Domain} from "focus4/entity";
+import {InputDate} from "focus4/components";
+import {domain} from "focus4/entity";
 
 import moment from "moment";
 import numeral from "numeral";
+import "numeral/locales/fr";
 
-export const DO_BOOLEEN: Domain = {};
+moment.locale("fr");
+numeral.locale("fr");
 
-export const DO_COMMENTAIRE: Domain = {
+export const DO_BOOLEEN = domain<boolean>()({});
+
+export const DO_COMMENTAIRE = domain<string>()({
     inputProps: {
         multiline: true,
         rows: 4,
@@ -16,68 +20,70 @@ export const DO_COMMENTAIRE: Domain = {
         type: "string",
         maxLength: 3000
     }
-};
+});
 
-export const DO_CODE_10: Domain = {
+export const DO_CODE_10 = domain<string>()({
     inputProps: {maxLength: 10},
     validator: {
         type: "string",
         maxLength: 10
     }
-};
+});
 
-export const DO_DATE: Domain<InputDateProps> = {
+export const DO_DATE = domain<string>()({
     validator: {type: "date"},
     InputComponent: InputDate,
     displayFormatter: (date: string) => (date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : ""),
     inputProps: {
         inputFormat: "DD/MM/YYYY"
     }
-};
+});
 
-export const DO_ID: Domain = {};
+export const DO_ID = domain<number>()({});
 
-export const DO_EMAIL: Domain = {
+export const DO_EMAIL = domain<string>()({
     validator: {type: "email"}
-};
+});
 
-export const DO_LIBELLE_100: Domain = {
+export const DO_LIBELLE_100 = domain<string>()({
     inputProps: {maxLength: 100},
     validator: {
         type: "string",
         maxLength: 100
     }
-};
+});
 
-export const DO_MONTANT: Domain = {
-    validator: (input: string) => !/^-?\d*\.?\d{0,2}$/.test(input) && "domain.validation.montant",
+export const DO_MONTANT = domain<number>()({
+    validator: {
+        type: "number",
+        maxDecimals: 2,
+        errorMessage: "domain.validation.montant"
+    },
     displayFormatter(montant) {
-        return (montant && numeral(parseFloat(montant)).format("0,0.00 $")) || "";
+        return (montant && numeral(montant).format("0,0.00 $")) || "";
     },
-    inputFormatter(montant) {
-        return (montant && montant.toString().replace(".", ",")) || "";
-    },
-    unformatter(text) {
-        return (text && text.replace(",", ".")) || "";
+    inputProps: {
+        hasThousandsSeparator: true,
+        maxDecimals: 2
     }
-};
+});
 
-export const DO_POURCENTAGE: Domain = {
-    validator: (input: string) => !/^(100(\.00?)?|[1-9]?\d(\.\d\d?)?)$/.test(input) && "domain.validation.montant",
+export const DO_POURCENTAGE = domain<number>()({
+    validator: {
+        type: "number",
+        maxDecimals: 2,
+        max: 100,
+        min: 0,
+        errorMessage: "domain.validation.pourcentage"
+    },
     displayFormatter(montant) {
-        return (montant && numeral(parseFloat(montant)).format("0,0.00 $")) || "";
-    },
-    inputFormatter(montant) {
-        return (montant && montant.toString().replace(".", ",")) || "";
-    },
-    unformatter(text) {
-        return (text && text.replace(",", ".")) || "";
+        return (montant && numeral(montant).format("0[.0] %")) || "";
     }
-};
+});
 
-export const DO_TELEPHONE: Domain = {
+export const DO_TELEPHONE = domain<string>()({
     validator: {
         type: "string",
         maxLength: 13
     }
-};
+});

@@ -11,24 +11,24 @@ export const SuiviEntity = {
     name: "suivi",
     fields: {
         dateCreation: {
-            type: "field" as "field",
-            fieldType: "",
+            type: "field",
+            fieldType: "string",
             name: "dateCreation",
             domain: DO_DATE,
             isRequired: true,
             label: "suivi.dateCreation"
         },
         nombreEvenement: {
-            type: "field" as "field",
-            fieldType: 0,
+            type: "field",
+            fieldType: "number",
             name: "nombreEvenement",
             domain: DO_ID,
             isRequired: true,
             label: "suivi.nombreEvenement"
         },
         evenementList: {
-            type: "list" as "list",
+            type: "list",
             entity: EvenementEntity
         }
     }
-};
+} as const;

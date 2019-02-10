@@ -22,7 +22,7 @@ import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 export class FormList extends React.Component {
     @observable magicWord = "";
 
-    entity = makeFormNode(mainStore.contactList, {isEdit: () => this.magicWord === "yolo"}, entity => {
+    entity = makeFormNode(this, mainStore.contactList, {isEdit: () => this.magicWord === "yolo"}, entity => {
         patchField(entity.nom, {isRequired: false});
         patchField(entity.prenom, () => ({isRequired: !!entity.nom.value}));
 
@@ -35,7 +35,7 @@ export class FormList extends React.Component {
         };
     });
 
-    actions = makeFormActions(this.entity, {
+    actions = makeFormActions(this, this.entity, {
         getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [id]),
         load: loadContactList,
         save: async x => x

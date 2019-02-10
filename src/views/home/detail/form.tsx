@@ -20,14 +20,18 @@ import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
 @observer
 export class BasicForm extends React.Component {
-    entity = makeFormNode(mainStore.structure, {}, entity => {
+    entity = makeFormNode(this, mainStore.structure, {}, entity => {
         // On change le domaine et le isRequired du champ.
         patchField(entity.denominationSociale, () => ({
             domain: DO_COMMENTAIRE,
             isRequired: !!entity.capitalSocial.value
         }));
 
-        patchField(entity.capitalSocial, {}, () => entity.statutJuridiqueCode.value !== "EARL");
+        patchField(
+            entity.capitalSocial,
+            {validator: {type: "number", max: 20000}},
+            () => entity.statutJuridiqueCode.value !== "EARL"
+        );
         patchNodeEdit(entity.adresse, false);
 
         // On ajoute un champ supplémentaire calculé.
@@ -44,7 +48,7 @@ export class BasicForm extends React.Component {
         };
     });
 
-    actions = makeFormActions(this.entity, {
+    actions = makeFormActions(this, this.entity, {
         getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [+id]),
         load: loadStructure,
         save: saveStructure

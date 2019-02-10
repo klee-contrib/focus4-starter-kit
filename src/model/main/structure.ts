@@ -12,56 +12,56 @@ export const StructureEntity = {
     name: "structure",
     fields: {
         id: {
-            type: "field" as "field",
-            fieldType: 0,
+            type: "field",
+            fieldType: "number",
             name: "id",
             domain: DO_ID,
             isRequired: false,
             label: "structure.id"
         },
         denominationSociale: {
-            type: "field" as "field",
-            fieldType: "",
+            type: "field",
+            fieldType: "string",
             name: "denominationSociale",
             domain: DO_LIBELLE_100,
             isRequired: true,
             label: "structure.denominationSociale"
         },
         capitalSocial: {
-            type: "field" as "field",
-            fieldType: 0,
+            type: "field",
+            fieldType: "number",
             name: "capitalSocial",
             domain: DO_MONTANT,
             isRequired: false,
             label: "structure.capitalSocial"
         },
         isBeneficiaireEffectif: {
-            type: "field" as "field",
-            fieldType: false,
+            type: "field",
+            fieldType: "boolean",
             name: "isBeneficiaireEffectif",
             domain: DO_BOOLEEN,
             isRequired: true,
             label: "structure.isBeneficiaireEffectif"
         },
         dateDemande: {
-            type: "field" as "field",
-            fieldType: "",
+            type: "field",
+            fieldType: "string",
             name: "dateDemande",
             domain: DO_DATE,
             isRequired: false,
             label: "structure.dateDemande"
         },
         statutJuridiqueCode: {
-            type: "field" as "field",
-            fieldType: "" as StatutJuridiqueCode,
+            type: "field",
+            fieldType: "string" as StatutJuridiqueCode,
             name: "statutJuridiqueCode",
             domain: DO_CODE_10,
             isRequired: false,
             label: "structure.statutJuridiqueCode"
         },
         adresse: {
-            type: "object" as "object",
+            type: "object",
             entity: AdresseEntity
         }
     }
-};
+} as const;

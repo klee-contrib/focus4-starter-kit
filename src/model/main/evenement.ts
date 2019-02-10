@@ -10,28 +10,28 @@ export const EvenementEntity = {
     name: "evenement",
     fields: {
         id: {
-            type: "field" as "field",
-            fieldType: 0,
+            type: "field",
+            fieldType: "number",
             name: "id",
             domain: DO_ID,
             isRequired: false,
             label: "evenement.id"
         },
         date: {
-            type: "field" as "field",
-            fieldType: "",
+            type: "field",
+            fieldType: "string",
             name: "date",
             domain: DO_DATE,
             isRequired: true,
             label: "evenement.date"
         },
         commentaire: {
-            type: "field" as "field",
-            fieldType: "",
+            type: "field",
+            fieldType: "string",
             name: "commentaire",
             domain: DO_COMMENTAIRE,
             isRequired: true,
             label: "evenement.commentaire"
         }
     }
-};
+} as const;
