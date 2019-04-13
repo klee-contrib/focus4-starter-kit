@@ -33,7 +33,7 @@ export const DO_CODE_10 = domain<string>()({
 export const DO_DATE = domain<string>()({
     validator: {type: "date"},
     InputComponent: InputDate,
-    displayFormatter: (date: string) => (date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : ""),
+    displayFormatter: date => (date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : ""),
     inputProps: {
         inputFormat: "DD/MM/YYYY"
     }

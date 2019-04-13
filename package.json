@@ -12,7 +12,7 @@
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "focus4": "9.9.0-rc"
+        "focus4": "9.9.0-rc3"
     },
     "devDependencies": {
         "css-loader": "1.0.1",
