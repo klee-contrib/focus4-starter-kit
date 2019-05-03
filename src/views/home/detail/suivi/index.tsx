@@ -1,4 +1,4 @@
-import {fieldFor, i18n, listFor, observable, observer, Panel, Popin, React, stringFor} from "focus4";
+import {Content, fieldFor, i18n, listFor, observable, observer, Panel, Popin, React, stringFor} from "focus4";
 import {patchField} from "focus4/entity";
 import {Button} from "react-toolbox/lib/button";
 
@@ -41,7 +41,9 @@ export class SuiviComponent extends React.Component {
                     ))
                 })}
                 <Popin opened={this.popinOpened} closePopin={() => (this.popinOpened = false)}>
-                    <SuiviCreation close={() => (this.popinOpened = false)} />
+                    <Content>
+                        <SuiviCreation close={() => (this.popinOpened = false)} />
+                    </Content>
                 </Popin>
             </Panel>
         );

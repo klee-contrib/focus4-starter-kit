@@ -1,7 +1,6 @@
 @import "react-toolbox/lib/colors.css";
 
-body {
-    & .layout {
-        background: var(--palette-purple-50);
-    }
+.layout,
+.popin {
+    background: var(--palette-purple-50);
 }

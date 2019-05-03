@@ -1,4 +1,4 @@
-import {observer, React, stringFor} from "focus4";
+import {Content, observer, React, stringFor} from "focus4";
 import {ActionBar, getDraggedItems, ListStore, StoreList, StoreTable, Timeline} from "focus4/collections";
 import {makeField} from "focus4/entity";
 import {runInAction} from "mobx";
@@ -13,15 +13,6 @@ import {line} from "./__style__/list.css";
 
 const listStore = new ListStore<Contact>();
 listStore.isItemSelectionnable = data => !(data.id! % 2);
-
-const TableLine = observer(({data}: {data: Contact}) => (
-    <tr>
-        <td>{data.nom}</td>
-        <td>{data.prenom}</td>
-        <td>{data.email}</td>
-        <td>{stringFor(makeField(data.civiliteCode), referenceStore.civilite)}</td>
-    </tr>
-));
 
 const ListLine = observer(({data, openDetail}: {data: Contact; openDetail?: () => void}) => (
     <div style={{background: "white", padding: "15px 50px"}} onClick={openDetail}>
@@ -76,18 +67,19 @@ export class List extends React.Component {
 
     render() {
         return (
-            <>
+            <Content>
                 <StoreTable
                     store={listStore}
-                    RowComponent={TableLine}
                     itemKey={d => d.email}
-                    columns={{
-                        nom: "Nom",
-                        prenom: "Prénom",
-                        email: "Email",
-                        civilite: "Civilité"
-                    }}
-                    sortableColumns={["nom", "prenom"]}
+                    columns={[
+                        {title: "Nom", content: data => data.nom, sortKey: "nom"},
+                        {title: "Prénom", content: data => data.prenom, sortKey: "prenom"},
+                        {title: "Email", content: data => data.email},
+                        {
+                            title: "Civilité",
+                            content: data => stringFor(makeField(data.civiliteCode), referenceStore.civilite)
+                        }
+                    ]}
                 />
                 <Target />
                 <ActionBar store={listStore} hasSelection={true} />
@@ -110,7 +102,7 @@ export class List extends React.Component {
                     dateSelector={l => makeField(`${l.id}`)}
                     itemKey={d => d.email}
                 />
-            </>
+            </Content>
         );
     }
 }
