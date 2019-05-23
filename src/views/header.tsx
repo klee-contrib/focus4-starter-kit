@@ -1,4 +1,3 @@
-import {observable, observer, React} from "focus4";
 import {
     HeaderActions,
     HeaderBarRight,
@@ -6,7 +5,10 @@ import {
     HeaderScrolling,
     HeaderSummary,
     HeaderTopRow
-} from "focus4/layout";
+} from "@focus4/layout";
+import {observable} from "mobx";
+import {observer} from "mobx-react";
+import React from "react";
 
 import {router} from "../stores";
 import {header} from "./home";

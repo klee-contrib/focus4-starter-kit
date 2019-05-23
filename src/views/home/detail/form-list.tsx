@@ -1,18 +1,18 @@
+import {listFor} from "@focus4/collections";
 import {
     fieldFor,
     Form,
     makeField,
     makeFormActions,
     makeFormNode,
-    observable,
-    observer,
     Panel,
     patchField,
-    React,
     selectFor
-} from "focus4";
-import {listFor} from "focus4/collections";
-import {patchNodeEdit} from "focus4/entity";
+} from "@focus4/components";
+import {patchNodeEdit} from "@focus4/stores";
+import {observable} from "mobx";
+import {observer} from "mobx-react";
+import React from "react";
 import {Input} from "react-toolbox/lib/input";
 
 import {loadContactList} from "../../../services/main";
@@ -44,7 +44,7 @@ export class FormList extends React.Component {
     render() {
         return (
             <Form {...this.actions.formProps}>
-                <Panel title="Formulaire liste" {...this.actions.panelProps}>
+                <Panel title="Formulaire liste" name="liste" {...this.actions.panelProps}>
                     <Input value={this.magicWord} onChange={(text: string) => (this.magicWord = text)} />
                     {listFor({
                         data: this.entity,

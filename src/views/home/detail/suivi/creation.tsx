@@ -1,4 +1,6 @@
-import {fieldFor, Form, makeFormActions, makeFormNode, observer, Panel, React} from "focus4";
+import {fieldFor, Form, makeFormActions, makeFormNode, Panel} from "@focus4/components";
+import {observer} from "mobx-react";
+import React from "react";
 
 import {mainStore} from "../../../../stores";
 
@@ -22,7 +24,7 @@ export class SuiviCreation extends React.Component<{close: () => void}> {
     render() {
         return (
             <Form {...this.actions.formProps}>
-                <Panel hideOnScrollspy title="Ajouter un évènement" {...this.actions.panelProps}>
+                <Panel title="Ajouter un évènement" {...this.actions.panelProps}>
                     {fieldFor(this.entity.commentaire)}
                     {fieldFor(this.entity.date)}
                 </Panel>

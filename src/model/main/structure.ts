@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityToType, StoreNode} from "focus4/entity";
+import {EntityToType, StoreNode} from "@focus4/stores";
 import {DO_BOOLEEN, DO_CODE_10, DO_DATE, DO_ID, DO_LIBELLE_100, DO_MONTANT} from "../../domains";
 import {StatutJuridiqueCode} from "../references";
 import {AdresseEntity} from "./adresse";

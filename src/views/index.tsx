@@ -1,5 +1,6 @@
-import {observer, React} from "focus4";
-import {Layout} from "focus4/layout";
+import {Layout} from "@focus4/layout";
+import {observer} from "mobx-react";
+import React from "react";
 import {render} from "react-dom";
 
 import {router} from "../stores";

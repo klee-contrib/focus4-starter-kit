@@ -1,6 +1,4 @@
-import {InputDate} from "focus4/components";
-import {domain} from "focus4/entity";
-
+import {domain, InputDate} from "@focus4/components";
 import moment from "moment";
 import numeral from "numeral";
 import "numeral/locales/fr";

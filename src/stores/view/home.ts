@@ -1,4 +1,4 @@
-import {ViewStore} from "focus4/router";
+import {ViewStore} from "@focus4/core";
 
 export const homeViewStore = new ViewStore({
     beforeEnter: ({id}) => {

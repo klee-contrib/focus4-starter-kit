@@ -1,11 +1,16 @@
-import {Content, fieldFor, i18n, listFor, observable, observer, Panel, Popin, React, stringFor} from "focus4";
-import {patchField} from "focus4/entity";
+import {listFor} from "@focus4/collections";
+import {fieldFor, Panel, patchField} from "@focus4/components";
+import {Content, Popin} from "@focus4/layout";
+import {stringFor} from "@focus4/stores";
+import i18next from "i18next";
+import {observable} from "mobx";
+import {observer} from "mobx-react";
+import React from "react";
 import {Button} from "react-toolbox/lib/button";
 
 import {EvenementNode} from "../../../../model/main/evenement";
 import {loadSuivi} from "../../../../services/main";
 import {mainStore} from "../../../../stores";
-
 import {SuiviCreation} from "./creation";
 
 // On patch en mode yolo ce noeud de store, pour la démo.
@@ -27,7 +32,7 @@ export class SuiviComponent extends React.Component {
             <Panel title="Suivi de la structure">
                 {fieldFor(dateCreation)}
                 {fieldFor(nombreEvenement)}
-                <h4>{i18n.t("suivi.evenement.title")}</h4>
+                <h4>{i18next.t("suivi.evenement.title")}</h4>
                 <Button label="Ajouter un évènement" onClick={() => (this.popinOpened = true)} icon="add" />
                 <br />
                 <br />

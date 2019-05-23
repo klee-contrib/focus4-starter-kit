@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityToType, StoreNode} from "focus4/entity";
+import {EntityToType, StoreNode} from "@focus4/stores";
 import {DO_CODE_10, DO_ID, DO_LIBELLE_100} from "../../domains";
 
 export type Adresse = EntityToType<typeof AdresseEntity>;

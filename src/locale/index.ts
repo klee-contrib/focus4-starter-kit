@@ -1,8 +1,8 @@
-import {i18n} from "focus4";
+import i18next from "i18next";
 
 import {translation} from "./fr-FR";
 
-i18n.init({
+i18next.init({
     lng: "fr",
     resources: {
         fr: {

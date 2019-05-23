@@ -1,4 +1,4 @@
-import {makeRouter} from "focus4/router";
+import {makeRouter} from "@focus4/core";
 
 import {homeViewStore} from "./home";
 import {testViewStore} from "./test";

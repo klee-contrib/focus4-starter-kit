@@ -44,15 +44,31 @@ module.exports = {
                 ]
             },
             {
-                test: /\.json$/,
+                test: /yolo\.css$/,
                 use: [
+                    {loader: "style-loader"},
+                    {loader: "css-loader"},
                     {
-                        loader: "json-loader"
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: () => [
+                                require("postcss-import")(),
+                                require("postcss-custom-properties")({
+                                    preserve: false,
+                                    variables
+                                }),
+                                require("postcss-preset-env")({
+                                    features: {
+                                        "nesting-rules": true
+                                    }
+                                })
+                            ]
+                        }
                     }
                 ]
             },
             {
-                test: /\.css$/,
+                test: /(__style__|react-toolbox).+\.css$/,
                 use: [
                     {loader: "style-loader"},
                     {
@@ -61,7 +77,7 @@ module.exports = {
                             modules: true,
                             silent: true,
                             namedExport: true,
-                            localIdentName: "[name]-[local]--[hash:base64:5]",
+                            localIdentName: "[name]_[local]__[hash:base64:5]",
                             importLoaders: 1
                         }
                     },

@@ -1,4 +1,4 @@
-import {makeEntityStore} from "focus4/entity";
+import {makeEntityStore} from "@focus4/stores";
 
 import {ContactEntity} from "../model/main/contact";
 import {EvenementEntity} from "../model/main/evenement";

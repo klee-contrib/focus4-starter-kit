@@ -1,7 +1,10 @@
-import {Content, observer, React, stringFor} from "focus4";
-import {ActionBar, getDraggedItems, ListStore, StoreList, StoreTable, Timeline} from "focus4/collections";
-import {makeField} from "focus4/entity";
+import {ActionBar, getDraggedItems, StoreList, StoreTable, Timeline} from "@focus4/collections";
+import {makeField} from "@focus4/components";
+import {Content} from "@focus4/layout";
+import {ListStore, stringFor} from "@focus4/stores";
 import {runInAction} from "mobx";
+import {observer} from "mobx-react";
+import React from "react";
 import {DragDropContext, DropTarget} from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 

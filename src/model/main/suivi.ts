@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityToType, StoreNode} from "focus4/entity";
+import {EntityToType, StoreNode} from "@focus4/stores";
 import {DO_DATE, DO_ID} from "../../domains";
 import {EvenementEntity} from "./evenement";
 

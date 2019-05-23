@@ -1,4 +1,4 @@
-import {makeReferenceStore} from "focus4";
+import {makeReferenceStore} from "@focus4/stores";
 import {civilite, statutJuridique} from "../model/references";
 import {loadReference} from "../services/reference";
 

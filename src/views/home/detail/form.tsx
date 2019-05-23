@@ -1,20 +1,19 @@
 import {
     fieldFor,
     Form,
-    i18n,
     makeField,
     makeFormActions,
     makeFormNode,
-    observer,
     Panel,
     patchField,
-    React,
     selectFor
-} from "focus4";
-import {patchNodeEdit} from "focus4/entity";
+} from "@focus4/components";
+import {patchNodeEdit} from "@focus4/stores";
+import i18next from "i18next";
+import {observer} from "mobx-react";
+import React from "react";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
-
 import {loadStructure, saveStructure} from "../../../services/main";
 import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
@@ -59,7 +58,7 @@ export class BasicForm extends React.Component {
         return (
             <Form {...this.actions.formProps}>
                 <Panel title="form.title" {...this.actions.panelProps}>
-                    {i18n.t("form.content")}
+                    {i18next.t("form.content")}
                     {fieldFor(denominationSociale)}
                     {fieldFor(email)}
                     {fieldFor(capitalSocial)}

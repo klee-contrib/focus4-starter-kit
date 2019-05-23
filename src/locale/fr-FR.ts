@@ -1,9 +1,9 @@
-import {fr, icons} from "focus4/translation";
+import {translation as fTrans} from "@focus4/core";
 
 export const translation = {
     focus: {
-        ...fr,
-        icons
+        ...fTrans.fr,
+        icons: fTrans.icons
     },
     form: {
         content: "Détails",

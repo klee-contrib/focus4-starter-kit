@@ -1,5 +1,5 @@
-import {React} from "focus4";
-import {ScrollspyContainer} from "focus4/layout";
+import {ScrollspyContainer} from "@focus4/layout";
+import React from "react";
 
 import {BasicForm} from "./form";
 import {FormList} from "./form-list";
