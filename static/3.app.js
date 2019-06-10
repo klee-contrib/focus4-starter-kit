@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{899:function(n,s,o){"use strict";o.r(s);var r=o(18),i=o(1),t=o(22),a={focus:i.__assign({},t.f.fr,{icons:t.f.icons}),form:{content:"Détails",title:"Formulaire"}};r.a.init({lng:"fr",resources:{fr:{translation:a}},nsSeparator:!1})}}]);

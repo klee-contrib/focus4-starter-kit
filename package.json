@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "10.0.0-beta.0",
+    "version": "10.0.0-beta.1",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
@@ -12,8 +12,7 @@
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "@focus4/collections": "10.0.0-beta.0",
-        "@focus4/layout": "10.0.0-beta.0"
+        "focus4": "10.0.0-beta.1"
     },
     "devDependencies": {
         "css-loader": "2.1.1",

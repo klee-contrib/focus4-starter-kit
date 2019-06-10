@@ -1,7 +1,4 @@
-import "core-js/shim";
-import "material-design-icons-iconfont/dist/material-design-icons.css";
-import "./focus.css";
-
+import "focus4";
 import {router} from "./stores";
 
 router.start().then(() => {
