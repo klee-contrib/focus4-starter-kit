@@ -1,0 +1,6 @@
+@import "@focus4/styling/lib/variables.css";
+
+.layout,
+.popin {
+    background: var(--palette-purple-50);
+}

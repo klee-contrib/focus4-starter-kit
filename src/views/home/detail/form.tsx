@@ -11,7 +11,7 @@ import {
 import {patchNodeEdit} from "@focus4/stores";
 import i18next from "i18next";
 import {observer} from "mobx-react";
-import React from "react";
+import * as React from "react";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
 import {loadStructure, saveStructure} from "../../../services/main";

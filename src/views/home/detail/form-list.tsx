@@ -10,10 +10,10 @@ import {
     selectFor
 } from "@focus4/components";
 import {patchNodeEdit} from "@focus4/stores";
+import {Input} from "@focus4/toolbox";
 import {observable} from "mobx";
 import {observer} from "mobx-react";
-import React from "react";
-import {Input} from "react-toolbox/lib/input";
+import * as React from "react";
 
 import {loadContactList} from "../../../services/main";
 import {homeViewStore, mainStore, referenceStore} from "../../../stores";

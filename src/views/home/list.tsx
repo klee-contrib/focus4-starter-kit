@@ -4,7 +4,7 @@ import {Content} from "@focus4/layout";
 import {ListStore, stringFor} from "@focus4/stores";
 import {runInAction} from "mobx";
 import {observer} from "mobx-react";
-import React from "react";
+import * as React from "react";
 import {DragDropContext, DropTarget} from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
@@ -12,7 +12,7 @@ import {Contact} from "../../model/main/contact";
 import {loadContactList} from "../../services/main";
 import {referenceStore} from "../../stores";
 
-import {line} from "./__style__/list.css";
+import {line} from "./__style__/list.module.css";
 
 const listStore = new ListStore<Contact>();
 listStore.isItemSelectionnable = data => !(data.id! % 2);

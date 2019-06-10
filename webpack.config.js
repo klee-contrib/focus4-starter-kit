@@ -1,7 +1,25 @@
 const path = require("path");
 const webpack = require("webpack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+
 const variables = require("./css-variables");
+const postcss = {
+    loader: "postcss-loader",
+    options: {
+        plugins: () => [
+            require("postcss-import"),
+            require("postcss-custom-properties")({
+                preserve: false,
+                variables
+            }),
+            require("postcss-preset-env")({
+                features: {
+                    "nesting-rules": true
+                }
+            })
+        ]
+    }
+};
 
 module.exports = {
     stats: {modules: false, warningsFilter: /export .* was not found in/},
@@ -25,11 +43,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 enforce: "pre",
-                use: [
-                    {
-                        loader: "source-map-loader"
-                    }
-                ]
+                use: ["source-map-loader"]
             },
             {
                 test: /\.tsx?$/,
@@ -44,61 +58,22 @@ module.exports = {
                 ]
             },
             {
-                test: /yolo\.css$/,
-                use: [
-                    {loader: "style-loader"},
-                    {loader: "css-loader"},
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            plugins: () => [
-                                require("postcss-import")(),
-                                require("postcss-custom-properties")({
-                                    preserve: false,
-                                    variables
-                                }),
-                                require("postcss-preset-env")({
-                                    features: {
-                                        "nesting-rules": true
-                                    }
-                                })
-                            ]
-                        }
-                    }
-                ]
+                test: /\.css$/,
+                exclude: /\.module\.css$/,
+                use: ["style-loader", "css-loader", postcss]
             },
             {
-                test: /(__style__|react-toolbox).+\.css$/,
+                test: /\.module\.css$/,
                 use: [
-                    {loader: "style-loader"},
+                    "style-loader",
                     {
-                        loader: "typings-for-css-modules-loader",
+                        loader: "css-loader",
                         options: {
                             modules: true,
-                            silent: true,
-                            namedExport: true,
-                            localIdentName: "[name]_[local]__[hash:base64:5]",
-                            importLoaders: 1
+                            localIdentName: "[name]_[local]__[hash:base64:5]"
                         }
                     },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            plugins: () => [
-                                require("postcss-import")(),
-                                require("postcss-custom-properties")({
-                                    preserve: false,
-                                    variables
-                                }),
-                                require("postcss-color-function")(),
-                                require("postcss-preset-env")({
-                                    features: {
-                                        "nesting-rules": true
-                                    }
-                                })
-                            ]
-                        }
-                    }
+                    postcss
                 ]
             },
             {

@@ -8,7 +8,7 @@ import {
 } from "@focus4/layout";
 import {observable} from "mobx";
 import {observer} from "mobx-react";
-import React from "react";
+import * as React from "react";
 
 import {router} from "../stores";
 import {header} from "./home";
@@ -32,7 +32,8 @@ export const Header = observer(() => (
             primary={[
                 {
                     onClick: () => (headerStore.canDeploy = !headerStore.canDeploy),
-                    icon: "radio_button_checked"
+                    icon: "radio_button_checked",
+                    tooltip: "Toggle le canDeploy"
                 }
             ]}
         />

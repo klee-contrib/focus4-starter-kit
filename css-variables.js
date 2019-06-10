@@ -1,4 +1,4 @@
-const {css} = require("@focus4/styling/lib/css");
+const {css} = require("@focus4/styling/lib/variables");
 
 module.exports = css({
     // Varibles React-Toolbox (pas d'autocomplétion...)

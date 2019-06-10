@@ -1,6 +1,6 @@
+import {Button} from "@focus4/toolbox";
 import {Observer} from "mobx-react";
-import React from "react";
-import {Button} from "react-toolbox/lib/button";
+import * as React from "react";
 
 import {homeViewStore} from "../../stores";
 

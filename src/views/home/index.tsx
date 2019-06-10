@@ -1,6 +1,6 @@
+import {Button} from "@focus4/toolbox";
 import {observer} from "mobx-react";
-import React from "react";
-import {Button} from "react-toolbox/lib/button";
+import * as React from "react";
 
 import {homeViewStore} from "../../stores";
 
@@ -8,7 +8,7 @@ import {Detail} from "./detail";
 import {List} from "./list";
 export {header} from "./header";
 
-import {salut} from "./__style__/index.css";
+import {salut} from "./__style__/index.module.css";
 
 export const Home = observer(() => {
     let page;

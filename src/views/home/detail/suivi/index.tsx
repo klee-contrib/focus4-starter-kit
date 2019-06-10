@@ -2,11 +2,11 @@ import {listFor} from "@focus4/collections";
 import {fieldFor, Panel, patchField} from "@focus4/components";
 import {Content, Popin} from "@focus4/layout";
 import {stringFor} from "@focus4/stores";
+import {Button} from "@focus4/toolbox";
 import i18next from "i18next";
 import {observable} from "mobx";
 import {observer} from "mobx-react";
-import React from "react";
-import {Button} from "react-toolbox/lib/button";
+import * as React from "react";
 
 import {EvenementNode} from "../../../../model/main/evenement";
 import {loadSuivi} from "../../../../services/main";
