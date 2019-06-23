@@ -1,14 +1,5 @@
 import {listFor} from "@focus4/collections";
-import {
-    fieldFor,
-    Form,
-    makeField,
-    makeFormActions,
-    makeFormNode,
-    Panel,
-    patchField,
-    selectFor
-} from "@focus4/components";
+import {fieldFor, Form, makeField, makeFormActions, makeFormNode, Panel, patchField, selectFor} from "@focus4/forms";
 import {patchNodeEdit} from "@focus4/stores";
 import {Input} from "@focus4/toolbox";
 import {observable} from "mobx";

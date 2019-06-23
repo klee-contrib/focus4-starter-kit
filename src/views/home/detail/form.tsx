@@ -1,13 +1,4 @@
-import {
-    fieldFor,
-    Form,
-    makeField,
-    makeFormActions,
-    makeFormNode,
-    Panel,
-    patchField,
-    selectFor
-} from "@focus4/components";
+import {fieldFor, Form, makeField, makeFormActions, makeFormNode, Panel, patchField, selectFor} from "@focus4/forms";
 import {patchNodeEdit} from "@focus4/stores";
 import i18next from "i18next";
 import {observer} from "mobx-react";

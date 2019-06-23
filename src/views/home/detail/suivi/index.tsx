@@ -1,5 +1,5 @@
 import {listFor} from "@focus4/collections";
-import {fieldFor, Panel, patchField} from "@focus4/components";
+import {fieldFor, Panel, patchField} from "@focus4/forms";
 import {Content, Popin} from "@focus4/layout";
 import {stringFor} from "@focus4/stores";
 import {Button} from "@focus4/toolbox";

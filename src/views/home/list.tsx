@@ -1,5 +1,5 @@
 import {ActionBar, getDraggedItems, StoreList, StoreTable, Timeline} from "@focus4/collections";
-import {makeField} from "@focus4/components";
+import {makeField} from "@focus4/forms";
 import {Content} from "@focus4/layout";
 import {ListStore, stringFor} from "@focus4/stores";
 import {runInAction} from "mobx";

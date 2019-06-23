@@ -12,6 +12,7 @@ const postcss = {
                 preserve: false,
                 variables
             }),
+            require("postcss-color-function")(),
             require("postcss-preset-env")({
                 features: {
                     "nesting-rules": true
@@ -69,8 +70,9 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            modules: true,
-                            localIdentName: "[name]_[local]__[hash:base64:5]"
+                            modules: {
+                                localIdentName: "[name]_[local]__[hash:base64:5]"
+                            }
                         }
                     },
                     postcss

@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{931:function(n,s,o){"use strict";o.r(s);var r=o(9),i=o(1),t=o(22),a={focus:i.__assign({},t.g.fr,{icons:t.g.icons}),form:{content:"Détails",title:"Formulaire"}};r.a.init({lng:"fr",resources:{fr:{translation:a}},nsSeparator:!1})}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{960:function(n,s,o){"use strict";o.r(s);var r=o(9),i=o(1),t=o(22),a={focus:i.__assign({},t.g.fr,{icons:t.g.icons}),form:{content:"Détails",title:"Formulaire"}};r.a.init({lng:"fr",resources:{fr:{translation:a}},nsSeparator:!1})}}]);
