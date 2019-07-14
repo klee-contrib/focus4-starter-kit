@@ -7,11 +7,13 @@ const postcss = {
     loader: "postcss-loader",
     options: {
         plugins: () => [
-            require("postcss-import"),
+            require("postcss-import")(),
+            require("postcss-apply")(),
             require("postcss-custom-properties")({
                 preserve: false,
                 variables
             }),
+            require("postcss-calc")(),
             require("postcss-color-function")(),
             require("postcss-preset-env")({
                 features: {

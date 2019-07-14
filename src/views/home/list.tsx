@@ -31,7 +31,7 @@ const Target = DropTarget(
             runInAction(() => {
                 dragged.forEach(item => {
                     if (listStore.selectedItems.has(item)) {
-                        listStore.selectedList.clear();
+                        listStore.selectedItems.clear();
                     }
                     listStore.innerList.remove(item);
                 });
