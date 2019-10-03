@@ -10,32 +10,35 @@ import {observable} from "mobx";
 import {observer} from "mobx-react";
 import * as React from "react";
 
-import {router} from "../stores";
-import {header} from "./home";
-
 const headerStore = observable({
     canDeploy: true
 });
 
-export const Header = observer(() => (
-    <HeaderScrolling canDeploy={headerStore.canDeploy}>
-        <HeaderTopRow>
-            <HeaderSummary>
-                {router.currentStore.prefix === "home" ? header.summary : <strong>Salut Focus V4</strong>}
-            </HeaderSummary>
-            <HeaderBarRight>{router.currentStore.prefix === "home" ? header.barRight : null}</HeaderBarRight>
-        </HeaderTopRow>
-        <HeaderContent>
-            {router.currentStore.prefix === "home" ? header.cartridge : <h2>Salut Focus V4</h2>}
-        </HeaderContent>
-        <HeaderActions
-            primary={[
-                {
-                    onClick: () => (headerStore.canDeploy = !headerStore.canDeploy),
-                    icon: "radio_button_checked",
-                    tooltip: "Toggle le canDeploy"
-                }
-            ]}
-        />
-    </HeaderScrolling>
-));
+export const Header = observer(
+    ({
+        summary,
+        cartridge,
+        barRight
+    }: {
+        summary: React.ReactElement;
+        cartridge: React.ReactElement;
+        barRight?: React.ReactElement;
+    }) => (
+        <HeaderScrolling canDeploy={headerStore.canDeploy}>
+            <HeaderTopRow>
+                <HeaderSummary>{summary}</HeaderSummary>
+                <HeaderBarRight>{barRight}</HeaderBarRight>
+            </HeaderTopRow>
+            <HeaderContent>{cartridge}</HeaderContent>
+            <HeaderActions
+                primary={[
+                    {
+                        onClick: () => (headerStore.canDeploy = !headerStore.canDeploy),
+                        icon: "radio_button_checked",
+                        tooltip: "Toggle le canDeploy"
+                    }
+                ]}
+            />
+        </HeaderScrolling>
+    )
+);

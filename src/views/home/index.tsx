@@ -6,8 +6,8 @@ import {homeViewStore} from "../../stores";
 
 import {Detail} from "./detail";
 import {List} from "./list";
-export {header} from "./header";
 
+import {Header} from "../header";
 import {salut} from "./__style__/index.module.css";
 
 export const Home = observer(() => {
@@ -22,6 +22,16 @@ export const Home = observer(() => {
     }
     return (
         <>
+            <Header
+                cartridge={<h2>{`Salut identifiant ${homeViewStore.currentView.id}`}</h2>}
+                summary={<strong>{`Salut identifiant ${homeViewStore.currentView.id}`}</strong>}
+                barRight={
+                    <Button
+                        label="id au hasard"
+                        onClick={() => homeViewStore.setView({id: `${Math.floor(Math.random() * 100)}`})}
+                    />
+                }
+            />
             <Button
                 raised
                 primary={!homeViewStore.currentView.page}
