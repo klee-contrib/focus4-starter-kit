@@ -1,63 +1,60 @@
-import {fieldFor, Form, makeField, makeFormActions, makeFormNode, Panel, patchField, selectFor} from "@focus4/forms";
-import {patchNodeEdit} from "@focus4/stores";
+import {fieldFor, Form, Panel, selectFor, useFormActions, useFormNode} from "@focus4/forms";
 import i18next from "i18next";
-import {observer} from "mobx-react";
+import {useObserver} from "mobx-react-lite";
 import * as React from "react";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
 import {loadStructure, saveStructure} from "../../../services/main";
 import {homeViewStore, mainStore, referenceStore} from "../../../stores";
 
-@observer
-export class BasicForm extends React.Component {
-    entity = makeFormNode(this, mainStore.structure, {}, entity => {
-        // On change le domaine et le isRequired du champ.
-        patchField(entity.denominationSociale, () => ({
-            domain: DO_COMMENTAIRE,
-            isRequired: !!entity.capitalSocial.value
-        }));
+export function BasicForm() {
+    const entity = useFormNode(mainStore.structure, c =>
+        c
+            // On change le domaine et le isRequired du champ.
+            .patch("denominationSociale", (f, node) =>
+                f.metadata(() => ({
+                    domain: DO_COMMENTAIRE,
+                    isRequired: !!node.capitalSocial.value
+                }))
+            )
+            .patch("capitalSocial", (f, node) =>
+                f
+                    .value(() => (node.denominationSociale.value && node.denominationSociale.value.length) || 0)
+                    .metadata({validator: {type: "number", max: 20000}})
+                    .edit(() => node.statutJuridiqueCode.value !== "EARL")
+            )
+            .patch("adresse", s => s.edit(false))
 
-        patchField(
-            entity.capitalSocial,
-            {validator: {type: "number", max: 20000}},
-            () => entity.statutJuridiqueCode.value !== "EARL"
-        );
-        patchNodeEdit(entity.adresse, false);
+            // On ajoute un champ supplémentaire calculé.
+            .add("email", (f, node) =>
+                f
+                    .value(() => node.denominationSociale.value, value => (node.denominationSociale.value = value))
+                    .metadata({
+                        domain: DO_LIBELLE_100,
+                        label: "structure.email",
+                        validator: {type: "email"}
+                    })
+            )
+    );
+    const actions = useFormActions(entity, a =>
+        a
+            .params(() => homeViewStore.withView(({page, id}) => !page && id && +id))
+            .load(loadStructure)
+            .save(saveStructure)
+    );
 
-        // On ajoute un champ supplémentaire calculé.
-        return {
-            email: makeField(
-                () => entity.denominationSociale.value,
-                {
-                    domain: DO_LIBELLE_100,
-                    label: "structure.email",
-                    validator: {type: "email"}
-                },
-                email => (entity.denominationSociale.value = email)
-            ) // Setter.
-        };
-    });
-
-    actions = makeFormActions(this, this.entity, {
-        getLoadParams: () => homeViewStore.withView(({page, id}) => !page && id && [+id]),
-        load: loadStructure,
-        save: saveStructure
-    });
-
-    render() {
-        const {denominationSociale, capitalSocial, email, statutJuridiqueCode, adresse} = this.entity;
-        return (
-            <Form {...this.actions.formProps}>
-                <Panel title="form.title" {...this.actions.panelProps}>
-                    {i18next.t("form.content")}
-                    {fieldFor(denominationSociale)}
-                    {fieldFor(email)}
-                    {fieldFor(capitalSocial)}
-                    {selectFor(statutJuridiqueCode, referenceStore.statutJuridique)}
-                    {fieldFor(adresse.codePostal)}
-                    {fieldFor(adresse.ville)}
-                </Panel>
-            </Form>
-        );
-    }
+    const {denominationSociale, capitalSocial, email, statutJuridiqueCode, adresse} = entity;
+    return useObserver(() => (
+        <Form {...actions.formProps}>
+            <Panel title="form.title" {...actions.panelProps}>
+                {i18next.t("form.content")}
+                {fieldFor(denominationSociale)}
+                {fieldFor(email)}
+                {fieldFor(capitalSocial)}
+                {selectFor(statutJuridiqueCode, referenceStore.statutJuridique)}
+                {fieldFor(adresse.codePostal)}
+                {fieldFor(adresse.ville)}
+            </Panel>
+        </Form>
+    ));
 }

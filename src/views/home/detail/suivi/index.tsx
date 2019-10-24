@@ -1,5 +1,5 @@
 import {listFor} from "@focus4/collections";
-import {fieldFor, Panel, patchField} from "@focus4/forms";
+import {fieldFor, Panel} from "@focus4/forms";
 import {Content, Popin} from "@focus4/layout";
 import {stringFor} from "@focus4/stores";
 import {Button} from "@focus4/toolbox";
@@ -12,11 +12,6 @@ import {EvenementNode} from "../../../../model/main/evenement";
 import {loadSuivi} from "../../../../services/main";
 import {mainStore} from "../../../../stores";
 import {SuiviCreation} from "./creation";
-
-// On patch en mode yolo ce noeud de store, pour la démo.
-mainStore.suivi.evenementList.$initializer = evt => {
-    patchField(evt.commentaire, {displayFormatter: text => (text && text.toUpperCase()) || ""});
-};
 
 @observer
 export class SuiviComponent extends React.Component {

@@ -4,7 +4,7 @@ import {Structure} from "../model/main/structure";
 import {Suivi} from "../model/main/suivi";
 import {Contact} from "../model/main/contact";
 
-export function loadStructure(id?: number) {
+export function loadStructure(id: number) {
     return new Promise<Structure>(resolve => {
         setTimeout(() => {
             resolve({

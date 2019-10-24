@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "10.0.0",
+    "version": "10.1.0",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
@@ -12,13 +12,13 @@
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "focus4": "10.0.0"
+        "focus4": "10.1.0"
     },
     "devDependencies": {
         "css-loader": "3.2.0",
         "file-loader": "4.2.0",
-        "fork-ts-checker-webpack-plugin": "1.5.1",
-        "postcss": "7.0.18",
+        "fork-ts-checker-webpack-plugin": "3.0.1",
+        "postcss": "7.0.21",
         "postcss-apply": "0.12.0",
         "postcss-calc": "7.0.1",
         "postcss-color-function": "4.1.0",
@@ -29,7 +29,7 @@
         "source-map-loader": "0.2.4",
         "style-loader": "1.0.0",
         "stylelint": "11.1.1",
-        "ts-loader": "6.2.0",
+        "ts-loader": "6.2.1",
         "tslint": "5.20.0",
         "typescript": "3.6.4",
         "typescript-tslint-plugin": "0.5.4",
@@ -37,7 +37,7 @@
         "url-loader": "2.2.0",
         "webpack": "4.41.2",
         "webpack-cli": "3.3.9",
-        "webpack-dev-server": "3.8.2"
+        "webpack-dev-server": "3.9.0"
     },
     "author": "KleeGroup",
     "license": "MIT"
