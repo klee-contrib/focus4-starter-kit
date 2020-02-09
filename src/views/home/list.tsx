@@ -103,8 +103,15 @@ export class List extends React.Component {
                     <Timeline
                         data={listStore.list}
                         TimelineComponent={ListLine}
-                        dateSelector={l => makeField(`${l.id}`)}
+                        dateSelector={l => {
+                            const date = new Date(2020, 1, 30);
+                            date.setDate(30 - l.id!);
+                            return makeField(date.toLocaleDateString());
+                        }}
                         itemKey={d => d.email}
+                        addItemHandler={() => {
+                            /* */
+                        }}
                     />
                 </Content>
             </DndProvider>

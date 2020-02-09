@@ -28,7 +28,10 @@ export function BasicForm() {
             // On ajoute un champ supplémentaire calculé.
             .add("email", (f, node) =>
                 f
-                    .value(() => node.denominationSociale.value, value => (node.denominationSociale.value = value))
+                    .value(
+                        () => node.denominationSociale.value,
+                        value => (node.denominationSociale.value = value)
+                    )
                     .metadata({
                         domain: DO_LIBELLE_100,
                         label: "structure.email",
@@ -45,13 +48,13 @@ export function BasicForm() {
 
     const {denominationSociale, capitalSocial, email, statutJuridiqueCode, adresse} = entity;
     return useObserver(() => (
-        <Form {...actions.formProps}>
+        <Form {...actions.formProps} labelRatio={40}>
             <Panel title="form.title" {...actions.panelProps}>
                 {i18next.t("form.content")}
                 {fieldFor(denominationSociale)}
                 {fieldFor(email)}
                 {fieldFor(capitalSocial)}
-                {selectFor(statutJuridiqueCode, referenceStore.statutJuridique)}
+                {selectFor(statutJuridiqueCode, referenceStore.statutJuridique, {labelRatio: 45})}
                 {fieldFor(adresse.codePostal)}
                 {fieldFor(adresse.ville)}
             </Panel>

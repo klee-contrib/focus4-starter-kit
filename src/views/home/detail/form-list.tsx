@@ -1,11 +1,13 @@
 import {listFor} from "@focus4/collections";
 import {fieldFor, Form, makeFormActions, makeFormNode, Panel, selectFor} from "@focus4/forms";
+import {FieldEntry, FormNode} from "@focus4/stores";
 import {Input} from "@focus4/toolbox";
 import {observable} from "mobx";
 import {observer} from "mobx-react";
 import {useObserver} from "mobx-react-lite";
 import * as React from "react";
 
+import {ContactEntity} from "../../../model/main/contact";
 import {loadContactList} from "../../../services/main";
 import {mainStore, referenceStore} from "../../../stores";
 
@@ -41,19 +43,22 @@ export class FormList extends React.Component {
                         perPage: 2,
                         isManualFetch: true,
                         itemKey: d => d.id.value,
-                        LineComponent: ({data}) =>
-                            useObserver(() => (
-                                <>
-                                    <h6>{data.nomPrenom.value || "Contact"}</h6>
-                                    {fieldFor(data.nom)}
-                                    {fieldFor(data.prenom)}
-                                    {fieldFor(data.email)}
-                                    {selectFor(data.civiliteCode, referenceStore.civilite)}
-                                </>
-                            ))
+                        LineComponent: FormLine
                     })}
                 </Panel>
             </Form>
         );
     }
+}
+
+function FormLine({data}: {data: FormNode<typeof ContactEntity & {nomPrenom: FieldEntry<string>}>}) {
+    return useObserver(() => (
+        <>
+            <h6>{data.nomPrenom.value || "Contact"}</h6>
+            {fieldFor(data.nom)}
+            {fieldFor(data.prenom)}
+            {fieldFor(data.email)}
+            {selectFor(data.civiliteCode, referenceStore.civilite)}
+        </>
+    ));
 }

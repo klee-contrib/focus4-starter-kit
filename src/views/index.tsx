@@ -5,11 +5,11 @@ import {render} from "react-dom";
 
 import {router} from "../stores";
 
+import {Header} from "./header";
 import {Home} from "./home";
 import {StarterMenu} from "./menu";
 
 import {layout, popin} from "./__style__/index.module.css";
-import {Header} from "./header";
 
 const Main = observer(() => {
     const {currentStore} = router;
