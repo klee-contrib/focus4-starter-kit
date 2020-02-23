@@ -1,4 +1,4 @@
-import {ActionBar, getDraggedItems, LineProps, StoreList, StoreTable, Timeline} from "@focus4/collections";
+import {ActionBar, getDraggedItems, LineProps, List, Table, Timeline} from "@focus4/collections";
 import {makeField} from "@focus4/forms";
 import {Content} from "@focus4/layout";
 import {ListStore, stringFor} from "@focus4/stores";
@@ -15,6 +15,7 @@ import {referenceStore} from "../../stores";
 import {line} from "./__style__/list.module.css";
 
 const listStore = new ListStore<Contact>();
+listStore.sortBy = "nom";
 listStore.isItemSelectionnable = data => !(data.id! % 2);
 
 const ListLine = observer(({data, toggleDetail}: LineProps<Contact>) => (
@@ -63,7 +64,7 @@ function Target() {
 }
 
 @observer
-export class List extends React.Component {
+export class HomeList extends React.Component {
     async componentWillMount() {
         listStore.list = await loadContactList();
     }
@@ -72,7 +73,7 @@ export class List extends React.Component {
         return (
             <DndProvider backend={HTML5Backend}>
                 <Content>
-                    <StoreTable
+                    <Table
                         store={listStore}
                         itemKey={d => d.email}
                         columns={[
@@ -87,11 +88,11 @@ export class List extends React.Component {
                     />
                     <Target />
                     <ActionBar store={listStore} hasSelection={true} />
-                    <StoreList
+                    <List
                         store={listStore}
                         LineComponent={ListLine}
                         itemKey={d => d.email}
-                        lineTheme={{line}}
+                        theme={{line}}
                         hasSelection
                         hasDragAndDrop
                         DetailComponent={({data}) => (

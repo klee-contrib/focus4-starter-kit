@@ -3,8 +3,7 @@ import {fieldFor, Form, makeFormActions, makeFormNode, Panel, selectFor} from "@
 import {FieldEntry, FormNode} from "@focus4/stores";
 import {Input} from "@focus4/toolbox";
 import {observable} from "mobx";
-import {observer} from "mobx-react";
-import {useObserver} from "mobx-react-lite";
+import {observer, useObserver} from "mobx-react";
 import * as React from "react";
 
 import {ContactEntity} from "../../../model/main/contact";

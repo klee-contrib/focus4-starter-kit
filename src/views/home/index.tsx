@@ -5,7 +5,7 @@ import * as React from "react";
 import {homeViewStore} from "../../stores";
 
 import {Detail} from "./detail";
-import {List} from "./list";
+import {HomeList} from "./list";
 
 import {Header} from "../header";
 import {salut} from "./__style__/index.module.css";
@@ -14,7 +14,7 @@ export const Home = observer(() => {
     let page;
     switch (homeViewStore.currentView.page) {
         case "list":
-            page = <List />;
+            page = <HomeList />;
             break;
         default:
             page = <Detail />;
