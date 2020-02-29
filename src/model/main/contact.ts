@@ -10,7 +10,6 @@ export type ContactNode = StoreNode<typeof ContactEntity>;
 export const ContactEntity = {
     id: {
         type: "field",
-        fieldType: "number",
         name: "id",
         domain: DO_ID,
         isRequired: false,
@@ -18,7 +17,6 @@ export const ContactEntity = {
     },
     nom: {
         type: "field",
-        fieldType: "string",
         name: "nom",
         domain: DO_LIBELLE_100,
         isRequired: true,
@@ -26,7 +24,6 @@ export const ContactEntity = {
     },
     prenom: {
         type: "field",
-        fieldType: "string",
         name: "prenom",
         domain: DO_LIBELLE_100,
         isRequired: true,
@@ -34,7 +31,6 @@ export const ContactEntity = {
     },
     email: {
         type: "field",
-        fieldType: "string",
         name: "email",
         domain: DO_EMAIL,
         isRequired: false,
@@ -42,7 +38,7 @@ export const ContactEntity = {
     },
     civiliteCode: {
         type: "field",
-        fieldType: "string" as CiviliteCode,
+        fieldType: {} as CiviliteCode,
         name: "civiliteCode",
         domain: DO_CODE_10,
         isRequired: true,

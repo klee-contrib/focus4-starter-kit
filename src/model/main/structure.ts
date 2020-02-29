@@ -11,7 +11,6 @@ export type StructureNode = StoreNode<typeof StructureEntity>;
 export const StructureEntity = {
     id: {
         type: "field",
-        fieldType: "number",
         name: "id",
         domain: DO_ID,
         isRequired: false,
@@ -19,7 +18,6 @@ export const StructureEntity = {
     },
     denominationSociale: {
         type: "field",
-        fieldType: "string",
         name: "denominationSociale",
         domain: DO_LIBELLE_100,
         isRequired: true,
@@ -27,7 +25,6 @@ export const StructureEntity = {
     },
     capitalSocial: {
         type: "field",
-        fieldType: "number",
         name: "capitalSocial",
         domain: DO_MONTANT,
         isRequired: false,
@@ -35,7 +32,6 @@ export const StructureEntity = {
     },
     isBeneficiaireEffectif: {
         type: "field",
-        fieldType: "boolean",
         name: "isBeneficiaireEffectif",
         domain: DO_BOOLEEN,
         isRequired: true,
@@ -43,7 +39,6 @@ export const StructureEntity = {
     },
     dateDemande: {
         type: "field",
-        fieldType: "string",
         name: "dateDemande",
         domain: DO_DATE,
         isRequired: false,
@@ -51,7 +46,7 @@ export const StructureEntity = {
     },
     statutJuridiqueCode: {
         type: "field",
-        fieldType: "string" as StatutJuridiqueCode,
+        fieldType: {} as StatutJuridiqueCode,
         name: "statutJuridiqueCode",
         domain: DO_CODE_10,
         isRequired: false,

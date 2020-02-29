@@ -10,7 +10,6 @@ export type SuiviNode = StoreNode<typeof SuiviEntity>;
 export const SuiviEntity = {
     dateCreation: {
         type: "field",
-        fieldType: "string",
         name: "dateCreation",
         domain: DO_DATE,
         isRequired: true,
@@ -18,7 +17,6 @@ export const SuiviEntity = {
     },
     nombreEvenement: {
         type: "field",
-        fieldType: "number",
         name: "nombreEvenement",
         domain: DO_ID,
         isRequired: true,

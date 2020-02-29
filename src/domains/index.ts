@@ -6,9 +6,10 @@ import "numeral/locales/fr";
 moment.locale("fr");
 numeral.locale("fr");
 
-export const DO_BOOLEEN = domain<boolean>()({});
+export const DO_BOOLEEN = domain({type: "boolean"});
 
-export const DO_COMMENTAIRE = domain<string>()({
+export const DO_COMMENTAIRE = domain({
+    type: "string",
     inputProps: {
         multiline: true,
         rows: 4,
@@ -20,7 +21,8 @@ export const DO_COMMENTAIRE = domain<string>()({
     }
 });
 
-export const DO_CODE_10 = domain<string>()({
+export const DO_CODE_10 = domain({
+    type: "string",
     inputProps: {maxLength: 10},
     validator: {
         type: "string",
@@ -28,7 +30,8 @@ export const DO_CODE_10 = domain<string>()({
     }
 });
 
-export const DO_DATE = domain<string>()({
+export const DO_DATE = domain({
+    type: "string",
     validator: {type: "date"},
     InputComponent: InputDate,
     displayFormatter: date => (date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : ""),
@@ -37,13 +40,12 @@ export const DO_DATE = domain<string>()({
     }
 });
 
-export const DO_ID = domain<number>()({});
+export const DO_ID = domain({type: "number"});
 
-export const DO_EMAIL = domain<string>()({
-    validator: {type: "email"}
-});
+export const DO_EMAIL = domain({type: "string", validator: {type: "email"}});
 
-export const DO_LIBELLE_100 = domain<string>()({
+export const DO_LIBELLE_100 = domain({
+    type: "string",
     inputProps: {maxLength: 100},
     validator: {
         type: "string",
@@ -51,7 +53,8 @@ export const DO_LIBELLE_100 = domain<string>()({
     }
 });
 
-export const DO_MONTANT = domain<number>()({
+export const DO_MONTANT = domain({
+    type: "number",
     validator: {
         type: "number",
         maxDecimals: 2,
@@ -66,7 +69,8 @@ export const DO_MONTANT = domain<number>()({
     }
 });
 
-export const DO_POURCENTAGE = domain<number>()({
+export const DO_POURCENTAGE = domain({
+    type: "number",
     validator: {
         type: "number",
         maxDecimals: 2,
@@ -79,7 +83,8 @@ export const DO_POURCENTAGE = domain<number>()({
     }
 });
 
-export const DO_TELEPHONE = domain<string>()({
+export const DO_TELEPHONE = domain({
+    type: "string",
     validator: {
         type: "string",
         maxLength: 13

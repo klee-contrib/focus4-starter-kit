@@ -12,8 +12,7 @@ export function BasicForm() {
         c
             // On change le domaine et le isRequired du champ.
             .patch("denominationSociale", (f, node) =>
-                f.metadata(() => ({
-                    domain: DO_COMMENTAIRE,
+                f.domain(DO_COMMENTAIRE).metadata(() => ({
                     isRequired: !!node.capitalSocial.value
                 }))
             )
@@ -28,15 +27,15 @@ export function BasicForm() {
             // On ajoute un champ supplémentaire calculé.
             .add("email", (f, node) =>
                 f
+                    .domain(DO_LIBELLE_100)
+                    .metadata({
+                        label: "structure.email",
+                        validator: {type: "email"}
+                    })
                     .value(
                         () => node.denominationSociale.value,
                         value => (node.denominationSociale.value = value)
                     )
-                    .metadata({
-                        domain: DO_LIBELLE_100,
-                        label: "structure.email",
-                        validator: {type: "email"}
-                    })
             )
     );
     const actions = useFormActions(entity, a =>

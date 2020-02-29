@@ -9,7 +9,6 @@ export type EvenementNode = StoreNode<typeof EvenementEntity>;
 export const EvenementEntity = {
     id: {
         type: "field",
-        fieldType: "number",
         name: "id",
         domain: DO_ID,
         isRequired: false,
@@ -17,7 +16,6 @@ export const EvenementEntity = {
     },
     date: {
         type: "field",
-        fieldType: "string",
         name: "date",
         domain: DO_DATE,
         isRequired: true,
@@ -25,7 +23,6 @@ export const EvenementEntity = {
     },
     commentaire: {
         type: "field",
-        fieldType: "string",
         name: "commentaire",
         domain: DO_COMMENTAIRE,
         isRequired: true,

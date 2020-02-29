@@ -50,7 +50,7 @@ export class FormList extends React.Component {
     }
 }
 
-function FormLine({data}: {data: FormNode<typeof ContactEntity & {nomPrenom: FieldEntry<string>}>}) {
+function FormLine({data}: {data: FormNode<typeof ContactEntity & {nomPrenom: FieldEntry<"string">}>}) {
     return useObserver(() => (
         <>
             <h6>{data.nomPrenom.value || "Contact"}</h6>

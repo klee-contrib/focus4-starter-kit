@@ -9,7 +9,6 @@ export type AdresseNode = StoreNode<typeof AdresseEntity>;
 export const AdresseEntity = {
     id: {
         type: "field",
-        fieldType: "number",
         name: "id",
         domain: DO_ID,
         isRequired: false,
@@ -17,7 +16,6 @@ export const AdresseEntity = {
     },
     ligne1: {
         type: "field",
-        fieldType: "string",
         name: "ligne1",
         domain: DO_LIBELLE_100,
         isRequired: false,
@@ -25,7 +23,6 @@ export const AdresseEntity = {
     },
     ligne2: {
         type: "field",
-        fieldType: "string",
         name: "ligne2",
         domain: DO_LIBELLE_100,
         isRequired: false,
@@ -33,7 +30,6 @@ export const AdresseEntity = {
     },
     codePostal: {
         type: "field",
-        fieldType: "string",
         name: "codePostal",
         domain: DO_CODE_10,
         isRequired: true,
@@ -41,7 +37,6 @@ export const AdresseEntity = {
     },
     ville: {
         type: "field",
-        fieldType: "string",
         name: "ville",
         domain: DO_LIBELLE_100,
         isRequired: true,
