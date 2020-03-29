@@ -1,12 +1,19 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityToType, StoreNode} from "@focus4/stores";
+import {EntityToType, FieldEntry2, StoreNode} from "@focus4/stores";
 import {DO_CODE_10, DO_ID, DO_LIBELLE_100} from "../../domains";
 
-export type Adresse = EntityToType<typeof AdresseEntity>;
-export type AdresseNode = StoreNode<typeof AdresseEntity>;
+export type Adresse = EntityToType<AdresseEntityType>;
+export type AdresseNode = StoreNode<AdresseEntityType>;
+export interface AdresseEntityType {
+    id: FieldEntry2<typeof DO_ID>;
+    ligne1: FieldEntry2<typeof DO_LIBELLE_100>;
+    ligne2: FieldEntry2<typeof DO_LIBELLE_100>;
+    codePostal: FieldEntry2<typeof DO_CODE_10>;
+    ville: FieldEntry2<typeof DO_LIBELLE_100>;
+}
 
-export const AdresseEntity = {
+export const AdresseEntity: AdresseEntityType = {
     id: {
         type: "field",
         name: "id",
@@ -42,4 +49,4 @@ export const AdresseEntity = {
         isRequired: true,
         label: "adresse.ville"
     }
-} as const;
+};

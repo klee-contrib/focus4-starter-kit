@@ -1,10 +1,15 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityToType, StoreNode} from "@focus4/stores";
+import {EntityToType, FieldEntry2, StoreNode} from "@focus4/stores";
 import {DO_COMMENTAIRE, DO_DATE, DO_ID} from "../../domains";
 
-export type Evenement = EntityToType<typeof EvenementEntity>;
-export type EvenementNode = StoreNode<typeof EvenementEntity>;
+export type Evenement = EntityToType<EvenementEntityType>;
+export type EvenementNode = StoreNode<EvenementEntityType>;
+export interface EvenementEntityType {
+    id: FieldEntry2<typeof DO_ID>;
+    date: FieldEntry2<typeof DO_DATE>;
+    commentaire: FieldEntry2<typeof DO_COMMENTAIRE>;
+}
 
 export const EvenementEntity = {
     id: {

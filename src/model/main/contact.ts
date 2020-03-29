@@ -1,13 +1,20 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityToType, StoreNode} from "@focus4/stores";
+import {EntityToType, FieldEntry2, StoreNode} from "@focus4/stores";
 import {DO_CODE_10, DO_EMAIL, DO_ID, DO_LIBELLE_100} from "../../domains";
 import {CiviliteCode} from "../references";
 
-export type Contact = EntityToType<typeof ContactEntity>;
-export type ContactNode = StoreNode<typeof ContactEntity>;
+export type Contact = EntityToType<ContactEntityType>;
+export type ContactNode = StoreNode<ContactEntityType>;
+export interface ContactEntityType {
+    id: FieldEntry2<typeof DO_ID>;
+    nom: FieldEntry2<typeof DO_LIBELLE_100>;
+    prenom: FieldEntry2<typeof DO_LIBELLE_100>;
+    email: FieldEntry2<typeof DO_EMAIL>;
+    civiliteCode: FieldEntry2<typeof DO_CODE_10, CiviliteCode>;
+}
 
-export const ContactEntity = {
+export const ContactEntity: ContactEntityType = {
     id: {
         type: "field",
         name: "id",
@@ -38,10 +45,9 @@ export const ContactEntity = {
     },
     civiliteCode: {
         type: "field",
-        fieldType: {} as CiviliteCode,
         name: "civiliteCode",
         domain: DO_CODE_10,
         isRequired: true,
         label: "contact.civiliteCode"
     }
-} as const;
+};

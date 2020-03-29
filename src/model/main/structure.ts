@@ -1,14 +1,23 @@
 /* Ce fichier doit être généré automatiquement */
 
-import {EntityToType, StoreNode} from "@focus4/stores";
+import {EntityToType, FieldEntry2, ObjectEntry, StoreNode} from "@focus4/stores";
 import {DO_BOOLEEN, DO_CODE_10, DO_DATE, DO_ID, DO_LIBELLE_100, DO_MONTANT} from "../../domains";
 import {StatutJuridiqueCode} from "../references";
-import {AdresseEntity} from "./adresse";
+import {AdresseEntity, AdresseEntityType} from "./adresse";
 
-export type Structure = EntityToType<typeof StructureEntity>;
-export type StructureNode = StoreNode<typeof StructureEntity>;
+export type Structure = EntityToType<StructureEntityType>;
+export type StructureNode = StoreNode<StructureEntityType>;
+export interface StructureEntityType {
+    id: FieldEntry2<typeof DO_ID>;
+    denominationSociale: FieldEntry2<typeof DO_LIBELLE_100>;
+    capitalSocial: FieldEntry2<typeof DO_MONTANT>;
+    isBeneficiaireEffectif: FieldEntry2<typeof DO_BOOLEEN>;
+    dateDemande: FieldEntry2<typeof DO_DATE>;
+    statutJuridiqueCode: FieldEntry2<typeof DO_CODE_10, StatutJuridiqueCode>;
+    adresse: ObjectEntry<AdresseEntityType>;
+}
 
-export const StructureEntity = {
+export const StructureEntity: StructureEntityType = {
     id: {
         type: "field",
         name: "id",
@@ -46,7 +55,6 @@ export const StructureEntity = {
     },
     statutJuridiqueCode: {
         type: "field",
-        fieldType: {} as StatutJuridiqueCode,
         name: "statutJuridiqueCode",
         domain: DO_CODE_10,
         isRequired: false,
@@ -56,4 +64,4 @@ export const StructureEntity = {
         type: "object",
         entity: AdresseEntity
     }
-} as const;
+};
