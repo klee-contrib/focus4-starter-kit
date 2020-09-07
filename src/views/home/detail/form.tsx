@@ -4,8 +4,9 @@ import {useObserver} from "mobx-react";
 import * as React from "react";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
+import {router} from "../../../router";
 import {loadStructure, saveStructure} from "../../../services/main";
-import {homeViewStore, mainStore, referenceStore} from "../../../stores";
+import {mainStore, referenceStore} from "../../../stores";
 
 export function BasicForm() {
     const entity = useFormNode(mainStore.structure, c =>
@@ -40,7 +41,12 @@ export function BasicForm() {
     );
     const actions = useFormActions(entity, a =>
         a
-            .params(() => homeViewStore.withView(({page, id}) => !page && id && +id))
+            .params(() => {
+                if (router.is(r => r("home")("id")("list"))) {
+                    return undefined;
+                }
+                return router.state.home.id;
+            })
             .load(loadStructure)
             .save(saveStructure)
     );

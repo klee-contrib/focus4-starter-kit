@@ -2,50 +2,35 @@ import {Button} from "@focus4/toolbox";
 import {observer} from "mobx-react";
 import * as React from "react";
 
-import {homeViewStore} from "../../stores";
-
+import {HomeRouter} from "../../router";
+import {Header} from "../header";
 import {Detail} from "./detail";
 import {HomeList} from "./list";
 
-import {Header} from "../header";
 import {salut} from "./__style__/index.module.css";
 
-export const Home = observer(() => {
-    let page;
-    switch (homeViewStore.currentView.page) {
-        case "list":
-            page = <HomeList />;
-            break;
-        default:
-            page = <Detail />;
-            break;
-    }
-    return (
-        <>
-            <Header
-                cartridge={<h2>{`Salut identifiant ${homeViewStore.currentView.id}`}</h2>}
-                summary={<strong>{`Salut identifiant ${homeViewStore.currentView.id}`}</strong>}
-                barRight={
-                    <Button
-                        label="id au hasard"
-                        onClick={() => homeViewStore.setView({id: `${Math.floor(Math.random() * 100)}`})}
-                    />
-                }
-            />
-            <Button
-                raised
-                primary={!homeViewStore.currentView.page}
-                onClick={() => homeViewStore.setView({page: undefined})}
-                label="Home"
-            />
-            <Button
-                raised
-                primary={!!homeViewStore.currentView.page}
-                onClick={() => homeViewStore.setView({page: "list"})}
-                label="List"
-            />
-            <strong className={salut}>{`Salut identifiant ${homeViewStore.currentView.id}`}</strong>
-            {page}
-        </>
-    );
-});
+export const Home = observer(({router}: {router: HomeRouter}) => (
+    <>
+        <Header
+            cartridge={<h2>{`Salut identifiant ${router.state.id}`}</h2>}
+            summary={<strong>{`Salut identifiant ${router.state.id}`}</strong>}
+            barRight={
+                <Button label="id au hasard" onClick={() => (router.state.id = Math.floor(Math.random() * 100))} />
+            }
+        />
+        <Button
+            raised
+            primary={!router.is(a => a("id")("list"))}
+            onClick={() => router.to(a => a(router.state.id))}
+            label="Home"
+        />
+        <Button
+            raised
+            primary={router.is(a => a("id")("list"))}
+            onClick={() => router.to(a => a(router.state.id)("list"))}
+            label="List"
+        />
+        <strong className={salut}>{`Salut identifiant ${router.state.id}`}</strong>
+        {router.is(a => a("id")("list")) ? <HomeList /> : <Detail />}
+    </>
+));
