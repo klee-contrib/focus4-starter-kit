@@ -1,11 +1,11 @@
 import {ActionBar, getDraggedItems, LineProps, List, Table, Timeline} from "@focus4/collections";
 import {Content} from "@focus4/layout";
-import {ListStore, makeField, stringFor} from "@focus4/stores";
+import {CollectionStore, makeField, stringFor} from "@focus4/stores";
 import {runInAction} from "mobx";
 import {observer} from "mobx-react";
 import * as React from "react";
 import {DndProvider, useDrop} from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
+import {HTML5Backend} from "react-dnd-html5-backend";
 
 import {Contact} from "../../model/main/contact";
 import {loadContactList} from "../../services/main";
@@ -13,7 +13,7 @@ import {referenceStore} from "../../stores";
 
 import {line} from "./__style__/list.module.css";
 
-const listStore = new ListStore<Contact>();
+const listStore = new CollectionStore<Contact>();
 listStore.sortBy = "nom";
 listStore.isItemSelectionnable = data => !(data.id! % 2);
 
@@ -33,7 +33,7 @@ function Target() {
                     if (listStore.selectedItems.has(item)) {
                         listStore.selectedItems.clear();
                     }
-                    listStore.innerList.remove(item);
+                    listStore.list = listStore.list.filter(i => i !== item);
                 });
             });
         },
