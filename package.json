@@ -1,18 +1,18 @@
 {
     "name": "focus4-starter-kit",
-    "version": "10.6.0",
+    "version": "10.6.1",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
     "scripts": {
-        "build": "rm -rf static/* && tcm src && webpack --mode=production",
+        "build": "rm -rf static/* && node cssgen.js && webpack --mode=production",
+        "cssgen": "node cssgen.js",
         "start": "rm -rf static/* && webpack-dev-server --mode=development --devtool eval-source-map",
         "stylelint": "stylelint src/**/*.css",
-        "tcm": "tcm src",
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "focus4": "10.6.0"
+        "focus4": "10.6.1"
     },
     "devDependencies": {
         "css-loader": "4.2.2",
@@ -33,7 +33,6 @@
         "tslint": "6.1.3",
         "typescript": "4.0.2",
         "typescript-tslint-plugin": "0.5.5",
-        "typed-css-modules": "0.3.7",
         "url-loader": "4.1.0",
         "webpack": "4.44.1",
         "webpack-cli": "3.3.12",

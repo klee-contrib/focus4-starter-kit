@@ -9,7 +9,7 @@ import {Header} from "./header";
 import {Home} from "./home";
 import {StarterMenu} from "./menu";
 
-import {layout, popin} from "./__style__/index.module.css";
+import css from "./__style__/index.css";
 
 function Main() {
     return useObserver(() => {
@@ -30,7 +30,7 @@ function Main() {
 }
 
 render(
-    <Layout appTheme={{layout: {layout}, popin: {popin}}} menu={<StarterMenu />}>
+    <Layout appTheme={{layout: {layout: css.layout}, popin: {popin: css.popin}}} menu={<StarterMenu />}>
         <Main />
     </Layout>,
     document.getElementById("app")

@@ -11,7 +11,7 @@ import {Contact} from "../../model/main/contact";
 import {loadContactList} from "../../services/main";
 import {referenceStore} from "../../stores";
 
-import {line} from "./__style__/list.module.css";
+import css from "./__style__/list.css";
 
 const listStore = new CollectionStore<Contact>();
 listStore.sortBy = "nom";
@@ -75,6 +75,7 @@ export class HomeList extends React.Component {
                     <Table
                         store={listStore}
                         itemKey={d => d.email}
+                        hasSelection
                         columns={[
                             {title: "Nom", content: data => data.nom, sortKey: "nom"},
                             {title: "Prénom", content: data => data.prenom, sortKey: "prenom"},
@@ -91,7 +92,7 @@ export class HomeList extends React.Component {
                         store={listStore}
                         LineComponent={ListLine}
                         itemKey={d => d.email}
-                        theme={{line}}
+                        theme={{line: css.line}}
                         hasSelection
                         hasDragAndDrop
                         DetailComponent={({data}) => (

@@ -62,11 +62,12 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: /\.module\.css$/,
+                include: [path.resolve(__dirname, "./node_modules")],
                 use: ["style-loader", "css-loader", postcss]
             },
             {
-                test: /\.module\.css$/,
+                test: /\.css$/,
+                exclude: [path.resolve(__dirname, "./node_modules")],
                 use: [
                     "style-loader",
                     {

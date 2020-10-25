@@ -7,7 +7,7 @@ import {Header} from "../header";
 import {Detail} from "./detail";
 import {HomeList} from "./list";
 
-import {salut} from "./__style__/index.module.css";
+import css from "./__style__/index.css";
 
 export function Home({router}: {router: HomeRouter}) {
     return useObserver(() => (
@@ -31,7 +31,7 @@ export function Home({router}: {router: HomeRouter}) {
                 onClick={() => router.to(a => a(router.state.id)("list"))}
                 label="List"
             />
-            <strong className={salut}>{`Salut identifiant ${router.state.id}`}</strong>
+            <strong className={css.salut}>{`Salut identifiant ${router.state.id}`}</strong>
             {router.is(a => a("id")("list")) ? <HomeList /> : <Detail />}
         </>
     ));
