@@ -1,26 +1,34 @@
-const path = require("path");
-const webpack = require("webpack");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const path = require("path");
 
-const variables = require("./css-variables");
+const customProperties = require("./css-variables");
+
 const postcss = {
     loader: "postcss-loader",
     options: {
-        plugins: () => [
-            require("postcss-import")(),
-            require("postcss-apply")(),
-            require("postcss-custom-properties")({
-                preserve: false,
-                variables
-            }),
-            require("postcss-calc")(),
-            require("postcss-color-function")(),
-            require("postcss-preset-env")({
-                features: {
-                    "nesting-rules": true
-                }
-            })
-        ]
+        postcssOptions: {
+            plugins: [
+                "postcss-import",
+                "postcss-apply",
+                [
+                    "postcss-custom-properties",
+                    {
+                        preserve: false,
+                        importFrom: {customProperties}
+                    }
+                ],
+                "postcss-calc",
+                "postcss-color-function",
+                [
+                    "postcss-preset-env",
+                    {
+                        features: {
+                            "nesting-rules": true
+                        }
+                    }
+                ]
+            ]
+        }
     }
 };
 
@@ -40,7 +48,7 @@ module.exports = {
     resolve: {
         extensions: [".js", ".ts", ".tsx"]
     },
-    plugins: [new webpack.WatchIgnorePlugin([/.d\.ts$/, /.\.js$/]), new ForkTsCheckerWebpackPlugin({tslint: true})],
+    plugins: [new ForkTsCheckerWebpackPlugin()],
     module: {
         rules: [
             {
