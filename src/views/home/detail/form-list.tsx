@@ -4,14 +4,14 @@ import {FieldEntry, FormNode} from "@focus4/stores";
 import {Input} from "@focus4/toolbox";
 import {observable} from "mobx";
 import {observer, useObserver} from "mobx-react";
-import * as React from "react";
+import {Component} from "react";
 
 import {ContactEntity} from "../../../model/main/contact";
 import {loadContactList} from "../../../services/main";
 import {mainStore, referenceStore} from "../../../stores";
 
 @observer
-export class FormList extends React.Component {
+export class FormList extends Component {
     @observable magicWord = "";
 
     entity = makeFormNode(this, mainStore.contactList, s =>

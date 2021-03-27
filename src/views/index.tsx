@@ -1,6 +1,5 @@
 import {Layout} from "@focus4/layout";
 import {useObserver} from "mobx-react";
-import * as React from "react";
 import {render} from "react-dom";
 
 import {router} from "../router";

@@ -1,6 +1,5 @@
 import {Button} from "@focus4/toolbox";
 import {useObserver} from "mobx-react";
-import * as React from "react";
 
 import {HomeRouter} from "../../router";
 import {Header} from "../header";

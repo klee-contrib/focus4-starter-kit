@@ -6,7 +6,7 @@ import {Button} from "@focus4/toolbox";
 import i18next from "i18next";
 import {observable} from "mobx";
 import {observer} from "mobx-react";
-import * as React from "react";
+import {Component} from "react";
 
 import {EvenementNode} from "../../../../model/main/evenement";
 import {loadSuivi} from "../../../../services/main";
@@ -14,7 +14,7 @@ import {mainStore} from "../../../../stores";
 import {SuiviCreation} from "./creation";
 
 @observer
-export class SuiviComponent extends React.Component {
+export class SuiviComponent extends Component {
     @observable popinOpened = false;
 
     async componentWillMount() {

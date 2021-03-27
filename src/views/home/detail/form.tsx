@@ -1,7 +1,6 @@
 import {fieldFor, Form, Panel, selectFor, useFormActions, useFormNode} from "@focus4/forms";
 import i18next from "i18next";
 import {useObserver} from "mobx-react";
-import * as React from "react";
 
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
 import {router} from "../../../router";

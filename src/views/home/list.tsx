@@ -3,7 +3,7 @@ import {Content} from "@focus4/layout";
 import {CollectionStore, makeField, stringFor} from "@focus4/stores";
 import {runInAction} from "mobx";
 import {observer} from "mobx-react";
-import * as React from "react";
+import {Component} from "react";
 import {DndProvider, useDrop} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 
@@ -63,7 +63,7 @@ function Target() {
 }
 
 @observer
-export class HomeList extends React.Component {
+export class HomeList extends Component {
     async componentWillMount() {
         listStore.list = await loadContactList();
     }

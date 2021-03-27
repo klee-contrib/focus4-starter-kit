@@ -49,6 +49,7 @@ module.exports = {
         extensions: [".js", ".ts", ".tsx"]
     },
     plugins: [new ForkTsCheckerWebpackPlugin()],
+    target: ["web", "es5"],
     module: {
         rules: [
             {

@@ -8,7 +8,7 @@ import {
 } from "@focus4/layout";
 import {observable} from "mobx";
 import {useObserver} from "mobx-react";
-import * as React from "react";
+import {ReactElement} from "react";
 
 const headerStore = observable({
     canDeploy: true
@@ -19,9 +19,9 @@ export function Header({
     cartridge,
     barRight
 }: {
-    summary: React.ReactElement;
-    cartridge: React.ReactElement;
-    barRight?: React.ReactElement;
+    summary: ReactElement;
+    cartridge: ReactElement;
+    barRight?: ReactElement;
 }) {
     return useObserver(() => (
         <HeaderScrolling canDeploy={headerStore.canDeploy}>
