@@ -1,1 +1,0 @@
-(self.webpackChunkfocus4_starter_kit=self.webpackChunkfocus4_starter_kit||[]).push([[439],{68439:function(r,t,s){"use strict";s.r(t);var i=s(96924),e=s(33940),n=s(41210),o={focus:(0,e.pi)((0,e.pi)({},n.xk.fr),{icons:n.xk.icons}),form:{content:"Détails",title:"Formulaire"}};i.Z.init({lng:"fr",resources:{fr:{translation:o}},nsSeparator:!1})}}]);

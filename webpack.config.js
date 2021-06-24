@@ -1,5 +1,6 @@
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const path = require("path");
+const {optimize} = require("webpack");
 
 const customProperties = require("./css-variables");
 
@@ -48,7 +49,7 @@ module.exports = {
     resolve: {
         extensions: [".js", ".ts", ".tsx"]
     },
-    plugins: [new ForkTsCheckerWebpackPlugin()],
+    plugins: [new ForkTsCheckerWebpackPlugin(), new optimize.LimitChunkCountPlugin({maxChunks: 1})],
     target: ["web", "es5"],
     module: {
         rules: [
