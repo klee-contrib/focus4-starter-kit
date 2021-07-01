@@ -1,13 +1,15 @@
+import {makeObservable, observable} from "mobx";
+import {observer, useObserver} from "mobx-react";
+import {Component} from "react";
+
 import {listFor} from "@focus4/collections";
 import {fieldFor, Form, makeFormActions, makeFormNode, Panel, selectFor} from "@focus4/forms";
 import {FieldEntry, FormNode} from "@focus4/stores";
 import {Input} from "@focus4/toolbox";
-import {observable} from "mobx";
-import {observer, useObserver} from "mobx-react";
-import {Component} from "react";
 
 import {ContactEntity} from "../../../model/main/contact";
 import {loadContactList} from "../../../services/main";
+
 import {mainStore, referenceStore} from "../../../stores";
 
 @observer
@@ -24,7 +26,7 @@ export class FormList extends Component {
                     .patch("prenom", (f, item) => f.metadata(() => ({isRequired: !!item.nom.value})))
                     .add("nomPrenom", (f, item) =>
                         f
-                            .value(() => `${item.nom.value || ""} ${item.prenom.value || ""}`.trim())
+                            .value(() => `${item.nom.value ?? ""} ${item.prenom.value ?? ""}`.trim())
                             .metadata({label: "contact.nomPrenom"})
                     )
             )
@@ -32,11 +34,16 @@ export class FormList extends Component {
 
     actions = makeFormActions(this, this.entity, a => a.params().load(loadContactList));
 
+    constructor(props: {}) {
+        super(props);
+        makeObservable(this);
+    }
+
     render() {
         return (
             <Form {...this.actions.formProps}>
-                <Panel title="Formulaire liste" name="liste" {...this.actions.panelProps}>
-                    <Input value={this.magicWord} onChange={(text: string) => (this.magicWord = text)} />
+                <Panel name="liste" title="Formulaire liste" {...this.actions.panelProps}>
+                    <Input onChange={(text: string) => (this.magicWord = text)} value={this.magicWord} />
                     {listFor({
                         data: this.entity,
                         perPage: 2,
@@ -57,7 +64,7 @@ function FormLine({
 }) {
     return useObserver(() => (
         <>
-            <h6>{data.nomPrenom.value || "Contact"}</h6>
+            <h6>{data.nomPrenom.value ?? "Contact"}</h6>
             {fieldFor(data.nom)}
             {fieldFor(data.prenom)}
             {fieldFor(data.email)}

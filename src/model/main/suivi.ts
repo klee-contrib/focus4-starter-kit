@@ -1,7 +1,9 @@
 /* Ce fichier doit être généré automatiquement */
 
 import {EntityToType, FieldEntry2, ListEntry, StoreNode} from "@focus4/stores";
+
 import {DO_DATE, DO_ID} from "../../domains";
+
 import {EvenementEntity, EvenementEntityType} from "./evenement";
 
 export type Suivi = EntityToType<SuiviEntityType>;

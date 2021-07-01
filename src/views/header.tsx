@@ -1,3 +1,7 @@
+import {observable} from "mobx";
+import {useObserver} from "mobx-react";
+import {ReactElement} from "react";
+
 import {
     HeaderActions,
     HeaderBarRight,
@@ -6,9 +10,6 @@ import {
     HeaderSummary,
     HeaderTopRow
 } from "@focus4/layout";
-import {observable} from "mobx";
-import {useObserver} from "mobx-react";
-import {ReactElement} from "react";
 
 const headerStore = observable({
     canDeploy: true

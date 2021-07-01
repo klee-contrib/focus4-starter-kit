@@ -1,8 +1,9 @@
-import {domain, InputDate} from "@focus4/forms";
 import moment from "moment";
 import numeral from "numeral";
-import "numeral/locales/fr";
 
+import {domain, InputDate} from "@focus4/forms";
+
+import "numeral/locales/fr";
 moment.locale("fr");
 numeral.locale("fr");
 

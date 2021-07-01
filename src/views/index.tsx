@@ -1,6 +1,7 @@
-import {Layout} from "@focus4/layout";
 import {useObserver} from "mobx-react";
 import {render} from "react-dom";
+
+import {Layout} from "@focus4/layout";
 
 import {router} from "../router";
 
@@ -18,7 +19,7 @@ function Main() {
             case "test":
                 return (
                     <>
-                        <Header summary={<strong>Salut Focus V4</strong>} cartridge={<h2>Salut Focus V4</h2>} />
+                        <Header cartridge={<h2>Salut Focus V4</h2>} summary={<strong>Salut Focus V4</strong>} />
                         <div>Test Store "{router.state.test.lol}"</div>
                     </>
                 );

@@ -1,0 +1,4 @@
+node_modules
+static
+*.css.d.ts
+webpack.config.js

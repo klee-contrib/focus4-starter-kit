@@ -1,5 +1,6 @@
-import {fieldFor, Form, Panel, useFormActions, useFormNode} from "@focus4/forms";
 import {useObserver} from "mobx-react";
+
+import {fieldFor, Form, Panel, useFormActions, useFormNode} from "@focus4/forms";
 
 import {mainStore} from "../../../../stores";
 

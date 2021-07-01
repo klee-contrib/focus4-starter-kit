@@ -1,6 +1,15 @@
-@import "@focus4/styling/lib/variables.css";
+:root {
+    --color-primary: var(--palette-purple-500);
+
+    --header-color: rgb(var(--color-white));
+    --header-content-background: rgb(var(--palette-purple-200));
+    --header-toprow-background: rgb(var(--palette-purple-200));
+
+    --select-line-color: rgb(var(--color-primary));
+    --select-arrow-color: rgb(var(--color-primary));
+}
 
 .layout,
 .popin {
-    background: var(--palette-purple-50);
+    background: rgb(var(--palette-purple-50));
 }

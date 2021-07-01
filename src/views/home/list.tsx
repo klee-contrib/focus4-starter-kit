@@ -1,14 +1,16 @@
-import {ActionBar, getDraggedItems, LineProps, List, Table, Timeline} from "@focus4/collections";
-import {Content} from "@focus4/layout";
-import {CollectionStore, makeField, stringFor} from "@focus4/stores";
 import {runInAction} from "mobx";
 import {observer} from "mobx-react";
 import {Component} from "react";
 import {DndProvider, useDrop} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 
+import {ActionBar, getDraggedItems, LineProps, List, Table, Timeline} from "@focus4/collections";
+import {Content} from "@focus4/layout";
+import {CollectionStore, makeField, stringFor} from "@focus4/stores";
+
 import {Contact} from "../../model/main/contact";
 import {loadContactList} from "../../services/main";
+
 import {referenceStore} from "../../stores";
 
 import css from "./__style__/list.css";
@@ -18,8 +20,11 @@ listStore.sortBy = "nom";
 listStore.isItemSelectionnable = data => !(data.id! % 2);
 
 const ListLine = observer(({data, toggleDetail}: LineProps<Contact>) => (
-    <div style={{background: "white", padding: "15px 50px"}} onClick={() => toggleDetail && toggleDetail()}>
-        {`${stringFor(makeField(data.civiliteCode), referenceStore.civilite)} ${data.prenom} ${data.nom} ${data.email}`}
+    <div onClick={() => toggleDetail?.()} style={{background: "white", padding: "15px 50px"}}>
+        {`${stringFor(
+            makeField(data.civiliteCode),
+            referenceStore.civilite
+        )} ${data.prenom!} ${data.nom!} ${data.email!}`}
     </div>
 ));
 
@@ -64,7 +69,7 @@ function Target() {
 
 @observer
 export class HomeList extends Component {
-    async componentWillMount() {
+    async componentDidMount() {
         listStore.list = await loadContactList();
     }
 
@@ -73,9 +78,6 @@ export class HomeList extends Component {
             <DndProvider backend={HTML5Backend}>
                 <Content>
                     <Table
-                        store={listStore}
-                        itemKey={d => d.email}
-                        hasSelection
                         columns={[
                             {title: "Nom", content: data => data.nom, sortKey: "nom"},
                             {title: "Prénom", content: data => data.prenom, sortKey: "prenom"},
@@ -85,34 +87,37 @@ export class HomeList extends Component {
                                 content: data => stringFor(makeField(data.civiliteCode), referenceStore.civilite)
                             }
                         ]}
+                        hasSelection
+                        itemKey={d => d.email}
+                        store={listStore}
                     />
                     <Target />
-                    <ActionBar store={listStore} hasSelection={true} />
+                    <ActionBar hasSelection store={listStore} />
                     <List
-                        store={listStore}
-                        LineComponent={ListLine}
-                        itemKey={d => d.email}
-                        theme={{line: css.line}}
-                        hasSelection
-                        hasDragAndDrop
                         DetailComponent={({data}) => (
                             <h2>
                                 {data.nom} {data.prenom}
                             </h2>
                         )}
+                        hasDragAndDrop
+                        hasSelection
+                        itemKey={d => d.email}
+                        LineComponent={ListLine}
+                        store={listStore}
+                        theme={{line: css.line}}
                     />
                     <Timeline
+                        addItemHandler={() => {
+                            /* */
+                        }}
                         data={listStore.list}
-                        TimelineComponent={ListLine}
                         dateSelector={l => {
                             const date = new Date(2020, 1, 30);
                             date.setDate(30 - l.id!);
                             return makeField(date.toLocaleDateString());
                         }}
                         itemKey={d => d.email}
-                        addItemHandler={() => {
-                            /* */
-                        }}
+                        TimelineComponent={ListLine}
                     />
                 </Content>
             </DndProvider>

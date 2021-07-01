@@ -1,6 +1,7 @@
 /* Ce fichier doit être généré automatiquement */
 
 import {EntityToType, FieldEntry2, StoreNode} from "@focus4/stores";
+
 import {DO_CODE_10, DO_EMAIL, DO_ID, DO_LIBELLE_100} from "../../domains";
 import {CiviliteCode} from "../references";
 

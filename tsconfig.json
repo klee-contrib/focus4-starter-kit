@@ -1,24 +1,27 @@
 {
     "compilerOptions": {
         // Général
-        "lib": ["es2018", "dom"],
+        "lib": ["es2020", "dom"],
         "jsx": "react-jsx",
         "module": "esnext",
         "moduleResolution": "node",
-        "target": "es5",
+        "target": "es2020",
         "sourceMap": true,
 
         // Options obligatoires
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
-        "skipLibCheck": true,
         "strict": true,
+        "useDefineForClassFields": true,
 
         // Options additionnelles
         "importHelpers": true,
         "noFallthroughCasesInSwitch": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true
-    },
-    "exclude": ["dist", "node_modules", "./src/**/__test__/*"]
+        "noUnusedParameters": true,
+
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "types": []
+    }
 }

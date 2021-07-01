@@ -1,5 +1,6 @@
-import {MainMenu, MainMenuItem} from "@focus4/layout";
 import {useObserver} from "mobx-react";
+
+import {MainMenu, MainMenuItem} from "@focus4/layout";
 
 import {router} from "../router";
 
@@ -19,9 +20,9 @@ export function StarterMenu() {
             <MainMenuItem icon="add">
                 <MainMenuItem
                     icon="home"
+                    label="Accueil"
                     onClick={() => router.to(a => a("home")(router.state.home.id ?? 1))}
                     route="home"
-                    label="Accueil"
                 />
                 <MainMenuItem icon="add">
                     <span style={{whiteSpace: "pre"}}>Ce sous menu ne sert vraiment à rien</span>

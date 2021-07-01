@@ -1,23 +1,31 @@
+import i18next from "i18next";
+import {makeObservable, observable} from "mobx";
+import {observer} from "mobx-react";
+import {Component} from "react";
+
 import {listFor} from "@focus4/collections";
 import {fieldFor, Panel} from "@focus4/forms";
 import {Content, Popin} from "@focus4/layout";
 import {stringFor} from "@focus4/stores";
 import {Button} from "@focus4/toolbox";
-import i18next from "i18next";
-import {observable} from "mobx";
-import {observer} from "mobx-react";
-import {Component} from "react";
 
 import {EvenementNode} from "../../../../model/main/evenement";
 import {loadSuivi} from "../../../../services/main";
+
 import {mainStore} from "../../../../stores";
+
 import {SuiviCreation} from "./creation";
 
 @observer
 export class SuiviComponent extends Component {
     @observable popinOpened = false;
 
-    async componentWillMount() {
+    constructor(props: {}) {
+        super(props);
+        makeObservable(this);
+    }
+
+    async componentDidMount() {
         mainStore.suivi.replace(await loadSuivi());
     }
 
@@ -28,7 +36,7 @@ export class SuiviComponent extends Component {
                 {fieldFor(dateCreation)}
                 {fieldFor(nombreEvenement)}
                 <h4>{i18next.t("suivi.evenement.title")}</h4>
-                <Button label="Ajouter un évènement" onClick={() => (this.popinOpened = true)} icon="add" />
+                <Button icon="add" label="Ajouter un évènement" onClick={() => (this.popinOpened = true)} />
                 <br />
                 <br />
                 {listFor({
@@ -40,7 +48,7 @@ export class SuiviComponent extends Component {
                         </span>
                     ))
                 })}
-                <Popin opened={this.popinOpened} closePopin={() => (this.popinOpened = false)}>
+                <Popin closePopin={() => (this.popinOpened = false)} opened={this.popinOpened}>
                     <Content>
                         <SuiviCreation close={() => (this.popinOpened = false)} />
                     </Content>

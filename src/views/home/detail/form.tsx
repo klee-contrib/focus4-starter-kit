@@ -1,10 +1,12 @@
-import {fieldFor, Form, Panel, selectFor, useFormActions, useFormNode} from "@focus4/forms";
 import i18next from "i18next";
 import {useObserver} from "mobx-react";
 
+import {fieldFor, Form, Panel, selectFor, useFormActions, useFormNode} from "@focus4/forms";
+
+import {loadStructure, saveStructure} from "../../../services/main";
+
 import {DO_COMMENTAIRE, DO_LIBELLE_100} from "../../../domains";
 import {router} from "../../../router";
-import {loadStructure, saveStructure} from "../../../services/main";
 import {mainStore, referenceStore} from "../../../stores";
 
 export function BasicForm() {
@@ -18,7 +20,7 @@ export function BasicForm() {
             )
             .patch("capitalSocial", (f, node) =>
                 f
-                    .value(() => (node.denominationSociale.value && node.denominationSociale.value.length) || 0)
+                    .value(() => node.denominationSociale.value?.length ?? 0)
                     .metadata({validator: {type: "number", max: 20000}})
                     .edit(() => node.statutJuridiqueCode.value !== "EARL")
             )

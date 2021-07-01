@@ -1,6 +1,7 @@
 /* Ce fichier doit être généré automatiquement */
 
 import {EntityToType, FieldEntry2, StoreNode} from "@focus4/stores";
+
 import {DO_COMMENTAIRE, DO_DATE, DO_ID} from "../../domains";
 
 export type Evenement = EntityToType<EvenementEntityType>;
