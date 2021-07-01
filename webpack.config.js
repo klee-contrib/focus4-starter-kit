@@ -10,7 +10,6 @@ const postcss = {
         postcssOptions: {
             plugins: [
                 "postcss-import",
-                "postcss-apply",
                 [
                     "postcss-custom-properties",
                     {
