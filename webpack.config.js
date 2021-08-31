@@ -10,7 +10,10 @@ module.exports = webpackConfigWithDefaults(
     },
     {
         devServer: {
-            publicPath: "/static/",
+            devMiddleware: {
+                publicPath: "/static/"
+            },
+            static: __dirname,
             port: 3000
         }
     }
