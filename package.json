@@ -29,6 +29,7 @@
         "@focus4/toolbox": "*",
         "framer-motion": "*",
         "i18next": "*",
+        "lodash": "*",
         "mobx": "*",
         "mobx-react": "*",
         "moment": "*",
