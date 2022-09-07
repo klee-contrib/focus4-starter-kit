@@ -12,12 +12,12 @@
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "focus4": "11.3.1"
+        "focus4": "11.4.3"
     },
     "devDependencies": {
-        "@focus4/tooling": "11.3.1",
+        "@focus4/tooling": "11.4.1",
         "style-loader": "3.3.1",
-        "webpack-dev-server": "4.9.2"
+        "webpack-dev-server": "4.11.0"
     },
     "peerDependencies": {
         "@focus4/collections": "*",
@@ -27,7 +27,7 @@
         "@focus4/stores": "*",
         "@focus4/styling": "*",
         "@focus4/toolbox": "*",
-        "framer-motion": "*",
+        "framer-motion": "^6.0.0",
         "i18next": "*",
         "lodash": "*",
         "mobx": "*",
