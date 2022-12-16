@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "11.0.0",
+    "version": "11.6.0-beta.1",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
@@ -12,12 +12,12 @@
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "focus4": "11.4.3"
+        "focus4": "11.6.0-beta.1"
     },
     "devDependencies": {
-        "@focus4/tooling": "11.4.1",
+        "@focus4/tooling": "11.6.0-beta.1",
         "style-loader": "3.3.1",
-        "webpack-dev-server": "4.11.0"
+        "webpack-dev-server": "4.11.1"
     },
     "peerDependencies": {
         "@focus4/collections": "*",
@@ -27,15 +27,15 @@
         "@focus4/stores": "*",
         "@focus4/styling": "*",
         "@focus4/toolbox": "*",
-        "framer-motion": "^6.0.0",
+        "framer-motion": "*",
         "i18next": "*",
         "lodash": "*",
         "mobx": "*",
         "mobx-react": "*",
         "moment": "*",
         "numeral": "*",
-        "react": "^17.0.0",
-        "react-dom": "^17.0.0",
+        "react": "*",
+        "react-dom": "*",
         "react-dnd": "*",
         "react-dnd-html5-backend": "*"
     },

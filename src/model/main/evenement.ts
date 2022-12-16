@@ -32,6 +32,7 @@ export const EvenementEntity = {
         name: "commentaire",
         domain: DO_COMMENTAIRE,
         isRequired: true,
-        label: "evenement.commentaire"
+        label: "evenement.commentaire",
+        defaultValue: "Ceci est un commentaire"
     }
 } as const;

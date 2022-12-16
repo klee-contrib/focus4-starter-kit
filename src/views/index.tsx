@@ -1,5 +1,5 @@
 import {useObserver} from "mobx-react";
-import {render} from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {Layout} from "@focus4/layout";
 
@@ -29,9 +29,8 @@ function Main() {
     });
 }
 
-render(
+createRoot(document.getElementById("app")!).render(
     <Layout appTheme={{layout: {layout: css.layout}, popin: {popin: css.popin}}} menu={<StarterMenu />}>
         <Main />
-    </Layout>,
-    document.getElementById("app")
+    </Layout>
 );
