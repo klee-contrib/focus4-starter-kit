@@ -1,6 +1,6 @@
 /* Ce fichier doit être généré automatiquement */
 
-export type CiviliteCode = "MME" | "M";
+export type CiviliteCode = "M" | "MME";
 export interface Civilite {
     code: CiviliteCode;
     libelle: string;
