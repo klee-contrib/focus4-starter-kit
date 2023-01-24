@@ -12,10 +12,10 @@
         "tslint": "tslint --project tsconfig.json --force"
     },
     "dependencies": {
-        "focus4": "11.6.0"
+        "focus4": "11.6.4"
     },
     "devDependencies": {
-        "@focus4/tooling": "11.6.0",
+        "@focus4/tooling": "11.6.2",
         "style-loader": "3.3.1",
         "webpack-dev-server": "4.11.1"
     },
