@@ -7,6 +7,7 @@ import {baseConfig, cssAutoModules} from "@focus4/tooling";
 
 export default defineConfig({
     ...baseConfig,
+    base: "",
     plugins: [
         cssAutoModules(/^\/src/),
         topLevelAwait(),
