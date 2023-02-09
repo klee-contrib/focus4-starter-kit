@@ -5,19 +5,16 @@
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
     "scripts": {
-        "build": "rm -rf static/* && webpack --mode=production",
+        "build": "vite build",
         "cssgen": "focus4 cssgen src",
         "eslint": "eslint --ext .ts,.tsx src",
-        "start": "rm -rf static/* && webpack serve --mode=development --devtool eval-source-map",
-        "tslint": "tslint --project tsconfig.json --force"
+        "start": "vite"
     },
     "dependencies": {
-        "focus4": "11.6.4"
+        "focus4": "11.6.6"
     },
     "devDependencies": {
-        "@focus4/tooling": "11.6.2",
-        "style-loader": "3.3.1",
-        "webpack-dev-server": "4.11.1"
+        "@focus4/tooling": "11.6.6"
     },
     "peerDependencies": {
         "@focus4/collections": "*",
@@ -35,9 +32,9 @@
         "moment": "*",
         "numeral": "*",
         "react": "*",
-        "react-dom": "*",
         "react-dnd": "*",
-        "react-dnd-html5-backend": "*"
+        "react-dnd-html5-backend": "*",
+        "react-dom": "*"
     },
     "author": "KleeGroup",
     "license": "MIT"

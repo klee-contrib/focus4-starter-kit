@@ -1,0 +1,1 @@
+import{t as n,a as s,b as t,i as a}from"./index-320b069a.js";const o={...n.fr,...s.fr,...t.fr,icons:{...n.icons,...s.icons,...t.icons}},r={focus:o,form:{content:"Détails",title:"Formulaire"}};a.init({lng:"fr",resources:{fr:{translation:r}},nsSeparator:!1});
