@@ -1,0 +1,1 @@
+import{t as r,a as s,b as t,i as o,__tla as i}from"./index-dc248dd9.js";Promise.all([(()=>{try{return i}catch{}})()]).then(async()=>{const a={...r.fr,...s.fr,...t.fr,icons:{...r.icons,...s.icons,...t.icons}},n={focus:a,form:{content:"D\xE9tails",title:"Formulaire"}};o.init({lng:"fr",resources:{fr:{translation:n}},nsSeparator:!1})});

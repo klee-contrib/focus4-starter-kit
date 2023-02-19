@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "11.6.0-beta.1",
+    "version": "11.7.0-rc.2",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
@@ -11,10 +11,10 @@
         "start": "vite"
     },
     "dependencies": {
-        "focus4": "11.6.6"
+        "focus4": "11.7.0-rc.2"
     },
     "devDependencies": {
-        "@focus4/tooling": "11.6.6"
+        "@focus4/tooling": "11.7.0-rc.0"
     },
     "peerDependencies": {
         "@focus4/collections": "*",
@@ -27,9 +27,9 @@
         "framer-motion": "*",
         "i18next": "*",
         "lodash": "*",
+        "luxon": "*",
         "mobx": "*",
         "mobx-react": "*",
-        "moment": "*",
         "numeral": "*",
         "react": "*",
         "react-dnd": "*",

@@ -1,10 +1,9 @@
-import moment from "moment";
+import {DateTime} from "luxon";
 import numeral from "numeral";
 
 import {domain, InputDate} from "@focus4/forms";
 
 import "numeral/locales/fr";
-moment.locale("fr");
 numeral.locale("fr");
 
 export const DO_BOOLEEN = domain({type: "boolean"});
@@ -35,9 +34,9 @@ export const DO_DATE = domain({
     type: "string",
     validator: {type: "date"},
     InputComponent: InputDate,
-    displayFormatter: date => (date ? moment(date, moment.ISO_8601).format("DD/MM/YYYY") : ""),
+    displayFormatter: date => (date ? DateTime.fromISO(date, {zone: "utc"}).toFormat("dd/MM/yyyy") : ""),
     inputProps: {
-        inputFormat: "DD/MM/YYYY"
+        inputFormat: "dd/MM/yyyy"
     }
 });
 
