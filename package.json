@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "11.7.1",
+    "version": "11.7.3",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/get-focus/focus4-starter-kit",
     "main": "src/index.ts",
@@ -11,10 +11,10 @@
         "start": "vite"
     },
     "dependencies": {
-        "focus4": "11.7.1"
+        "focus4": "11.7.3"
     },
     "devDependencies": {
-        "@focus4/tooling": "11.7.0"
+        "@focus4/tooling": "11.7.3"
     },
     "peerDependencies": {
         "@focus4/collections": "*",
