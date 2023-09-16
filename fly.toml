@@ -1,0 +1,18 @@
+# fly.toml app configuration file generated for focus4-starter-kit on 2023-09-16T16:58:45+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "focus4-starter-kit"
+primary_region = "cdg"
+
+[build]
+
+[http_service]
+  internal_port = 4173
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  max_machines_running = 1
+  processes = ["app"]

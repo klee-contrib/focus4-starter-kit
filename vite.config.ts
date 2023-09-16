@@ -11,6 +11,7 @@ export default defineConfig({
     base: "",
     plugins: [cssAutoModules(/^\/src/), topLevelAwait(), react(), checker({typescript: true}), mockDevServerPlugin()],
     server: {
+        host: "0.0.0.0",
         proxy: {
             "/api": {target: "api-url.com"}
         }
