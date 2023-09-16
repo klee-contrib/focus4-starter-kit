@@ -1,45 +1,27 @@
-import {observable} from "mobx";
-import {useObserver} from "mobx-react";
-import {ReactElement} from "react";
+import {ReactNode} from "react";
 
-import {
-    HeaderActions,
-    HeaderBarRight,
-    HeaderContent,
-    HeaderScrolling,
-    HeaderSummary,
-    HeaderTopRow
-} from "@focus4/layout";
+import {HeaderBarLeft, HeaderBarRight, HeaderScrolling, HeaderSummary, HeaderTopRow} from "@focus4/layout";
+import {IconButton} from "@focus4/toolbox";
 
-const headerStore = observable({
-    canDeploy: true
-});
+import css from "./__style__/header.css";
 
-export function Header({
-    summary,
-    cartridge,
-    barRight
-}: {
-    summary: ReactElement;
-    cartridge: ReactElement;
-    barRight?: ReactElement;
-}) {
-    return useObserver(() => (
-        <HeaderScrolling canDeploy={headerStore.canDeploy}>
+export function Header({children}: {children?: ReactNode}) {
+    return (
+        <HeaderScrolling canDeploy={false} theme={{scrolling: css.header}}>
             <HeaderTopRow>
-                <HeaderSummary>{summary}</HeaderSummary>
-                <HeaderBarRight>{barRight}</HeaderBarRight>
+                <HeaderBarLeft>
+                    <strong>Starter Kit Focus v4</strong>
+                </HeaderBarLeft>
+                <HeaderSummary>
+                    <div className={css.summary}>{children}</div>
+                </HeaderSummary>
+                <HeaderBarRight>
+                    <div className={css.user}>
+                        <strong>Utilisateur connecté [Administrateur]</strong>
+                        <IconButton className={css.button} icon="account_circle" />
+                    </div>
+                </HeaderBarRight>
             </HeaderTopRow>
-            <HeaderContent>{cartridge}</HeaderContent>
-            <HeaderActions
-                primary={[
-                    {
-                        onClick: () => (headerStore.canDeploy = !headerStore.canDeploy),
-                        icon: "radio_button_checked",
-                        tooltip: "Toggle le canDeploy"
-                    }
-                ]}
-            />
         </HeaderScrolling>
-    ));
+    );
 }

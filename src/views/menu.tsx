@@ -1,39 +1,29 @@
-import {useObserver} from "mobx-react";
-
 import {MainMenu, MainMenuItem} from "@focus4/layout";
+import {FontIcon} from "@focus4/toolbox";
 
 import {router} from "../router";
 
+import css from "./__style__/menu.css";
+
 export function StarterMenu() {
-    return useObserver(() => (
-        <MainMenu activeRoute={router.get(a => a)} showOverlay>
+    return (
+        <MainMenu activeRoute={router.get(x => x)} theme={{menu: css.menu}}>
+            <div className={css.logo}>
+                <FontIcon>home_repair_service</FontIcon>
+            </div>
+            <MainMenuItem icon="home" label="Accueil" onClick={() => router.to(x => x)} route="" />
             <MainMenuItem
-                icon="home"
-                onClick={() => router.to(a => a("home")(router.state.home.id ?? 1))}
-                route="home"
+                icon="group"
+                label="Utilisateurs"
+                onClick={() => router.to(x => x("utilisateurs"))}
+                route="utilisateurs"
             />
             <MainMenuItem
-                icon="business"
-                onClick={() => router.to(a => a("test")(router.state.test.lol ?? "salut"))}
-                route="test"
+                icon="settings"
+                label="Profils"
+                onClick={() => router.to(x => x("profils"))}
+                route="profils"
             />
-            <MainMenuItem icon="add">
-                <MainMenuItem
-                    icon="home"
-                    label="Accueil"
-                    onClick={() => router.to(a => a("home")(router.state.home.id ?? 1))}
-                    route="home"
-                />
-                <MainMenuItem icon="add">
-                    <span style={{whiteSpace: "pre"}}>Ce sous menu ne sert vraiment à rien</span>
-                    <MainMenuItem
-                        icon="business"
-                        onClick={() => router.to(a => a("test")(router.state.test.lol ?? "salut"))}
-                        route="test"
-                    />
-                    YOLO
-                </MainMenuItem>
-            </MainMenuItem>
         </MainMenu>
-    ));
+    );
 }

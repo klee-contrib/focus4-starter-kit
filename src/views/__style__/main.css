@@ -1,0 +1,10 @@
+:root {
+    --preferred-font: Open Sans;
+    --color-primary: var(--palette-purple-400);
+    --color-accent: var(--palette-purple-300);
+
+    --header-toprow-background: rgb(var(--color-primary));
+    --header-color: rgb(var(--color-white));
+
+    --main-menu-item-height: 80px;
+}

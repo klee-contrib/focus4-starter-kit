@@ -1,0 +1,22 @@
+.header strong {
+    text-wrap: nowrap;
+}
+
+.user,
+.summary {
+    display: flex;
+    align-items: center;
+}
+
+.summary span {
+    margin-right: 6px;
+}
+
+.user strong {
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.button:not([disabled]) {
+    color: rgb(var(--header-color));
+}

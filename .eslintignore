@@ -1,4 +1,5 @@
+locale
 node_modules
-static
+model
+services
 *.css.d.ts
-webpack.config.js
