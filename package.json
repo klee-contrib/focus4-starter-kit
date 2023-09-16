@@ -8,6 +8,7 @@
         "build": "vite build",
         "cssgen": "focus4 cssgen src",
         "eslint": "eslint --ext .ts,.tsx src",
+        "preview": "vite preview",
         "start": "vite"
     },
     "dependencies": {
