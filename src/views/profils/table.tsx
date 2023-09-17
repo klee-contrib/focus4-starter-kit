@@ -13,11 +13,11 @@ export function ProfilTable() {
 
     return (
         <>
-            <span className={summaryCss.sentence}>
-                <strong>{profilStore.profils.length}</strong> profils
-            </span>
-            <br />
-            <br />
+            <div className={summaryCss.summary}>
+                <span className={summaryCss.sentence}>
+                    <strong>{profilStore.profils.length}</strong> profils
+                </span>
+            </div>
             {tableFor({
                 data: profilStore.profils,
                 itemKey: pro => pro.id.value,

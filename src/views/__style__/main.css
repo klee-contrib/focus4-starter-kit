@@ -8,3 +8,8 @@
 
     --main-menu-item-height: 80px;
 }
+
+a {
+    color: rgb(var(--color-primary));
+    font-weight: 500;
+}

@@ -1,14 +1,26 @@
 import {DateTime} from "luxon";
 
-import {domain, SelectCheckbox} from "@focus4/forms";
+import {BooleanRadio, domain, InputDate, SelectCheckbox} from "@focus4/forms";
 
-export const DO_BOOLEEN = domain({type: "boolean"});
+export const DO_BOOLEEN = domain({
+    type: "boolean",
+    displayFormatter: value => (value ? "Oui" : "Non"),
+    InputComponent: BooleanRadio
+});
 export const DO_CODE = domain({
     type: "string",
     inputProps: {maxLength: 10},
     validator: {type: "string", maxLength: 10}
 });
 export const DO_CODE_LISTE = domain({type: "object", SelectComponent: SelectCheckbox});
+export const DO_DATE = domain({
+    type: "string",
+    displayFormatter: date => (date ? DateTime.fromISO(date, {zone: "utc"}).toFormat("dd/MM/yyyy") : ""),
+    InputComponent: InputDate,
+    inputProps: {
+        inputFormat: "dd/MM/yyyy"
+    }
+});
 export const DO_DATE_HEURE = domain({
     type: "string",
     displayFormatter: date => (date ? DateTime.fromISO(date).toFormat("dd/MM/yyyy à HH:mm:ss") : "")

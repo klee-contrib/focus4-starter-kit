@@ -2,14 +2,16 @@ import {useObserver} from "mobx-react";
 
 import {fieldFor, Form, Panel, selectFor, useFormActions, useFormNode} from "@focus4/forms";
 
-import {addProfil, getProfil, updateProfil} from "../../services/securite/profil/profil";
-import {profilStore} from "../../stores/profil";
-import {referenceStore} from "../../stores/references";
+import {addProfil, getProfil, updateProfil} from "../../../services/securite/profil/profil";
+import {profilStore} from "../../../stores/profil";
+import {referenceStore} from "../../../stores/references";
 
-import {router} from "../../router";
+import {router} from "../../../router";
 
-export function ProfilDetail() {
-    const entity = useFormNode(profilStore.profil, f => f.remove("dateCreation", "dateModification", "utilisateurs"));
+export function ProfilInfos() {
+    const entity = useFormNode(profilStore.profil, f =>
+        f.remove("id", "dateCreation", "dateModification", "utilisateurs")
+    );
 
     const actions = useFormActions(entity, a =>
         a
@@ -27,7 +29,7 @@ export function ProfilDetail() {
 
     return useObserver(() => (
         <Form {...actions.formProps}>
-            <Panel title="Informations générales" {...actions.panelProps}>
+            <Panel title="Informations" {...actions.panelProps}>
                 {fieldFor(entity.libelle)}
                 {selectFor(entity.droits, referenceStore.droit)}
                 {!entity.form.isEdit ? fieldFor(entity.sourceNode.dateCreation) : null}
