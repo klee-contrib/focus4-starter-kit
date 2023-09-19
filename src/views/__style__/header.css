@@ -1,5 +1,5 @@
 .header strong {
-    text-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .user,
