@@ -1,6 +1,6 @@
 .logo {
     height: 60px;
-    background: rgb(var(--color-accent));
+    background: rgb(var(--palette-purple-300));
     user-select: none;
 }
 

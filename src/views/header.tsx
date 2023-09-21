@@ -1,12 +1,14 @@
+import {useObserver} from "mobx-react";
 import {ReactNode} from "react";
 
 import {HeaderBarLeft, HeaderBarRight, HeaderScrolling, HeaderSummary, HeaderTopRow} from "@focus4/layout";
-import {IconButton} from "@focus4/toolbox";
+import {colorScheme} from "@focus4/styling";
+import {IconButton, Switch} from "@focus4/toolbox";
 
 import css from "./__style__/header.css";
 
 export function Header({children}: {children?: ReactNode}) {
-    return (
+    return useObserver(() => (
         <HeaderScrolling canDeploy={false} theme={{scrolling: css.header}}>
             <HeaderTopRow>
                 <HeaderBarLeft>
@@ -19,9 +21,15 @@ export function Header({children}: {children?: ReactNode}) {
                     <div className={css.user}>
                         <strong>Utilisateur connecté [Administrateur]</strong>
                         <IconButton className={css.button} icon="account_circle" />
+                        <Switch
+                            iconOff="light_mode"
+                            iconOn="dark_mode"
+                            onChange={() => (colorScheme.dark = !colorScheme.dark)}
+                            value={colorScheme.dark}
+                        />
                     </div>
                 </HeaderBarRight>
             </HeaderTopRow>
         </HeaderScrolling>
-    );
+    ));
 }

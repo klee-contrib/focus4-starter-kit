@@ -3,10 +3,15 @@
     --color-primary: var(--palette-purple-400);
     --color-accent: var(--palette-purple-300);
 
-    --header-toprow-background: rgb(var(--color-primary));
-    --header-color: rgb(var(--color-white));
+    --header-toprow-background: rgb(var(--palette-purple-400));
+    --header-color: white;
 
     --main-menu-item-height: 80px;
+}
+
+:root[dark] {
+    --color-primary: var(--palette-purple-300);
+    --color-accent: var(--palette-purple-200);
 }
 
 a {

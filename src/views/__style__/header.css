@@ -1,3 +1,10 @@
+.header {
+    --input-on-color: white;
+    --input-on-accent-color: var(--header-toprow-background);
+    --input-outline-color: white;
+    --input-text-color: white;
+}
+
 .header strong {
     white-space: nowrap;
 }
