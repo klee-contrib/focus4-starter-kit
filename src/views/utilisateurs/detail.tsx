@@ -1,6 +1,16 @@
 import {useObserver} from "mobx-react";
 
-import {Display, fieldFor, Form, Panel, selectFor, useFormActions, useFormNode, useLoad} from "@focus4/forms";
+import {
+    Display,
+    fieldFor,
+    Form,
+    Panel,
+    selectFor,
+    SelectRadio,
+    useFormActions,
+    useFormNode,
+    useLoad
+} from "@focus4/forms";
 import {makeReferenceList, toFlatValues} from "@focus4/stores";
 import {FontIcon} from "@focus4/toolbox";
 
@@ -16,16 +26,19 @@ import css from "./__style__/detail.css";
 
 export function UtilisateurDetail() {
     const entity = useFormNode(utilisateurStore.utilisateur, e =>
-        e.remove("id", "dateCreation", "dateModification").patch("profilId", f =>
-            f.metadata({
-                DisplayComponent: props => (
-                    <a className={css.link} href={router.href(x => x("profils")(props.value))}>
-                        <Display {...props} />
-                        <FontIcon>open_in_new</FontIcon>
-                    </a>
-                )
-            })
-        )
+        e
+            .remove("id", "dateCreation", "dateModification")
+            .patch("profilId", f =>
+                f.metadata({
+                    DisplayComponent: props => (
+                        <a className={css.link} href={router.href(x => x("profils")(props.value))}>
+                            <Display {...props} />
+                            <FontIcon>open_in_new</FontIcon>
+                        </a>
+                    )
+                })
+            )
+            .patch("typeUtilisateurCode", f => f.metadata({SelectComponent: SelectRadio}))
     );
 
     useLoad(profilStore.profils, a => a.params().load(getProfils));
