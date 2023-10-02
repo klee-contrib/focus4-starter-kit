@@ -17,7 +17,7 @@ export function ProfilTable() {
     return (
         <>
             <div className={summaryCss.summary}>
-                <span className={summaryCss.sentence}>
+                <span>
                     <strong>{profilStore.profils.length}</strong> profils
                 </span>
             </div>

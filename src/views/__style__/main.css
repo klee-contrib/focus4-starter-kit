@@ -2,6 +2,8 @@
     --preferred-font: Open Sans;
     --color-primary: var(--palette-purple-400);
     --color-accent: var(--palette-purple-300);
+    --button-accent-hover-opacity: 0.09;
+    --button-line-height-delta: -1px;
 
     --header-toprow-background: rgb(var(--palette-purple-400));
     --header-color: white;
@@ -12,6 +14,8 @@
 :root[dark] {
     --color-primary: var(--palette-purple-300);
     --color-accent: var(--palette-purple-200);
+    --button-primary-secondary-color: rgba(var(--color-black), 0.9);
+    --button-accent-hover-opacity: 0.18;
 }
 
 a {

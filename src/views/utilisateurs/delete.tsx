@@ -18,8 +18,8 @@ export function UtilisateurDelete({
             actions={[
                 {
                     label: "Confirmer",
-                    primary: true,
-                    raised: true,
+                    color: "primary",
+                    variant: "filled",
                     onClick: async () => {
                         await deleteUtilisateur(utilisateur!.id!);
                         messageStore.addSuccessMessage("L'utilisateur a bien été supprimé");
@@ -30,7 +30,6 @@ export function UtilisateurDelete({
                 {label: "Annuler", onClick: closeDialog}
             ]}
             active={!!utilisateur}
-            onOverlayClick={() => closeDialog}
             title="Suppression d'un utilisateur"
         >
             Êtes-vous sûr de vouloir supprimer l'utilisateur {utilisateur?.prenom} {utilisateur?.nom} ?

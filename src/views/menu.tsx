@@ -7,7 +7,7 @@ import css from "./__style__/menu.css";
 
 export function StarterMenu() {
     return (
-        <MainMenu activeRoute={router.get(x => x)} showOverlay theme={{menu: css.menu}}>
+        <MainMenu activeRoute={router.get(x => x)} showOverlay>
             <div className={css.logo}>
                 <FontIcon>home_repair_service</FontIcon>
             </div>

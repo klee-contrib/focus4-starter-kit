@@ -1,12 +1,14 @@
 .line {
     display: flex;
     align-items: center;
-    color: inherit;
+    color: rgb(var(--palette-grey-500));
+    position: relative;
     text-decoration: none;
     background: rgb(var(--color-white));
     margin-bottom: 10px;
-    padding: 10px 10px 10px 46px;
-    box-shadow: var(--shadow-2p);
+    padding: 10px 10px 10px 50px;
+    box-shadow: var(--action-bar-shadow);
+    border-radius: var(--action-bar-border-radius);
     transition: background-color 0.2s ease-out;
 }
 
@@ -29,6 +31,7 @@
 
 .text {
     padding: 2px 0;
+    color: rgb(var(--color-black));
 }
 
 .text--title {

@@ -33,6 +33,12 @@ export function UtilisateurList() {
                 store: utilisateurListStore,
                 facetBoxPosition: "none",
                 hasSelection: true,
+                orderableColumnList: [
+                    {key: "nom", label: "Nom croissant", order: true},
+                    {key: "nom", label: "Nom décroissant", order: false},
+                    {key: "prenom", label: "Prénom croissant", order: true},
+                    {key: "prenom", label: "Prénom décroissant", order: false}
+                ],
                 operationList: [{action: () => setManyDialogActive(true), label: "Supprimer", icon: "delete"}],
                 listProps: {
                     itemKey: i => i.id,
@@ -49,8 +55,8 @@ export function UtilisateurList() {
                 actions={[
                     {
                         label: "Confirmer",
-                        primary: true,
-                        raised: true,
+                        color: "primary",
+                        variant: "elevated-filled",
                         onClick: async () => {
                             messageStore.addWarningMessage("Méthode non implémentée...");
                             setManyDialogActive(false);

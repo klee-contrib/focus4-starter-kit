@@ -1,6 +1,7 @@
 .header {
-    --input-on-color: white;
-    --input-on-accent-color: var(--header-toprow-background);
+    --input-on-main-color: white;
+    --input-on-secondary-color: var(--header-toprow-background);
+    --focus-ring-color: white;
     --input-outline-color: white;
     --input-text-color: white;
 }
