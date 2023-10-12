@@ -32,6 +32,7 @@ export function UtilisateurList() {
             {advancedSearchFor({
                 store: utilisateurListStore,
                 facetBoxPosition: "none",
+                hasSearchBar: true,
                 hasSelection: true,
                 orderableColumnList: [
                     {key: "nom", label: "Nom croissant", order: true},

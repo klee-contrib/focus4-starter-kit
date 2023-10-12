@@ -15,6 +15,7 @@ export const DO_CODE = domain({
 export const DO_CODE_LISTE = domain({type: "object", SelectComponent: SelectCheckbox});
 export const DO_DATE = domain({
     type: "string",
+    validator: {type: "date"},
     displayFormatter: date => (date ? DateTime.fromISO(date, {zone: "utc"}).toFormat("dd/MM/yyyy") : ""),
     InputComponent: InputDate,
     inputProps: {
