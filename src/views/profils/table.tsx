@@ -1,4 +1,4 @@
-import {summaryCss, tableFor} from "@focus4/collections";
+import {advancedSearchCss, summaryCss, tableFor} from "@focus4/collections";
 import {useLoad} from "@focus4/forms";
 import {stringFor} from "@focus4/stores";
 import {FontIcon, Tooltip} from "@focus4/toolbox";
@@ -16,10 +16,12 @@ export function ProfilTable() {
 
     return (
         <>
-            <div className={summaryCss.summary}>
-                <span>
-                    <strong>{profilStore.profils.length}</strong> profils
-                </span>
+            <div className={advancedSearchCss.topRow}>
+                <div className={summaryCss.summary}>
+                    <span>
+                        <strong>{profilStore.profils.length}</strong> profils
+                    </span>
+                </div>
             </div>
             {tableFor({
                 data: profilStore.profils,
