@@ -1,6 +1,7 @@
 import {useObserver} from "mobx-react";
 
 import {
+    autocompleteFor,
     Display,
     fieldFor,
     Form,
@@ -64,6 +65,11 @@ export function UtilisateurDetail() {
                 {fieldFor(entity.prenom)}
                 {fieldFor(entity.email)}
                 {fieldFor(entity.dateNaissance)}
+                {autocompleteFor(entity.adresse, {
+                    keyResolver: async label => label,
+                    querySearcher: async query => await searchAdresse(query),
+                    autocompleteProps: {icon: "search"}
+                })}
                 {fieldFor(entity.actif)}
                 {selectFor(entity.typeUtilisateurCode, referenceStore.typeUtilisateur)}
                 {selectFor(
@@ -77,4 +83,9 @@ export function UtilisateurDetail() {
             </Panel>
         </Form>
     ));
+}
+
+async function searchAdresse(query: string): Promise<{key: string; label: string}[]> {
+    const response = await fetch(`./api/adresses?query=${encodeURIComponent(query)}`);
+    return await response.json();
 }

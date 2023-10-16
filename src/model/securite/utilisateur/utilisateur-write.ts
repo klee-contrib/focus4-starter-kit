@@ -7,15 +7,16 @@ import {DO_BOOLEEN, DO_CODE, DO_DATE, DO_EMAIL, DO_ID, DO_LIBELLE} from "../../.
 
 import {TypeUtilisateurCode} from "./references";
 
-export type UtilisateurWrite = EntityToType<UtilisateurWriteEntityType>
+export type UtilisateurWrite = EntityToType<UtilisateurWriteEntityType>;
 export interface UtilisateurWriteEntityType {
-    nom: FieldEntry2<typeof DO_LIBELLE, string>,
-    prenom: FieldEntry2<typeof DO_LIBELLE, string>,
-    email: FieldEntry2<typeof DO_EMAIL, string>,
-    dateNaissance: FieldEntry2<typeof DO_DATE, string>,
-    actif: FieldEntry2<typeof DO_BOOLEEN, boolean>,
-    profilId: FieldEntry2<typeof DO_ID, number>,
-    typeUtilisateurCode: FieldEntry2<typeof DO_CODE, TypeUtilisateurCode>
+    nom: FieldEntry2<typeof DO_LIBELLE, string>;
+    prenom: FieldEntry2<typeof DO_LIBELLE, string>;
+    email: FieldEntry2<typeof DO_EMAIL, string>;
+    dateNaissance: FieldEntry2<typeof DO_DATE, string>;
+    adresse: FieldEntry2<typeof DO_LIBELLE, string>;
+    actif: FieldEntry2<typeof DO_BOOLEEN, boolean>;
+    profilId: FieldEntry2<typeof DO_ID, number>;
+    typeUtilisateurCode: FieldEntry2<typeof DO_CODE, TypeUtilisateurCode>;
 }
 
 export const UtilisateurWriteEntity: UtilisateurWriteEntityType = {
@@ -47,6 +48,13 @@ export const UtilisateurWriteEntity: UtilisateurWriteEntityType = {
         isRequired: false,
         label: "securite.utilisateur.utilisateur.dateNaissance"
     },
+    adresse: {
+        type: "field",
+        name: "adresse",
+        domain: DO_LIBELLE,
+        isRequired: false,
+        label: "securite.utilisateur.utilisateur.adresse"
+    },
     actif: {
         type: "field",
         name: "actif",
@@ -70,4 +78,4 @@ export const UtilisateurWriteEntity: UtilisateurWriteEntityType = {
         defaultValue: "GEST",
         label: "securite.utilisateur.utilisateur.typeUtilisateurCode"
     }
-}
+};

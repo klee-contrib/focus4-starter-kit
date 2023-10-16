@@ -6,7 +6,12 @@
     "printWidth": 120,
     "overrides": [
         {
-            "files": ["package.json", "package-lock.json", "app/model/**", "app/services/**"],
+            "files": [
+                "package.json",
+                "package-lock.json",
+                "src/model/**",
+                "src/services/**"
+            ],
             "options": {
                 "printWidth": 50000
             }
