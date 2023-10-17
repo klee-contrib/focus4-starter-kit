@@ -14,6 +14,7 @@ export default defineMock({
         utilisateur.actif = body.actif;
         utilisateur.email = body.email;
         utilisateur.dateNaissance = body.dateNaissance;
+        utilisateur.adresse = body.adresse;
         utilisateur.typeUtilisateurCode = body.typeUtilisateurCode;
         utilisateur.profilId = body.profilId;
         utilisateur.dateModification = DateTime.utc().toISO()!;

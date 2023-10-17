@@ -1,6 +1,7 @@
 :root {
     --preferred-font: Manrope;
     --color-primary: var(--palette-purple-400);
+    --color-primary-light: var(--palette-purple-100);
     --color-accent: var(--palette-purple-300);
     --button-accent-hover-opacity: 0.09;
     --button-line-height-delta: -1px;
@@ -13,6 +14,7 @@
 
 :root[dark] {
     --color-primary: var(--palette-purple-300);
+    --color-primary-light: var(--palette-purple-800);
     --color-accent: var(--palette-purple-200);
     --button-primary-secondary-color: rgba(var(--color-black), 0.9);
     --button-accent-hover-opacity: 0.18;
