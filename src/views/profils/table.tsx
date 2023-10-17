@@ -1,7 +1,6 @@
 import {advancedSearchCss, summaryCss, tableFor} from "@focus4/collections";
 import {useLoad} from "@focus4/forms";
 import {stringFor} from "@focus4/stores";
-import {FontIcon, Tooltip} from "@focus4/toolbox";
 
 import {ProfilItemEntity} from "../../model/securite/profil/profil-item";
 import {getProfils} from "../../services/securite/profil/profil";
@@ -35,16 +34,7 @@ export function ProfilTable() {
                     },
                     {
                         title: ProfilItemEntity.nombreUtilisateurs.label,
-                        content: pro => (
-                            <div className={css.users}>
-                                {stringFor(pro.nombreUtilisateurs)}
-                                {(pro.nombreUtilisateurs.value ?? 0) > 5 ? (
-                                    <Tooltip tooltip="Il ne devrait pas y avoir plus de 5 utilisateurs avec le même profil !">
-                                        <FontIcon>warning</FontIcon>
-                                    </Tooltip>
-                                ) : null}
-                            </div>
-                        )
+                        content: pro => <div className={css.users}>{stringFor(pro.nombreUtilisateurs)}</div>
                     }
                 ]
             })}

@@ -17,8 +17,12 @@ export function ProfilInfos() {
                 .domain(DO_ENTIER)
                 .metadata({
                     label: "Nombre maximal d'utilisateurs",
+                    comment: "Ce champ ne sert à rien et n'est qu'une excuse pour poser un slider :)",
                     InputComponent: Slider,
-                    inputProps: {pinned: true, snaps: true, max: 20}
+                    inputProps: {pinned: true, snaps: true, step: 1, max: 20},
+                    labelProps: {
+                        showTooltip: true
+                    }
                 })
                 .value(10)
         )
