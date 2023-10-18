@@ -67,7 +67,8 @@ export function UtilisateurDetail() {
                 {fieldFor(entity.dateNaissance)}
                 {autocompleteFor(entity.adresse, {
                     keyResolver: async label => label,
-                    querySearcher: async query => ({data: await searchAdresse(query), totalCount: 10})
+                    querySearcher: query => searchAdresse(query),
+                    autocompleteProps: {icon: "place"}
                 })}
                 {fieldFor(entity.actif)}
                 {selectFor(entity.typeUtilisateurCode, referenceStore.typeUtilisateur)}

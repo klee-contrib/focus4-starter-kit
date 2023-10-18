@@ -10,5 +10,5 @@
 .link > span {
     font-size: 18px;
     margin-left: 4px;
-    margin-top: 2px;
+    line-height: var(--text-field-height);
 }
