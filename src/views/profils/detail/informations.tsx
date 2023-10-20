@@ -1,6 +1,6 @@
 import {useObserver} from "mobx-react";
 
-import {fieldFor, Form, Panel, selectFor, useFormActions, useFormNode} from "@focus4/forms";
+import {fieldFor, Form, Panel, SelectChips, selectFor, useFormActions, useFormNode} from "@focus4/forms";
 import {Slider} from "@focus4/toolbox";
 
 import {addProfil, getProfil, updateProfil} from "../../../services/securite/profil/profil";
@@ -12,20 +12,30 @@ import {router} from "../../../router";
 
 export function ProfilInfos() {
     const entity = useFormNode(profilStore.profil, e =>
-        e.remove("id", "dateCreation", "dateModification", "utilisateurs").add("nombreUtilisateursMax", f =>
-            f
-                .domain(DO_ENTIER)
-                .metadata({
-                    label: "Nombre maximal d'utilisateurs",
-                    comment: "Ce champ ne sert à rien et n'est qu'une excuse pour poser un slider :)",
-                    InputComponent: Slider,
-                    inputProps: {labeled: true, ticks: true, max: 20},
-                    labelProps: {
-                        showTooltip: true
-                    }
-                })
-                .value(10)
-        )
+        e
+            .remove("id", "dateCreation", "dateModification", "utilisateurs")
+            .add("nombreUtilisateursMax", f =>
+                f
+                    .domain(DO_ENTIER)
+                    .metadata({
+                        label: "Nombre maximal d'utilisateurs",
+                        comment:
+                            "Ce champ n'est qu'une excuse pour poser un slider, mais si sa valeur dépasse 12 alors le composant de sélection de droits va changer ;)",
+                        InputComponent: Slider,
+                        inputProps: {labeled: true, ticks: true, max: 20},
+                        labelProps: {
+                            showTooltip: true
+                        }
+                    })
+                    .value(8)
+            )
+            .patch("droits", (f, node) =>
+                f.metadata(() =>
+                    node.nombreUtilisateursMax.value! > 12
+                        ? {SelectComponent: SelectChips, selectProps: {hasSelectAll: true}}
+                        : {}
+                )
+            )
     );
 
     const actions = useFormActions(entity, a =>

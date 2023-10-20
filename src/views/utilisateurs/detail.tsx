@@ -32,7 +32,7 @@ export function UtilisateurDetail() {
             .patch("profilId", f =>
                 f.metadata({
                     DisplayComponent: props => (
-                        <a className={css.link} href={router.href(x => x("profils")(props.value))}>
+                        <a className={css.link} href={router.href(x => x("profils")(props.value!))}>
                             <Display {...props} />
                             <FontIcon>open_in_new</FontIcon>
                         </a>
