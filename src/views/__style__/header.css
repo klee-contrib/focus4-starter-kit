@@ -6,23 +6,22 @@
     --input-text-color: white;
 }
 
-.header strong {
-    white-space: nowrap;
-}
-
-.user,
-.summary {
+.item {
     display: flex;
     align-items: center;
 }
 
-.summary span {
+.item > span {
     margin-right: 6px;
 }
 
-.user strong {
-    margin-right: 5px;
+.item strong {
+    white-space: nowrap;
+}
+
+.item--user strong {
     font-weight: 600;
+    margin-right: 5px;
 }
 
 .button:not([disabled]) {
