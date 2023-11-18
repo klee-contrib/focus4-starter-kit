@@ -9,7 +9,7 @@
     padding: 10px 10px 10px 50px;
     box-shadow: var(--action-bar-shadow);
     border-radius: var(--action-bar-border-radius);
-    transition: background-color 0.2s ease-out;
+    transition: background-color var(--animation-duration-short) ease-out;
 }
 
 .line:hover {
