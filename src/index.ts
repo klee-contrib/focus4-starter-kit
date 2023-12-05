@@ -5,7 +5,7 @@ import {router} from "./router";
 
 initColorScheme();
 
-await router.start();
-
-await import("./locale");
-await import("./views");
+router.start().then(async () => {
+    await import("./locale");
+    await import("./views");
+});
