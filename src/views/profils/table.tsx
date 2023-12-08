@@ -1,5 +1,6 @@
 import {advancedSearchCss, summaryCss, tableFor} from "@focus4/collections";
 import {useLoad} from "@focus4/forms";
+import {Content} from "@focus4/layout";
 import {stringFor} from "@focus4/stores";
 
 import {ProfilItemEntity} from "../../model/securite/profil/profil-item";
@@ -14,7 +15,7 @@ export function ProfilTable() {
     const isLoading = useLoad(profilStore.profils, a => a.params().load(getProfils));
 
     return (
-        <>
+        <Content>
             <div className={advancedSearchCss.topRow}>
                 <div className={summaryCss.summary}>
                     <span>
@@ -38,7 +39,6 @@ export function ProfilTable() {
                     }
                 ]
             })}
-            <br />
-        </>
+        </Content>
     );
 }

@@ -1,6 +1,5 @@
 import {useObserver} from "mobx-react";
 
-import {Content} from "@focus4/layout";
 import {FontIcon} from "@focus4/toolbox";
 
 import {profilStore} from "../../stores/profil";
@@ -22,7 +21,7 @@ export function Profils() {
                         : `Détail du profil : ${profilStore.profil.libelle.value ?? ""}`}
                 </strong>
             </Header>
-            <Content>{router.state.profils.proId ? <ProfilDetail /> : <ProfilTable />}</Content>
+            {router.state.profils.proId ? <ProfilDetail /> : <ProfilTable />}
         </>
     ));
 }
