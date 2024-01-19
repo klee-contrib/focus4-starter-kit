@@ -12,7 +12,7 @@ import {router} from "../../router";
 import css from "./__style__/table.css";
 
 export function ProfilTable() {
-    const isLoading = useLoad(profilStore.profils, a => a.params().load(getProfils));
+    const [isLoading] = useLoad(profilStore.profils, a => a.params().load(getProfils));
 
     return (
         <Content>
