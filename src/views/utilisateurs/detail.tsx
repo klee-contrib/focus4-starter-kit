@@ -10,7 +10,8 @@ import {
     SelectRadio,
     useFormActions,
     useFormNode,
-    useLoad
+    useLoad,
+    useReferenceTracking
 } from "@focus4/forms";
 import {makeReferenceList, toFlatValues} from "@focus4/stores";
 import {FontIcon} from "@focus4/toolbox";
@@ -42,8 +43,6 @@ export function UtilisateurDetail() {
             .patch("typeUtilisateurCode", f => f.metadata({SelectComponent: SelectRadio}))
     );
 
-    useLoad(profilStore.profils, a => a.params().load(getProfils));
-
     const actions = useFormActions(entity, a =>
         a
             .params(() => router.state.utilisateurs.utiId)
@@ -57,6 +56,9 @@ export function UtilisateurDetail() {
                 }
             })
     );
+
+    useLoad(profilStore.profils, a => a.params().load(getProfils).trackingId(actions.trackingId));
+    useReferenceTracking(actions.trackingId, referenceStore, "typeUtilisateur");
 
     return useObserver(() => (
         <Form {...actions.formProps}>

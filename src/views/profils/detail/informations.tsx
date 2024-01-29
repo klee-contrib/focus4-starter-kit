@@ -1,6 +1,15 @@
 import {useObserver} from "mobx-react";
 
-import {fieldFor, Form, Panel, SelectChips, selectFor, useFormActions, useFormNode} from "@focus4/forms";
+import {
+    fieldFor,
+    Form,
+    Panel,
+    SelectChips,
+    selectFor,
+    useFormActions,
+    useFormNode,
+    useReferenceTracking
+} from "@focus4/forms";
 import {Slider} from "@focus4/toolbox";
 
 import {addProfil, getProfil, updateProfil} from "../../../services/securite/profil/profil";
@@ -51,6 +60,8 @@ export function ProfilInfos() {
                 }
             })
     );
+
+    useReferenceTracking(actions.trackingId, referenceStore, "droit");
 
     return useObserver(() => (
         <Form {...actions.formProps}>
