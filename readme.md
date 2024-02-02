@@ -1,6 +1,6 @@
 # focus4-starter-kit
 
-Starter kit pour une application Focus v4. Il s'agit d'une application exemple avec quelques écrans basiques, présentant des usages simples et courant du framework.
+Starter kit pour une application [Focus](https://github.com/klee-contrib/focus4). Il s'agit d'une application exemple avec quelques écrans basiques, présentant des usages simples et courant du framework.
 
 Une version de démo est disponible sur https://focus4-starter-kit.fly.dev
 
