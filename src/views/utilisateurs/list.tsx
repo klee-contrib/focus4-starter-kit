@@ -12,16 +12,13 @@ import {UtilisateurDelete} from "./delete";
 import {UtilisateurLine} from "./line";
 
 export function UtilisateurList() {
-    const [isLoading, setLoading] = useState(false);
     const [utiDelete, setUtiDelete] = useState<UtilisateurItem>();
     const [manyDialogActive, setManyDialogActive] = useState(false);
 
     function load() {
         utilisateurListStore.selectedItems.clear();
-        setLoading(true);
         searchUtilisateur().then(list => {
             utilisateurListStore.list = list;
-            setLoading(false);
         });
     }
 
@@ -46,7 +43,6 @@ export function UtilisateurList() {
                     operationList: uti => [
                         {action: () => setUtiDelete(uti), icon: "delete", type: "icon-tooltip", label: "Supprimer"}
                     ],
-                    isLoading,
                     LineComponent: UtilisateurLine,
                     perPage: 10
                 }
