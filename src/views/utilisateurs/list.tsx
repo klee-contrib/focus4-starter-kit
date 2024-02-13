@@ -17,8 +17,10 @@ export function UtilisateurList() {
 
     function load() {
         utilisateurListStore.selectedItems.clear();
+        utilisateurListStore.isLoading = true;
         searchUtilisateur().then(list => {
             utilisateurListStore.list = list;
+            utilisateurListStore.isLoading = false;
         });
     }
 
