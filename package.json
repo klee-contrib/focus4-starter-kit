@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "11.15.4",
+    "version": "11.16.0",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/klee-contrib/focus4-starter-kit",
     "main": "src/index.ts",
@@ -13,8 +13,8 @@
         "start": "vite"
     },
     "dependencies": {
-        "@focus4/tooling": "11.15.0",
-        "focus4": "11.15.4",
+        "@focus4/tooling": "11.16.0",
+        "focus4": "11.16.0",
         "vite-plugin-mock-dev-server": "1.4.7"
     },
     "devDependencies": {
