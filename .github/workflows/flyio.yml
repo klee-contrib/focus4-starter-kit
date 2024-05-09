@@ -1,12 +1,19 @@
 name: Deploy to fly.io
 on: [push]
 jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+    deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+
+            - name: node 20
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - uses: superfly/flyctl-actions/setup-flyctl@master
+            - run: flyctl deploy
+              env:
+                  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
