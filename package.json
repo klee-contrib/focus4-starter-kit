@@ -13,8 +13,8 @@
         "start": "vite"
     },
     "dependencies": {
-        "@focus4/tooling": "11.17.2",
-        "focus4": "11.17.3",
+        "@focus4/tooling": "11.17.5",
+        "focus4": "11.17.5",
         "vite-plugin-mock-dev-server": "1.5.0"
     },
     "devDependencies": {
