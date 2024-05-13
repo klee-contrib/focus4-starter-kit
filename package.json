@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "@focus4/tooling": "11.17.5",
-        "focus4": "11.17.6",
+        "focus4": "11.17.7",
         "vite-plugin-mock-dev-server": "1.5.0"
     },
     "devDependencies": {
