@@ -14,11 +14,11 @@
     },
     "dependencies": {
         "@focus4/tooling": "11.18.0",
-        "focus4": "11.18.1",
+        "focus4": "11.18.2",
         "vite-plugin-mock-dev-server": "1.5.1"
     },
     "devDependencies": {
-        "@flydotio/dockerfile": "0.5.7"
+        "@flydotio/dockerfile": "0.5.8"
     },
     "peerDependencies": {
         "@focus4/collections": "*",
