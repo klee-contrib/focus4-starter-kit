@@ -9,6 +9,6 @@ export default defineMock({
     delay: 100,
     body: () =>
         profils.value.map(
-            ({id, libelle, utilisateurs}) => ({id, libelle, nombreUtilisateurs: utilisateurs?.length} as ProfilItem)
+            ({id, libelle, utilisateurs}) => ({id, libelle, nombreUtilisateurs: utilisateurs?.length}) as ProfilItem
         )
 });

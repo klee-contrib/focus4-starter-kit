@@ -10,6 +10,6 @@ export default defineMock({
     body: () =>
         utilisateurs.value.map(
             ({id, nom, prenom, email, typeUtilisateurCode}) =>
-                ({id, nom, prenom, email, typeUtilisateurCode} as UtilisateurItem)
+                ({id, nom, prenom, email, typeUtilisateurCode}) as UtilisateurItem
         )
 });
