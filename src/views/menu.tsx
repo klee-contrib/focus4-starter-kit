@@ -11,19 +11,14 @@ export function StarterMenu() {
             <div className={css.logo}>
                 <FontIcon>home_repair_service</FontIcon>
             </div>
-            <MainMenuItem icon="home" label="Accueil" onClick={() => router.to(x => x)} route="" />
+            <MainMenuItem href={router.href(x => x)} icon="home" label="Accueil" route="" />
             <MainMenuItem
+                href={router.href(x => x("utilisateurs"))}
                 icon="group"
                 label="Utilisateurs"
-                onClick={() => router.to(x => x("utilisateurs"))}
                 route="utilisateurs"
             />
-            <MainMenuItem
-                icon="settings"
-                label="Profils"
-                onClick={() => router.to(x => x("profils"))}
-                route="profils"
-            />
+            <MainMenuItem href={router.href(x => x("profils"))} icon="settings" label="Profils" route="profils" />
         </MainMenu>
     );
 }
