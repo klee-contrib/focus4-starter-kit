@@ -5,7 +5,6 @@ import {
     Display,
     fieldFor,
     Form,
-    Panel,
     selectFor,
     SelectRadio,
     useFormActions,
@@ -13,6 +12,7 @@ import {
     useLoad,
     useReferenceTracking
 } from "@focus4/forms";
+import {Panel} from "@focus4/layout";
 import {makeReferenceList, toFlatValues} from "@focus4/stores";
 import {FontIcon} from "@focus4/toolbox";
 
