@@ -5,7 +5,7 @@ import {Header} from "./header";
 export function Home() {
     return (
         <>
-            <Header />
+            <Header icon="home" />
             <Content>
                 Bienvenue sur le starter kit de Focus v4 !<br />
                 <br />

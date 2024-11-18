@@ -4,19 +4,14 @@
     --focus-ring-color: white;
     --input-outline-color: white;
     --input-text-color: white;
+
+    --fil-ariane-item-color: white;
+    --fil-ariane-item-active-color: white;
 }
 
 .item {
     display: flex;
     align-items: center;
-}
-
-.item > span {
-    margin-right: 6px;
-}
-
-.item strong {
-    white-space: nowrap;
 }
 
 .item--user strong {
