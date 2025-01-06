@@ -55,6 +55,7 @@ export function UtilisateurDetail() {
                     return addUtilisateur(uti);
                 }
             })
+            .withConfirmation(router)
     );
 
     useLoad(profilStore.profils, a => a.params().load(getProfils).trackingId(actions.trackingId));

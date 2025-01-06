@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "11.21.2",
+    "version": "11.22.0",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/klee-contrib/focus4-starter-kit",
     "main": "src/index.ts",
@@ -13,12 +13,12 @@
         "start": "vite"
     },
     "dependencies": {
-        "@focus4/tooling": "11.21.2",
-        "focus4": "11.21.2",
-        "vite-plugin-mock-dev-server": "1.8.0"
+        "@focus4/tooling": "11.22.0",
+        "focus4": "11.22.0",
+        "vite-plugin-mock-dev-server": "1.8.3"
     },
     "devDependencies": {
-        "@flydotio/dockerfile": "0.5.9"
+        "@flydotio/dockerfile": "0.6.0"
     },
     "peerDependencies": {
         "@focus4/collections": "*",
@@ -29,14 +29,14 @@
         "@focus4/styling": "*",
         "@focus4/toolbox": "*",
         "framer-motion": "*",
-        "i18next": "*",
+        "i18next": "23",
         "lodash": "*",
         "luxon": "*",
         "mobx": "*",
         "mobx-react": "7",
         "numeral": "*",
-        "react": "*",
-        "react-dom": "*"
+        "react": "18",
+        "react-dom": "18"
     },
     "author": "KleeGroup",
     "license": "MIT"
