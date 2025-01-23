@@ -1,4 +1,5 @@
 import {useObserver} from "mobx-react";
+import {ReactNode} from "react";
 
 import {messageStore} from "@focus4/core";
 import {FilAriane, HeaderItem, HeaderScrolling, HeaderTopRow} from "@focus4/layout";
@@ -11,7 +12,15 @@ import css from "./__style__/header.css";
 
 const theme = toBem(css);
 
-export function Header({icon, paramResolver}: {icon: string; paramResolver?: () => string}) {
+export function Header({
+    children,
+    icon,
+    paramResolver
+}: {
+    children?: ReactNode;
+    icon: string;
+    paramResolver?: () => string;
+}) {
     return useObserver(() => (
         <HeaderScrolling theme={{scrolling: theme.header()}}>
             <HeaderTopRow>
@@ -42,6 +51,7 @@ export function Header({icon, paramResolver}: {icon: string; paramResolver?: () 
                     />
                 </HeaderItem>
             </HeaderTopRow>
+            {children}
         </HeaderScrolling>
     ));
 }
