@@ -14,5 +14,8 @@ export default defineConfig({
         proxy: {
             "/api": {target: "api-url.com"}
         }
+    },
+    preview: {
+        allowedHosts: ["focus4-starter-kit.fly.dev"]
     }
 });
