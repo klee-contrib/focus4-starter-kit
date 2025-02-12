@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "11.23.7",
+    "version": "12.0.0",
     "description": "Starter kit pour Focus V4",
     "repository": "http://www.github.com/klee-contrib/focus4-starter-kit",
     "main": "src/index.ts",
@@ -8,35 +8,31 @@
     "scripts": {
         "build": "vite build",
         "cssgen": "focus4 cssgen src __style__",
-        "eslint": "eslint --ext .ts,.tsx src",
+        "eslint": "eslint src",
         "preview": "vite preview",
         "start": "vite"
     },
     "dependencies": {
-        "@focus4/tooling": "11.23.6",
-        "focus4": "11.23.7",
-        "vite-plugin-mock-dev-server": "1.8.3"
+        "@focus4/collections": "12.0.0-beta.5",
+        "@focus4/core": "12.0.0-beta.5",
+        "@focus4/form-toolbox": "12.0.0-beta.5",
+        "@focus4/forms": "12.0.0-beta.5",
+        "@focus4/layout": "12.0.0-beta.5",
+        "@focus4/stores": "12.0.0-beta.5",
+        "@focus4/styling": "12.0.0-beta.5",
+        "@focus4/toolbox": "12.0.0-beta.5",
+        "@focus4/tooling": "12.0.0-beta.5",
+        "es-toolkit": "1.32.0",
+        "i18next": "24.2.2",
+        "luxon": "3.5.0",
+        "mobx": "6.13.6",
+        "mobx-react": "9.2.0",
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
+        "vite-plugin-mock-dev-server": "1.8.4"
     },
     "devDependencies": {
-        "@flydotio/dockerfile": "0.7.4"
-    },
-    "peerDependencies": {
-        "@focus4/collections": "*",
-        "@focus4/core": "*",
-        "@focus4/forms": "*",
-        "@focus4/layout": "*",
-        "@focus4/stores": "*",
-        "@focus4/styling": "*",
-        "@focus4/toolbox": "*",
-        "framer-motion": "*",
-        "i18next": "*",
-        "lodash": "*",
-        "luxon": "*",
-        "mobx": "*",
-        "mobx-react": "7",
-        "numeral": "*",
-        "react": "18",
-        "react-dom": "18"
+        "@flydotio/dockerfile": "0.7.8"
     },
     "author": "KleeGroup",
     "license": "MIT"

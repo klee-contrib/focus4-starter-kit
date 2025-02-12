@@ -1,4 +1,3 @@
-import _ from "lodash";
 import {DateTime} from "luxon";
 import {defineMock} from "vite-plugin-mock-dev-server";
 
@@ -17,7 +16,7 @@ export default defineMock({
             dateCreation: DateTime.utc().toISO(),
             dateNaissance: body.dateNaissance,
             email: body.email,
-            id: _.max(utilisateurs.value.map(u => u.id))! + 1,
+            id: Math.max(...utilisateurs.value.map(u => u.id!)) + 1,
             nom: body.nom,
             prenom: body.prenom,
             profilId: body.profilId,
