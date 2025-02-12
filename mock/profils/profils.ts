@@ -1,4 +1,4 @@
-import _ from "lodash";
+import {range, sampleSize} from "es-toolkit";
 import {DateTime} from "luxon";
 import {defineMockData} from "vite-plugin-mock-dev-server";
 
@@ -9,7 +9,7 @@ import type {DroitCode} from "../../src/model/securite/profil/references";
 
 export default defineMockData(
     "profils",
-    _.range(1, 11).map(proId => {
+    range(1, 11).map(proId => {
         const droits = ["CREATE", "DELETE", "READ", "UPDATE"] as DroitCode[];
         return {
             id: proId,
@@ -23,7 +23,7 @@ export default defineMockData(
                           .minus(Math.floor(Math.random() * 1_000_000))
                           .toISO()
                     : undefined,
-            droits: _.sampleSize(droits, Math.ceil(Math.random() * 4)),
+            droits: sampleSize(droits, Math.ceil(Math.random() * 4)),
             utilisateurs: utilisateurs.value
                 .filter(uti => uti.profilId === proId)
                 .map(({id, nom, prenom, email, typeUtilisateurCode}) => ({id, nom, prenom, email, typeUtilisateurCode}))
