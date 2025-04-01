@@ -1,10 +1,11 @@
 import {useObserver} from "mobx-react";
 import {ReactNode} from "react";
+import {useTranslation} from "react-i18next";
 
 import {colorScheme, messageStore} from "@focus4/core";
 import {FilAriane, HeaderItem, HeaderScrolling, HeaderTopRow} from "@focus4/layout";
 import {toBem} from "@focus4/styling";
-import {FontIcon, IconButton, Switch} from "@focus4/toolbox";
+import {Dropdown, FontIcon, IconButton, Switch} from "@focus4/toolbox";
 
 import {router} from "../router";
 
@@ -21,6 +22,8 @@ export function Header({
     icon: string;
     paramResolver?: () => string;
 }) {
+    const {i18n} = useTranslation();
+
     return useObserver(() => (
         <HeaderScrolling theme={{scrolling: theme.header()}}>
             <HeaderTopRow>
@@ -42,6 +45,19 @@ export function Header({
                                 action: {label: "Se connecter", onClick: () => console.info("¯\\_(ツ)_/¯")}
                             })
                         }
+                    />
+                    <Dropdown
+                        hasUndefined={false}
+                        onChange={lng => {
+                            i18n.changeLanguage(lng);
+                            localStorage.setItem("lng", lng!);
+                        }}
+                        sizing="fit-to-values"
+                        value={i18n.language}
+                        values={[
+                            {key: "fr", label: "FR"},
+                            {key: "en", label: "EN"}
+                        ]}
                     />
                     <Switch
                         iconOff="light_mode"
