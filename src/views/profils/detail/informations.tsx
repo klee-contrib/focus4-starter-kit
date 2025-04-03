@@ -20,7 +20,7 @@ export function ProfilInfos() {
                 f
                     .domain(DO_ENTIER)
                     .metadata({
-                        label: "Nombre maximal d'utilisateurs",
+                        label: "app.profile.maxUsers",
                         comment:
                             "Ce champ n'est qu'une excuse pour poser un slider, mais si sa valeur dépasse 12 alors le composant de sélection de droits va changer ;)",
                         InputComponent: Slider,
@@ -52,7 +52,7 @@ export function ProfilInfos() {
 
     return useObserver(() => (
         <Form {...actions.formProps}>
-            <Panel title="Informations" {...actions.panelProps}>
+            <Panel title="app.profile.detail" {...actions.panelProps}>
                 {fieldFor(entity.libelle)}
                 {selectFor(entity.droits, referenceStore.droit)}
                 {fieldFor(entity.nombreUtilisateursMax)}

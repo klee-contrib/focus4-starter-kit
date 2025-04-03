@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {useTranslation} from "react-i18next";
 
 import {advancedSearchFor} from "@focus4/collections";
 import {messageStore} from "@focus4/core";
@@ -12,6 +13,8 @@ import {UtilisateurDelete} from "./delete";
 import {UtilisateurLine} from "./line";
 
 export function UtilisateurList() {
+    const {t} = useTranslation();
+
     const [utiDelete, setUtiDelete] = useState<UtilisateurItem>();
     const [manyDialogActive, setManyDialogActive] = useState(false);
 
@@ -34,16 +37,23 @@ export function UtilisateurList() {
                 hasSearchBar: true,
                 hasSelection: true,
                 orderableColumnList: [
-                    {key: "nom", label: "Nom croissant", order: true},
-                    {key: "nom", label: "Nom décroissant", order: false},
-                    {key: "prenom", label: "Prénom croissant", order: true},
-                    {key: "prenom", label: "Prénom décroissant", order: false}
+                    {key: "nom", label: t("app.user.ordering.nameAsc"), order: true},
+                    {key: "nom", label: t("app.user.ordering.nameDesc"), order: false},
+                    {key: "prenom", label: t("app.user.ordering.surnameAsc"), order: true},
+                    {key: "prenom", label: t("app.user.ordering.surnameDesc"), order: false}
                 ],
-                operationList: [{action: () => setManyDialogActive(true), label: "Supprimer", icon: "delete"}],
+                operationList: [
+                    {action: () => setManyDialogActive(true), label: t("app.user.delete.action"), icon: "delete"}
+                ],
                 listProps: {
                     itemKey: i => i.id,
                     operationList: uti => [
-                        {action: () => setUtiDelete(uti), icon: "delete", type: "icon-tooltip", label: "Supprimer"}
+                        {
+                            action: () => setUtiDelete(uti),
+                            icon: "delete",
+                            type: "icon-tooltip",
+                            label: t("app.user.delete.action")
+                        }
                     ],
                     LineComponent: UtilisateurLine,
                     perPage: 10
@@ -53,7 +63,7 @@ export function UtilisateurList() {
             <Dialog
                 actions={[
                     {
-                        label: "Confirmer",
+                        label: t("app.user.delete.confirm"),
                         color: "primary",
                         variant: "elevated-filled",
                         onClick: async () => {
@@ -62,13 +72,13 @@ export function UtilisateurList() {
                             load();
                         }
                     },
-                    {label: "Annuler", onClick: () => setManyDialogActive(false)}
+                    {label: t("app.user.delete.cancel"), onClick: () => setManyDialogActive(false)}
                 ]}
                 active={manyDialogActive}
                 onOverlayClick={() => setManyDialogActive(false)}
-                title="Suppression de plusieurs utilisateurs"
+                title={t("app.user.delete.titleMany")}
             >
-                Êtes vous sûr de vouloir supprimer ces {utilisateurListStore.selectedItems.size} utilisateurs ?
+                {t("app.user.delete.textMany", {param: utilisateurListStore.selectedItems.size})}
                 <br />
                 <br />
                 (La méthode n'est pas implémentée)

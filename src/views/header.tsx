@@ -1,3 +1,4 @@
+import {t} from "i18next";
 import {useObserver} from "mobx-react";
 import {ReactNode} from "react";
 import {useTranslation} from "react-i18next";
@@ -41,8 +42,8 @@ export function Header({
                         icon="account_circle"
                         onClick={() =>
                             messageStore.addInformationMessage({
-                                label: "Il n'y a pas d'utilisateur connecté...",
-                                action: {label: "Se connecter", onClick: () => console.info("¯\\_(ツ)_/¯")}
+                                label: "app.account.noUser",
+                                action: {label: t("app.account.login"), onClick: () => console.info("¯\\_(ツ)_/¯")}
                             })
                         }
                     />

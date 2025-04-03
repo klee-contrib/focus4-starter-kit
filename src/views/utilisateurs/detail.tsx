@@ -1,4 +1,5 @@
 import {useObserver} from "mobx-react";
+import {useTranslation} from "react-i18next";
 
 import {Display, SelectRadio} from "@focus4/form-toolbox";
 import {
@@ -26,6 +27,8 @@ import {router} from "../../router";
 import css from "./__style__/detail.css";
 
 export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
+    const {t} = useTranslation();
+
     const entity = useFormNode(utilisateurStore.utilisateur, e =>
         (!router.state.utilisateurs.utiId ? e.edit(() => true) : e)
             .remove("id", "dateCreation", "dateModification")
@@ -59,7 +62,10 @@ export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
 
     return useObserver(() => (
         <Form {...actions.formProps}>
-            <Panel title={actions.params ? "Informations" : "Création d'un utilisateur"} {...actions.panelProps}>
+            <Panel
+                title={t(actions.params ? "app.user.detail.consult" : "app.user.detail.create")}
+                {...actions.panelProps}
+            >
                 {fieldFor(entity.nom)}
                 {fieldFor(entity.prenom)}
                 {fieldFor(entity.email)}
