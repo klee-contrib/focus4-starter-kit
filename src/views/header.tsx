@@ -8,6 +8,8 @@ import {FilAriane, HeaderItem, HeaderScrolling, HeaderTopRow} from "@focus4/layo
 import {toBem} from "@focus4/styling";
 import {Dropdown, FontIcon, IconButton, Switch} from "@focus4/toolbox";
 
+import {referenceStore} from "../stores/references";
+
 import {router} from "../router";
 
 import css from "./__style__/header.css";
@@ -36,7 +38,7 @@ export function Header({
                     <FilAriane paramResolver={paramResolver} router={router} />
                 </HeaderItem>
                 <HeaderItem theme={{item: theme.item({user: true})}}>
-                    <strong>Utilisateur connecté [Administrateur]</strong>
+                    <strong>Utilisateur connecté [{referenceStore.typeUtilisateur.getLabel("ADMIN")}]</strong>
                     <IconButton
                         className={css.button}
                         icon="account_circle"
@@ -52,6 +54,7 @@ export function Header({
                         onChange={lng => {
                             i18n.changeLanguage(lng);
                             localStorage.setItem("lng", lng!);
+                            referenceStore.reload();
                         }}
                         sizing="fit-to-values"
                         value={i18n.language}
