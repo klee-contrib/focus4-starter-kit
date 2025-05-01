@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useTranslation} from "react-i18next";
 
 import {advancedSearchFor} from "@focus4/collections";
@@ -9,6 +9,7 @@ import {UtilisateurItem} from "../../model/securite/utilisateur/utilisateur-item
 import {searchUtilisateur} from "../../services/securite/utilisateur/utilisateur";
 import {utilisateurListStore} from "../../stores/utilisateur";
 
+import {useLoad} from "@focus4/forms";
 import {UtilisateurDelete} from "./delete";
 import {UtilisateurLine} from "./line";
 
@@ -18,16 +19,7 @@ export function UtilisateurList() {
     const [utiDelete, setUtiDelete] = useState<UtilisateurItem>();
     const [manyDialogActive, setManyDialogActive] = useState(false);
 
-    function load() {
-        utilisateurListStore.selectedItems.clear();
-        utilisateurListStore.isLoading = true;
-        searchUtilisateur().then(list => {
-            utilisateurListStore.list = list;
-            utilisateurListStore.isLoading = false;
-        });
-    }
-
-    useEffect(load, []);
+    useLoad(utilisateurListStore, a => a.params().load(() => searchUtilisateur()));
 
     return (
         <>
@@ -59,7 +51,11 @@ export function UtilisateurList() {
                     perPage: 10
                 }
             })}
-            <UtilisateurDelete closeDialog={() => setUtiDelete(undefined)} onDelete={load} utilisateur={utiDelete} />
+            <UtilisateurDelete
+                closeDialog={() => setUtiDelete(undefined)}
+                onDelete={utilisateurListStore.search}
+                utilisateur={utiDelete}
+            />
             <Dialog
                 actions={[
                     {
@@ -69,7 +65,7 @@ export function UtilisateurList() {
                         onClick: async () => {
                             messageStore.addWarningMessage("Méthode non implémentée...");
                             setManyDialogActive(false);
-                            load();
+                            utilisateurListStore.search();
                         }
                     },
                     {label: t("app.user.delete.cancel"), onClick: () => setManyDialogActive(false)}
