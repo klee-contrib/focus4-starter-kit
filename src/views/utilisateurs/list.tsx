@@ -3,13 +3,13 @@ import {useTranslation} from "react-i18next";
 
 import {advancedSearchFor} from "@focus4/collections";
 import {messageStore} from "@focus4/core";
+import {useLoad} from "@focus4/forms";
 import {Dialog} from "@focus4/layout";
 
 import {UtilisateurItem} from "../../model/securite/utilisateur/utilisateur-item";
 import {searchUtilisateur} from "../../services/securite/utilisateur/utilisateur";
 import {utilisateurListStore} from "../../stores/utilisateur";
 
-import {useLoad} from "@focus4/forms";
 import {UtilisateurDelete} from "./delete";
 import {UtilisateurLine} from "./line";
 
@@ -29,10 +29,10 @@ export function UtilisateurList() {
                 hasSearchBar: true,
                 hasSelection: true,
                 orderableColumnList: [
-                    {key: "nom", label: t("app.user.ordering.nameAsc"), order: true},
-                    {key: "nom", label: t("app.user.ordering.nameDesc"), order: false},
-                    {key: "prenom", label: t("app.user.ordering.surnameAsc"), order: true},
-                    {key: "prenom", label: t("app.user.ordering.surnameDesc"), order: false}
+                    {label: t("app.user.ordering.nameAsc"), sort: [{fieldName: "nom", sortDesc: false}]},
+                    {label: t("app.user.ordering.nameDesc"), sort: [{fieldName: "nom", sortDesc: true}]},
+                    {label: t("app.user.ordering.surnameAsc"), sort: [{fieldName: "prenom", sortDesc: false}]},
+                    {label: t("app.user.ordering.surnameDesc"), sort: [{fieldName: "prenom", sortDesc: true}]}
                 ],
                 operationList: [
                     {action: () => setManyDialogActive(true), label: t("app.user.delete.action"), icon: "delete"}
