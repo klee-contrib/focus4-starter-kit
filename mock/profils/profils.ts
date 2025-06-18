@@ -2,10 +2,9 @@ import {range, sampleSize} from "es-toolkit";
 import {DateTime} from "luxon";
 import {defineMockData} from "vite-plugin-mock-dev-server";
 
-import utilisateurs from "../utilisateurs/utilisateurs";
-
 import type {ProfilRead} from "../../src/model/securite/profil/profil-read";
 import type {DroitCode} from "../../src/model/securite/profil/references";
+import utilisateurs from "../utilisateurs/utilisateurs";
 
 export default defineMockData(
     "profils",

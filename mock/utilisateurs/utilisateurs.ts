@@ -23,7 +23,7 @@ export default defineMockData(
             dateNaissance: DateTime.utc()
                 .minus(Math.floor(Math.random() * 1_000_000_000_000))
                 .toFormat("yyyy-MM-dd"),
-            email: `${prenom.replace(/ /g, "").toLowerCase()}.${nom.replace(/ /g, "").toLowerCase()}@yopmail.com`,
+            email: `${prenom.replaceAll(" ", "").toLowerCase()}.${nom.replaceAll(" ", "").toLowerCase()}@yopmail.com`,
             typeUtilisateurCode: sample(typeUtilisateurs),
             dateCreation: DateTime.utc()
                 .minus(Math.floor(Math.random() * 1_000_000_000))

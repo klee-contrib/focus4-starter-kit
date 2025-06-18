@@ -45,7 +45,10 @@ export function Header({
                         onClick={() =>
                             messageStore.addInformationMessage({
                                 label: "app.account.noUser",
-                                action: {label: t("app.account.login"), onClick: () => console.info("¯\\_(ツ)_/¯")}
+                                action: {
+                                    label: t("app.account.login"),
+                                    onClick: () => console.info(String.raw`¯\_(ツ)_/¯`)
+                                }
                             })
                         }
                     />

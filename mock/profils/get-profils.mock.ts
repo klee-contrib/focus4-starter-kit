@@ -1,8 +1,8 @@
 import {defineMock} from "vite-plugin-mock-dev-server";
 
-import profils from "./profils";
-
 import type {ProfilItem} from "../../src/model/securite/profil/profil-item";
+
+import profils from "./profils";
 
 export default defineMock({
     url: "/api/profils",

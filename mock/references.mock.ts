@@ -1,8 +1,7 @@
 import {defineMock} from "vite-plugin-mock-dev-server";
 
-import {type TypeUtilisateur} from "../src/model/securite/utilisateur/references";
-
 import type {Droit, TypeDroit} from "../src/model/securite/profil/references";
+import {type TypeUtilisateur} from "../src/model/securite/utilisateur/references";
 
 const labels = {
     fr: {
@@ -67,6 +66,8 @@ export default defineMock({
                     {code: "GEST", libelle: labels[language as "fr"].typeUtilisateur.GEST},
                     {code: "CLIENT", libelle: labels[language as "fr"].typeUtilisateur.CLIENT}
                 ] as TypeUtilisateur[];
+            default:
+                return [];
         }
     }
 });
