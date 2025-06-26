@@ -7,10 +7,35 @@
     "printWidth": 120,
     "overrides": [
         {
-            "files": ["package.json", "package-lock.json", "src/model/**", "src/services/**"],
+            "files": [
+                "package.json",
+                "package-lock.json",
+                "src/model/**",
+                "src/services/**"
+            ],
             "options": {
                 "printWidth": 50000
             }
         }
+    ],
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+        "^@focus4/(.*)$",
+        "^(\\.?\\.\/)+(model|services|stores)\/.*$",
+        "^\\.\\.\/.+(?<!\\.css)$",
+        "^\\.\/.+(?<!\\.css)$",
+        "\\.css$"
+    ],
+    "importOrderCaseInsensitive": true,
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "importOrderSideEffects": false,
+    "importOrderParserPlugins": [
+        "decoratorAutoAccessors",
+        "decorators",
+        "jsx",
+        "typescript"
     ]
 }
