@@ -52,7 +52,7 @@ export function ProfilInfos() {
 
     return useObserver(() => (
         <Form {...actions.formProps}>
-            <Panel title="app.profile.detail" {...actions.panelProps}>
+            <Panel icon="settings" title="app.profile.detail" {...actions.panelProps}>
                 {fieldFor(entity.libelle)}
                 {selectFor(entity.droits, referenceStore.droit)}
                 {fieldFor(entity.nombreUtilisateursMax)}

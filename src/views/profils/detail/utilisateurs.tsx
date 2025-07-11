@@ -12,7 +12,7 @@ export function ProfilUtilisateurs() {
     const {t} = useTranslation();
 
     return (
-        <Panel title={t("app.profile.users", {param: profilStore.profil.utilisateurs.length})}>
+        <Panel icon="group" title={t("app.profile.users", {param: profilStore.profil.utilisateurs.length})}>
             {listFor({
                 data: toFlatValues(profilStore.profil.utilisateurs),
                 itemKey: uti => uti.id,
