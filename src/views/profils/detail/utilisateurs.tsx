@@ -1,3 +1,4 @@
+import {useObserver} from "mobx-react";
 import {useTranslation} from "react-i18next";
 
 import {listFor} from "@focus4/collections";
@@ -11,7 +12,7 @@ import {UtilisateurLine} from "../../utilisateurs/line";
 export function ProfilUtilisateurs() {
     const {t} = useTranslation();
 
-    return (
+    return useObserver(() => (
         <Panel icon="group" title={t("app.profile.users", {param: profilStore.profil.utilisateurs.length})}>
             {listFor({
                 data: toFlatValues(profilStore.profil.utilisateurs),
@@ -19,5 +20,5 @@ export function ProfilUtilisateurs() {
                 LineComponent: props => <UtilisateurLine {...props} profil />
             })}
         </Panel>
-    );
+    ));
 }
