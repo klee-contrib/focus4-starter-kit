@@ -1,4 +1,5 @@
 import {useObserver} from "mobx-react";
+import {ZodArray, ZodString} from "zod";
 
 import {SelectChips} from "@focus4/form-toolbox";
 import {fieldFor, Form, selectFor, useFormActions, useFormNode, useReferenceTracking} from "@focus4/forms";
@@ -29,12 +30,12 @@ export function ProfilInfos() {
                             showTooltip: true
                         }
                     })
-                    .value(8)
+                    .value<number>(8)
             )
             .patch("droits", (f, node) =>
                 f.metadata(() =>
                     node.nombreUtilisateursMax.value! > 12
-                        ? {SelectComponent: SelectChips<"string-array">, selectProps: {hasSelectAll: true}}
+                        ? {SelectComponent: SelectChips<ZodArray<ZodString>>, selectProps: {hasSelectAll: true}}
                         : {}
                 )
             )
