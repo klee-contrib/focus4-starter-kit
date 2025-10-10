@@ -2,6 +2,7 @@ import {t} from "i18next";
 import {useObserver} from "mobx-react";
 import {ReactNode} from "react";
 import {useTranslation} from "react-i18next";
+import z from "zod";
 
 import {colorScheme, messageStore} from "@focus4/core";
 import {FilAriane, HeaderItem, HeaderScrolling, HeaderTopRow} from "@focus4/layout";
@@ -56,6 +57,7 @@ export function Header({
                         hasUndefined={false}
                         onChange={lng => {
                             i18n.changeLanguage(lng);
+                            z.config(z.locales[lng as "fr"]());
                             localStorage.setItem("lng", lng!);
                             referenceStore.reload();
                         }}
