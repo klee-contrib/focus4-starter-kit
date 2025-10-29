@@ -1,7 +1,3 @@
-////
-//// ATTENTION CE FICHIER EST GENERE AUTOMATIQUEMENT !
-////
-
 export type TypeUtilisateurCode = "ADMIN" | "CLIENT" | "GEST";
 export interface TypeUtilisateur {
     code: TypeUtilisateurCode;

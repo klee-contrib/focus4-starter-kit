@@ -1,7 +1,3 @@
-////
-//// ATTENTION CE FICHIER EST GENERE AUTOMATIQUEMENT !
-////
-
 export type DroitCode = "CREATE" | "DELETE" | "READ" | "UPDATE";
 export interface Droit {
     code: DroitCode;
