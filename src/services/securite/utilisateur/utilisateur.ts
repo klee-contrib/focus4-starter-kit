@@ -2,7 +2,7 @@
 //// ATTENTION CE FICHIER EST GENERE AUTOMATIQUEMENT !
 ////
 
-import {coreFetch} from "@focus4/core";
+import fetch from "../../fetch"
 
 import {TypeUtilisateurCode} from "../../../model/securite/utilisateur/references";
 import {UtilisateurItem} from "../../../model/securite/utilisateur/utilisateur-item";
@@ -15,8 +15,14 @@ import {UtilisateurWrite} from "../../../model/securite/utilisateur/utilisateur-
  * @param options Options pour 'fetch'.
  * @returns Utilisateur sauvegardé
  */
-export function addUtilisateur(utilisateur: UtilisateurWrite, options: RequestInit = {}): Promise<UtilisateurRead> {
-    return coreFetch("POST", `./api/utilisateurs`, {body: utilisateur}, options);
+export async function addUtilisateur(utilisateur: UtilisateurWrite, options: RequestInit = {}): Promise<UtilisateurRead> {
+    const response = await fetch(`./api/utilisateurs`, {
+        ...options,
+        method: "POST",
+        body: JSON.stringify(utilisateur),
+        headers: {...options.headers, "Content-Type": "application/json"}
+    });
+    return await response.json();
 }
 
 /**
@@ -24,8 +30,11 @@ export function addUtilisateur(utilisateur: UtilisateurWrite, options: RequestIn
  * @param utiId Id de l'utilisateur
  * @param options Options pour 'fetch'.
  */
-export function deleteUtilisateur(utiId: number, options: RequestInit = {}): Promise<void> {
-    return coreFetch("DELETE", `./api/utilisateurs/${utiId}`, {}, options);
+export async function deleteUtilisateur(utiId: number, options: RequestInit = {}): Promise<void> {
+    await fetch(`./api/utilisateurs/${utiId}`, {
+        ...options,
+        method: "DELETE"
+    });
 }
 
 /**
@@ -34,8 +43,12 @@ export function deleteUtilisateur(utiId: number, options: RequestInit = {}): Pro
  * @param options Options pour 'fetch'.
  * @returns Le détail de l'utilisateur
  */
-export function getUtilisateur(utiId: number, options: RequestInit = {}): Promise<UtilisateurRead> {
-    return coreFetch("GET", `./api/utilisateurs/${utiId}`, {}, options);
+export async function getUtilisateur(utiId: number, options: RequestInit = {}): Promise<UtilisateurRead> {
+    const response = await fetch(`./api/utilisateurs/${utiId}`, {
+        ...options,
+        method: "GET"
+    });
+    return await response.json();
 }
 
 /**
@@ -51,8 +64,37 @@ export function getUtilisateur(utiId: number, options: RequestInit = {}): Promis
  * @param options Options pour 'fetch'.
  * @returns Utilisateurs matchant les critères
  */
-export function searchUtilisateur(nom?: string, prenom?: string, email?: string, dateNaissance?: string, adresse?: string, actif?: boolean, profilId?: number, typeUtilisateurCode?: TypeUtilisateurCode, options: RequestInit = {}): Promise<UtilisateurItem[]> {
-    return coreFetch("GET", `./api/utilisateurs`, {query: {nom, prenom, email, dateNaissance, adresse, actif, profilId, typeUtilisateurCode}}, options);
+export async function searchUtilisateur(nom?: string, prenom?: string, email?: string, dateNaissance?: string, adresse?: string, actif?: boolean, profilId?: number, typeUtilisateurCode?: TypeUtilisateurCode, options: RequestInit = {}): Promise<UtilisateurItem[]> {
+    const query = new URLSearchParams();
+    if (nom !== undefined) {
+        query.append("nom", nom)
+    }
+    if (prenom !== undefined) {
+        query.append("prenom", prenom)
+    }
+    if (email !== undefined) {
+        query.append("email", email)
+    }
+    if (dateNaissance !== undefined) {
+        query.append("dateNaissance", dateNaissance)
+    }
+    if (adresse !== undefined) {
+        query.append("adresse", adresse)
+    }
+    if (actif !== undefined) {
+        query.append("actif", `${actif}`)
+    }
+    if (profilId !== undefined) {
+        query.append("profilId", `${profilId}`)
+    }
+    if (typeUtilisateurCode !== undefined) {
+        query.append("typeUtilisateurCode", typeUtilisateurCode)
+    }
+    const response = await fetch(`./api/utilisateurs?${query}`, {
+        ...options,
+        method: "GET"
+    });
+    return await response.json();
 }
 
 /**
@@ -62,6 +104,12 @@ export function searchUtilisateur(nom?: string, prenom?: string, email?: string,
  * @param options Options pour 'fetch'.
  * @returns Utilisateur sauvegardé
  */
-export function updateUtilisateur(utiId: number, utilisateur: UtilisateurWrite, options: RequestInit = {}): Promise<UtilisateurRead> {
-    return coreFetch("PUT", `./api/utilisateurs/${utiId}`, {body: utilisateur}, options);
+export async function updateUtilisateur(utiId: number, utilisateur: UtilisateurWrite, options: RequestInit = {}): Promise<UtilisateurRead> {
+    const response = await fetch(`./api/utilisateurs/${utiId}`, {
+        ...options,
+        method: "PUT",
+        body: JSON.stringify(utilisateur),
+        headers: {...options.headers, "Content-Type": "application/json"}
+    });
+    return await response.json();
 }
