@@ -17,8 +17,8 @@ import {Panel} from "@focus4/layout";
 import {makeReferenceList, toFlatValues} from "@focus4/stores";
 import {FontIcon} from "@focus4/toolbox";
 
-import {getProfils} from "../../services/securite/profil/profil";
-import {addUtilisateur, getUtilisateur, updateUtilisateur} from "../../services/securite/utilisateur/utilisateur";
+import {getProfils} from "../../services/securite/profil";
+import {addUtilisateur, getUtilisateur, updateUtilisateur} from "../../services/securite/utilisateur";
 import {profilStore} from "../../stores/profil";
 import {referenceStore} from "../../stores/references";
 import {utilisateurStore} from "../../stores/utilisateur";

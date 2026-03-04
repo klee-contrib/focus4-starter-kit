@@ -6,7 +6,7 @@ import {Content} from "@focus4/layout";
 import {stringFor} from "@focus4/stores";
 
 import {ProfilItemEntity} from "../../model/securite/profil/profil-item";
-import {getProfils} from "../../services/securite/profil/profil";
+import {getProfils} from "../../services/securite/profil";
 import {profilStore} from "../../stores/profil";
 
 import {router} from "../../router";

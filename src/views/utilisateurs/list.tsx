@@ -7,7 +7,7 @@ import {useLoad} from "@focus4/forms";
 import {Dialog} from "@focus4/layout";
 
 import {UtilisateurItem} from "../../model/securite/utilisateur/utilisateur-item";
-import {searchUtilisateur} from "../../services/securite/utilisateur/utilisateur";
+import {getUtilisateurs} from "../../services/securite/utilisateur";
 import {utilisateurListStore} from "../../stores/utilisateur";
 
 import {UtilisateurDelete} from "./delete";
@@ -19,7 +19,7 @@ export function UtilisateurList() {
     const [utiDelete, setUtiDelete] = useState<UtilisateurItem>();
     const [manyDialogActive, setManyDialogActive] = useState(false);
 
-    useLoad(utilisateurListStore, a => a.params().load(() => searchUtilisateur()));
+    useLoad(utilisateurListStore, a => a.params().load(getUtilisateurs));
 
     return (
         <>

@@ -6,7 +6,7 @@ import {fieldFor, Form, selectFor, useFormActions, useFormNode, useReferenceTrac
 import {Panel} from "@focus4/layout";
 import {Slider} from "@focus4/toolbox";
 
-import {getProfil, updateProfil} from "../../../services/securite/profil/profil";
+import {getProfil, updateProfil} from "../../../services/securite/profil";
 import {profilStore} from "../../../stores/profil";
 import {referenceStore} from "../../../stores/references";
 

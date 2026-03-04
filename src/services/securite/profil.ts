@@ -2,11 +2,11 @@
 //// ATTENTION CE FICHIER EST GENERE AUTOMATIQUEMENT !
 ////
 
-import fetch from "../../fetch"
+import fetch from "../fetch";
 
-import {ProfilItem} from "../../../model/securite/profil/profil-item";
-import {ProfilRead} from "../../../model/securite/profil/profil-read";
-import {ProfilWrite} from "../../../model/securite/profil/profil-write";
+import {ProfilItem} from "../../model/securite/profil/profil-item";
+import {ProfilRead} from "../../model/securite/profil/profil-read";
+import {ProfilWrite} from "../../model/securite/profil/profil-write";
 
 /**
  * Ajoute un Profil
@@ -28,7 +28,7 @@ export async function addProfil(profil: ProfilWrite, options: RequestInit = {}):
  * Charge le détail d'un Profil
  * @param proId Id technique
  * @param options Options pour 'fetch'.
- * @returns Le détail du profil
+ * @returns Le détail du profil.
  */
 export async function getProfil(proId: number, options: RequestInit = {}): Promise<ProfilRead> {
     const response = await fetch(`./api/profils/${proId}`, {

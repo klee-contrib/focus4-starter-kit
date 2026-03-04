@@ -4,7 +4,7 @@ import {messageStore} from "@focus4/core";
 import {Dialog} from "@focus4/layout";
 
 import {UtilisateurItem} from "../../model/securite/utilisateur/utilisateur-item";
-import {deleteUtilisateur} from "../../services/securite/utilisateur/utilisateur";
+import {deleteUtilisateur} from "../../services/securite/utilisateur";
 
 export function UtilisateurDelete({
     closeDialog,
