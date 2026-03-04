@@ -17,6 +17,7 @@ import {Panel} from "@focus4/layout";
 import {makeReferenceList, toFlatValues} from "@focus4/stores";
 import {FontIcon} from "@focus4/toolbox";
 
+import {getAdresseLabel, searchAdresse} from "../../services/adresse";
 import {getProfils} from "../../services/securite/profil";
 import {addUtilisateur, getUtilisateur, updateUtilisateur} from "../../services/securite/utilisateur";
 import {profilStore} from "../../stores/profil";
@@ -72,8 +73,8 @@ export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
                 {fieldFor(entity.email)}
                 {fieldFor(entity.dateNaissance)}
                 {autocompleteFor(entity.adresse, {
-                    keyResolver: async label => label,
-                    querySearcher: query => searchAdresse(query),
+                    keyResolver: getAdresseLabel,
+                    querySearcher: searchAdresse,
                     autocompleteProps: {icon: "place"}
                 })}
                 {fieldFor(entity.actif)}
@@ -89,9 +90,4 @@ export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
             </Panel>
         </Form>
     ));
-}
-
-async function searchAdresse(query: string): Promise<{key: string; label: string}[]> {
-    const response = await fetch(`./api/adresses?query=${encodeURIComponent(query)}`);
-    return await response.json();
 }
