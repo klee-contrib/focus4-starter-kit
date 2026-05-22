@@ -1,4 +1,3 @@
-import {t} from "i18next";
 import {useObserver} from "mobx-react";
 import {ReactNode} from "react";
 import {useTranslation} from "react-i18next";
@@ -47,7 +46,7 @@ export function Header({
                             messageStore.addInformationMessage({
                                 label: "app.account.noUser",
                                 action: {
-                                    label: t("app.account.login"),
+                                    label: "app.account.login",
                                     onClick: () => console.info(String.raw`¯\_(ツ)_/¯`)
                                 }
                             })
