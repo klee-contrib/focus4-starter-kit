@@ -10,7 +10,8 @@
         "cssgen": "focus4 cssgen src __style__",
         "oxlint": "oxlint src",
         "preview": "vite preview",
-        "start": "vite"
+        "start": "vite",
+        "test": "codeceptjs run --steps"
     },
     "dependencies": {
         "@focus4/collections": "12.12.0",
@@ -24,12 +25,12 @@
         "@focus4/toolbox": "12.11.2",
         "@focus4/tooling": "12.11.3",
         "@vitejs/plugin-react": "6.0.2",
-        "es-toolkit": "1.46.1",
+        "es-toolkit": "1.47.0",
         "i18next": "26.2.0",
         "luxon": "3.7.2",
-        "mobx": "6.15.3",
-        "mobx-react": "9.2.1",
-        "oxlint": "1.66.0",
+        "mobx": "6.15.4",
+        "mobx-react": "9.2.2",
+        "oxlint": "1.67.0",
         "react": "19.2.6",
         "react-dom": "19.2.6",
         "react-i18next": "17.0.8",
@@ -40,7 +41,10 @@
         "zod": "4.4.3"
     },
     "devDependencies": {
-        "@flydotio/dockerfile": "0.7.10"
+        "@flydotio/dockerfile": "0.7.10",
+        "codeceptjs": "4.0.2",
+        "playwright": "1.60.0",
+        "tsx": "4.22.3"
     },
     "author": "KleeGroup",
     "license": "MIT"

@@ -1,0 +1,32 @@
+name: Tests
+on: [push]
+jobs:
+    tests:
+        name: Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+
+            - name: node 24
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24
+
+            - name: npm ci
+              run: npm ci
+
+            - name: playwright
+              run: npx playwright install chromium --with-deps
+
+            - name: npm test
+              run: npm test
+              env:
+                  CI: true
+
+            - name: upload screenshots
+              uses: actions/upload-artifact@v7
+              if: always()
+              with:
+                  name: screeenshots
+                  path: tests/output

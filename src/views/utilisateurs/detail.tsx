@@ -1,7 +1,9 @@
 import {useObserver} from "mobx-react";
+import {useCallback} from "react";
 import {useTranslation} from "react-i18next";
 import {ZodString} from "zod";
 
+import {requestStore} from "@focus4/core";
 import {Display, SelectRadio} from "@focus4/form-toolbox";
 import {
     autocompleteFor,
@@ -63,6 +65,14 @@ export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
     useLoad(profilStore.profils, a => a.params().load(getProfils).trackingId(actions.trackingId));
     useReferenceTracking(actions.trackingId, referenceStore, "typeUtilisateur");
 
+    const keyResolver = useCallback(
+        (key: string) =>
+            entity.form.isEdit
+                ? getAdresseLabel(key)
+                : requestStore.track(actions.trackingId, () => getAdresseLabel(key)),
+        []
+    );
+
     return useObserver(() => (
         <Form {...actions.formProps}>
             <Panel
@@ -74,7 +84,7 @@ export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
                 {fieldFor(entity.email)}
                 {fieldFor(entity.dateNaissance)}
                 {autocompleteFor(entity.adresse, {
-                    keyResolver: getAdresseLabel,
+                    keyResolver,
                     querySearcher: searchAdresse,
                     autocompleteProps: {icon: "place"}
                 })}
