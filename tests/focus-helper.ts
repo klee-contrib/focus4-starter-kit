@@ -1,5 +1,7 @@
+import {locate} from "codeceptjs";
 import {Locator} from "playwright";
 
+// @ts-expect-error
 export default class FocusHelper extends Helper {
     get Playwright() {
         return (this as any).helpers.Playwright as CodeceptJS.Playwright;
