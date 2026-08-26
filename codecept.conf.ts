@@ -33,4 +33,3 @@ export const config: CodeceptJS.MainConfig = {
         await server?.close();
     }
 };
-

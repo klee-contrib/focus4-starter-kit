@@ -117,4 +117,3 @@ export default class FocusHelper extends Helper {
         }
     }
 }
-

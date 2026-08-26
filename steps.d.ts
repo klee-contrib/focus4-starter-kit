@@ -14,4 +14,3 @@ declare namespace CodeceptJS {
         interface Actions {}
     }
 }
-

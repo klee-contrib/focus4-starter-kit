@@ -4,6 +4,7 @@ import {defineMockData} from "vite-plugin-mock-dev-server";
 
 import type {ProfilRead} from "../../src/model/securite/profil/profil-read";
 import type {DroitCode} from "../../src/model/securite/profil/references";
+
 import utilisateurs from "../utilisateurs/utilisateurs";
 
 export default defineMockData(
