@@ -69,7 +69,7 @@ export default class FocusHelper extends Helper {
 
         const count = await this.Playwright.grabNumberOfVisibleElements(element);
         for (let i = 1; i <= count; i++) {
-            await this.Playwright.forceClick(element + `[${i}]`);
+            await this.Playwright.forceClick(`${element}[${i}]`);
         }
     }
 

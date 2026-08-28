@@ -1,6 +1,6 @@
 {
     "name": "focus4-starter-kit",
-    "version": "12.13.1",
+    "version": "12.13.2",
     "description": "Starter kit pour Focus V4",
     "license": "MIT",
     "author": "KleeGroup",
@@ -16,37 +16,37 @@
         "test": "codeceptjs run --steps"
     },
     "dependencies": {
-        "@focus4/collections": "12.13.1",
+        "@focus4/collections": "12.13.2",
         "@focus4/core": "12.11.3",
         "@focus4/entities": "12.13.0",
-        "@focus4/form-toolbox": "12.13.1",
-        "@focus4/forms": "12.13.1",
+        "@focus4/form-toolbox": "12.13.2",
+        "@focus4/forms": "12.13.2",
         "@focus4/layout": "12.11.9",
-        "@focus4/stores": "12.13.1",
+        "@focus4/stores": "12.13.2",
         "@focus4/styling": "12.11.1",
         "@focus4/toolbox": "12.11.4",
-        "@focus4/tooling": "12.13.1",
-        "@vitejs/plugin-react": "6.1.0",
-        "es-toolkit": "1.51.0",
-        "i18next": "26.4.0",
+        "@focus4/tooling": "12.13.2",
+        "@vitejs/plugin-react": "6.1.1",
+        "es-toolkit": "1.52.0",
+        "i18next": "26.4.1",
         "luxon": "3.7.2",
         "mobx": "6.16.1",
         "mobx-react": "9.2.2",
         "react": "19.2.8",
         "react-dom": "19.2.8",
-        "react-i18next": "17.0.12",
+        "react-i18next": "17.0.13",
         "typescript": "6.0.3",
         "vite": "8.2.2",
         "vite-plugin-checker": "0.14.5",
         "vite-plugin-mock-dev-server": "2.4.2",
-        "zod": "4.4.3"
+        "zod": "4.5.4"
     },
     "devDependencies": {
         "@flydotio/dockerfile": "0.7.10",
         "codeceptjs": "4.1.0",
-        "oxfmt": "0.65.0",
-        "oxlint": "1.80.0",
+        "oxfmt": "0.66.0",
+        "oxlint": "1.81.0",
         "playwright": "1.62.1",
-        "tsx": "4.23.12"
+        "tsx": "4.23.13"
     }
 }
