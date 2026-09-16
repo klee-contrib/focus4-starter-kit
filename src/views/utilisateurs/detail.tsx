@@ -1,4 +1,4 @@
-import {useObserver} from "mobx-react";
+import {observer} from "mobx-react";
 import {useCallback} from "react";
 import {useTranslation} from "react-i18next";
 import {ZodString} from "zod";
@@ -31,7 +31,7 @@ import {router} from "../../router";
 
 import css from "./__style__/detail.css";
 
-export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
+export const UtilisateurDetail = observer(function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
     const {t} = useTranslation();
 
     const entity = useFormNode(utilisateurStore.utilisateur, e =>
@@ -73,7 +73,7 @@ export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
         []
     );
 
-    return useObserver(() => (
+    return (
         <Form {...actions.formProps}>
             <Panel
                 title={t(actions.params ? "app.user.detail.consult" : "app.user.detail.create")}
@@ -100,5 +100,5 @@ export function UtilisateurDetail({closePopin}: {closePopin?: () => void}) {
                     : null}
             </Panel>
         </Form>
-    ));
-}
+    );
+});
